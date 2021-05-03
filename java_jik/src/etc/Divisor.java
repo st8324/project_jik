@@ -13,7 +13,7 @@ public class Divisor {
 		 * 			  cnt가 10과 같으면 반복문 종료
 		 * 반복문 종료 후 : 배열에 있는 값을 0번지부터 cnt개 출력  
 		 * */
-		int num = 12, i, k;
+		int num = 144, i, k;
 		int maxCnt = 2;//배열 최대 길이, 테스트를 위해 초기 배열 길이를 2로 함
 		int []arr = new int [maxCnt];
 		int cnt = 0;
