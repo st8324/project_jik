@@ -8,7 +8,8 @@ public class MethodEx7 {
 		System.out.println(contains(arr, num, arr.length));
 		System.out.println(contains(arr, num, 2));
 		
-		initRandomArray(arr, 1, 9);
+		//initRandomArray(arr, 1, 9);
+		arr = initRandomArray2(3, 1, 9);
 		for(int tmp : arr) {
 			System.out.print(tmp + " ");
 		}
@@ -54,11 +55,39 @@ public class MethodEx7 {
 			min = max;
 			max = tmp;
 		}
-		//배열에 랜덤으로 수를 생성하여 저장
-		for(int i = 0; i<arr.length; i+=1) {
+		//예외 처리3 : 랜덤 범위의 갯수가 배열의 크기보다 작은 경우
+		if(max - min + 1 < arr.length) {
+			return ;
+		}
+		//배열에 랜덤으로 수를 생성하여 저장(중복 제거)
+		int cnt = 0; //배열에 저장된 수의 갯수
+		while(cnt < arr.length) {
 			int r = (int)(Math.random() * (max - min + 1) + min);
-			arr[i] = r;
+			//중복 체크 후 중복되지 않으면 저장
+			if(!contains(arr, r, cnt)){
+				arr[cnt] = r;
+				cnt+=1;
+			}
 		}
 	}
-	
+	public static int[] initRandomArray2(int size, int min, int max) {
+		int [] arr= new int[size];
+		//예외 처리2 : min과 max가 바뀐 경우
+		if(min > max) {
+			int tmp = min;
+			min = max;
+			max = tmp;
+		}
+		//배열에 랜덤으로 수를 생성하여 저장(중복 제거)
+		int cnt = 0; //배열에 저장된 수의 갯수
+		while(cnt < arr.length) {
+			int r = (int)(Math.random() * (max - min + 1) + min);
+			//중복 체크 후 중복되지 않으면 저장
+			if(!contains(arr, r, cnt)){
+				arr[cnt] = r;
+				cnt+=1;
+			}
+		}
+		return arr;
+	}
 }
