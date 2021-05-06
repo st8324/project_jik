@@ -12,6 +12,7 @@ public class MethodEx1 {
 		int num1 = 8, num2 = 12;
 		int res = gcd(num1, num2);
 		System.out.println(num1 + "와 " +num2+"의 최대 공약수 : " + res);
+		System.out.println(calculate(1, '/', 2));
 	}
 	/* 기능    : 두 정수가 주어지면 두 정수의 합을 알려주는 메소드 
 	 * 매개변수 : 두 정수 => int num1, int num2
@@ -37,7 +38,15 @@ public class MethodEx1 {
 	 * 메소드명 : calculate 
 	 * */
 	public static double calculate(int num1, char op, int num2) {
-		return 0.0;
+		double res = 0.0;
+		switch(op) {
+		case '+':	res = num1 + num2;	break;
+		case '-':	res = num1 - num2;	break;
+		case '*':	res = num1 * num2;	break;
+		case '%':	res = num1 % num2;	break;
+		case '/':	res = (double)num1 / num2;	break;
+		}
+		return res;
 	}
 	/* 기능 	  : 두 정수의 최대 공약수를 알려주는 메소드
 	 * 매개변수 : 두 정수 => int num1, int num2
