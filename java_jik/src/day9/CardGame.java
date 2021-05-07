@@ -23,23 +23,29 @@ public class CardGame {
 		//아래와 같이 풀하우스, 트리플, 페어로 판별 가능한 경우
 		//풀하우스 하나만 출력
 		//아래는 1풀하우스입니다라고 출력
-		int []arr = new int[] {1,2,2,3,4,5,6};
-		
-		System.out.println("포커 : " + poker(arr));
-		System.out.println("트리플 : " + triple(arr));
-		System.out.println("원페어 : " + onePair(arr));
-		System.out.print("투페어 : ");
-		int []res = twoPair(arr);
-		if(res == null) {
-			System.out.println(0);
-		}else {
-			for(int tmp : res) {
+		int []arr = new int[] {1,2,2,2,2,5,6};
+		int result;
+		int [] resultArr;
+		if( (result = poker(arr)) != 0 ) {
+			System.out.println(result + " 포커");	
+		}else if((result = fullHouse(arr)) != 0) {
+			System.out.println(result + " 풀하우스");	
+		}else if((result = straight(arr)) != 0) {
+			System.out.println(result + " 스트레이트");	
+		}else if((result = triple(arr)) != 0) {
+			System.out.println(result + " 트리플");	
+		}else if((resultArr = twoPair(arr))!= null) {
+			for(int tmp : resultArr) {
 				System.out.print(tmp + " ");
 			}
-			System.out.println();
+			System.out.println("페어");
+		}else if((result = onePair(arr)) != 0) {
+			System.out.println(result + " 페어");	
+		}else {
+			System.out.println(arr[arr.length-1] + " 탑");
 		}
-		System.out.println("풀하우스 : " + fullHouse(arr));
-		System.out.println("스트레이트 : " + straight(arr));
+		
+		
 		//참조 변수인 경우 null이 들어갈수 있기 때문에 참조 변수를 이용하는 경우
 		//null인지 아닌지를 체크하고 이용해야 한다.
 		int [] arr3 = null;
@@ -246,7 +252,7 @@ public class CardGame {
 		int num = 0;
 		for(int i = 0; i<card.length - 1 ; i+=1) {
 			
-			if(card[i] == card[i+1]) {
+			if(card[i] == card[i+1]) {//1 2 2 3 3 4 5
 				continue;
 			}
 			if(card[i] + 1 == card[i+1]) {
