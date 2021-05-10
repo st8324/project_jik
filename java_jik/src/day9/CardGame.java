@@ -38,7 +38,7 @@ public class CardGame {
 			for(int tmp : resultArr) {
 				System.out.print(tmp + " ");
 			}
-			System.out.println("페어");
+			System.out.println("투 페어");
 		}else if((result = onePair(arr)) != 0) {
 			System.out.println(result + " 페어");	
 		}else {
