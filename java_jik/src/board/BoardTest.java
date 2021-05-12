@@ -18,6 +18,9 @@ public class BoardTest {
 		Board []board = new Board[max];
 		String title, writer, registerDate, contents, type;
 		int num;
+		int count = 0;//저장된 게시글의 갯수(등록할 때 저장할 번지)
+		int views;
+		Board tmpBoard;
 		do {
 			printMenu();//메뉴를 출력
 			menu = scan.nextInt();//메뉴를 선택
@@ -36,16 +39,66 @@ public class BoardTest {
 				contents = scan.next();
 				//타입은 게시글로 지정, 번호는 배열의 번지를 이용
 				type = "게시글";
-				//num = ??
+				num = count + 1;
 				//입력된 정보를 이용하여 게시글 생성
-				
+				tmpBoard = new Board(num, title, contents, writer, registerDate, type);
 				//생성된 게시글을 배열에 저장
+				board[count] = tmpBoard;
+				count += 1;
+				break;
+			case 2:
+				//수정할 게시글 번호 입력
+				System.out.print("수정할 게시글 번호를 입력하세요 : ");
+				num = scan.nextInt();
+				//게시글이 있으면 제목과 내용을 입력
+				//게시글 수정
+				//게시글이 존재하고 => num <= count
+				//게시글이 삭제되지 않았으면 => board[num-1] != null
+				if(num <= count && board[num-1] != null) {
+					System.out.print("제목 : ");
+					title = scan.next();
+					System.out.print("내용 : ");
+					contents = scan.next();
+					board[num-1].modify(title, contents);
+				}else {
+					System.out.println("게시글이 없거나 삭제되었습니다.");
+				}
 				
 				break;
-			case 2:	System.out.println("수정");	break;
-			case 3:	System.out.println("삭제");	break;
-			case 4:	System.out.println("목록");	break;
-			case 5:	System.out.println("상세");	break;
+			case 3:	
+				//삭제할 게시글 번호를 입력
+				System.out.print("삭제할 게시글 번호를 입력하세요 : ");
+				num = scan.nextInt();
+				//삭제 => 해당 정보를 null로
+				if(num <= count) {
+					board[num-1] = null;
+				}
+				break;
+			case 4:	
+				//모든 게시글을 확인
+				//번호 제목 작성자 작성일만 출력
+				for(int i = 0; i < count; i+=1) {
+					if(board[i] != null) {
+						board[i].summaryPrint();
+					}
+				}
+				break;
+			case 5:	
+				//상세 내용을 확인할 게시글을 선택
+				System.out.print("확인할 게시글 번호를 입력하세요 : ");
+				num = scan.nextInt();
+				//해당 게시글의 내용을 출력
+				if(num <= count && board[num-1] != null) {
+					//게시글을 확인하면 조회수를 1증가
+					//기존 조회수를 가져옴
+					//views = board[num-1].getLike();
+					//기존 조회수에 + 1을 해서 다시 업데이트
+					//board[num-1].setLike(views + 1);
+					board[num-1].print();//게시글 조회
+				}else {
+					System.out.println("해당 게시글이 없거나 삭제되었습니다.");
+				}
+				break;
 			case 6:	System.out.println("프로그램 종료");	break;
 			default:	System.out.println("잘못된 메뉴입니다.");
 			}
