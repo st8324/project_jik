@@ -10,7 +10,7 @@ public class Rect extends Figure {
 		w = getRight() - getLeft();
 		h = getDown() - getUp();
 	}
-	
+	@Override
 	public void print() {
 		System.out.println("<<사각형입니다>>");
 		super.print();

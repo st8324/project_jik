@@ -33,8 +33,8 @@ public class Figure {
 		this.up = up;
 	}
 	public void print() {
-		System.out.println("좌상점 : (" + left  + " , " + up   + " )");
-		System.out.println("우하점 : (" + right + " , " + down + " )");
+		System.out.println("좌상점 : " + left  + "px , " + up   + "px");
+		System.out.println("우하점 : " + right + "px , " + down + "px");
 	}
 	public int getLeft() {
 		return left;
