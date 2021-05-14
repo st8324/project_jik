@@ -55,6 +55,8 @@ public class AccountBook2 {
 			System.out.println("잘못된 번지입니다. ");
 			return ;
 		}
+		total = total - arr[index].calCost();
+		
 		//삭제된 공간을 제거하기 위해 앞으로 하나씩 땡겨줌
 		for(int i = index; i<count-1; i++) {
 			arr[i] = arr[i+1];
