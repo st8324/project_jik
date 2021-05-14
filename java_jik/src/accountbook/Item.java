@@ -15,6 +15,7 @@ public class Item {
 	private String category;//분류 : 식비/교통/건강/월급/부수입 등
 	private int cost;// 금액
 	private String contents;//내용
+	
 	public String getType() {
 		return type;
 	}
@@ -41,6 +42,16 @@ public class Item {
 	}
 	public int getCost() {
 		return cost;
+	}
+	public int calCost() {
+		switch(type) {
+		case "지출":
+			return -cost;
+		case "수입":
+			return cost;
+		default:
+			return 0;
+		}
 	}
 	public void setCost(int cost) {
 		this.cost = cost;
