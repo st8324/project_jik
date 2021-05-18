@@ -30,6 +30,9 @@ public class AccountBook2 {
 			//총 금액을 계산
 			total = total + item.calCost();
 		}
+		else {
+			throw new RuntimeException("가계부 내역이 꽉 찼습니다.");
+		}
 	}
 	
 	/* 기능	  : 수정할 번지와 수정할 내역이 주어지면 가계부를 수정하는 메소드 
@@ -43,6 +46,8 @@ public class AccountBook2 {
 			total = total - arr[index].calCost();
 			total = total + item.calCost();
 			arr[index] = item;
+		}else {
+			throw new ArrayIndexOutOfBoundsException("잘못된 번지로 접근하고 있습니다.");
 		}
 	}
 	
@@ -52,8 +57,7 @@ public class AccountBook2 {
 	 * 메소드명 : delete */
 	public void delete(int index) {
 		if(index >= count || index < 0) {
-			System.out.println("잘못된 번지입니다. ");
-			return ;
+			throw new ArrayIndexOutOfBoundsException("잘못된 번지로 접근하고 있습니다.");
 		}
 		total = total - arr[index].calCost();
 		
