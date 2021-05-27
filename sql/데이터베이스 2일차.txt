@@ -1,0 +1,95 @@
+show databases;
+-- 현재 만들어져 있는 데이터베이스들을 확인
+use 데이터베이스명;
+-- 해당 데이터베이스를 선택
+show tables;
+-- 선택된 데이터베이스에 있는 테이블들을 보여줌
+create database 데이터베이스명;
+-- 새로운 데이터베이스를 생성
+
+-- student 테이블을 만드는 쿼리문(DDL)
+create table student(
+st_num varchar(10) not null,
+st_id varchar(15) not null,
+st_res_num varchar(14) not null,
+st_pw varchar(255) not null,
+st_name varchar(30) not null,
+st_dep varchar(20) not null default '컴퓨터공학',
+primary key(st_num)
+);
+
+desc 테이블명;
+-- 해당 테이블의 속성 정보를 자세히 보여준다
+
+-- 교수 테이블을 생성하는 쿼리문 작성
+
+create table professor(
+pr_num varchar(11) not null,
+pr_id varchar(15) not null unique,
+pr_pw varchar(255) not null,
+pr_name varchar(30) not null,
+pr_dep varchar(20) not null,
+pr_res_num varchar(14) not null unique,
+primary key(pr_num)
+);
+
+-- 강의 테이블을 생성하는 쿼리문
+create table class(
+cl_code varchar(10) not null,
+cl_title varchar(30) not null,
+cl_max_count int not null default 5,
+cl_point int not null default 0,
+cl_schedule varchar(40) not null,
+cl_pr_num varchar(11),
+primary key(cl_code),
+foreign key(cl_pr_num) references professor(pr_num)
+on update cascade
+on delete set null
+);
+
+-- cascade : 참조되는 테이블에서 데이터를 삭제/수정하면 참조하는
+    테이블에서도 삭제와 수정이 같이 이루어진다
+-- set null : 참조되는 테이블에서 데이터를 삭제/수정하면 참조하는
+    테이블의 데이터를 null로 변경
+-- no action : 참조되는 테이블에서 데이터를 삭제/수정하면 참조하는
+    테이블의 데이터는 변경되지 않는다
+-- set default : 참조되는 테이블에서 데이터를 삭제/수정하면 참조하는
+    테이블의 데이터를 기본값(defualt)으로 변경
+-- restrict : 참조하는 테이블에 데이터가 남아 있으면, 참조되는 테이블의
+    데이터를 수정/삭제할 수 없다
+
+-- AI : Auto Increment, 기본키에 설정하는 속성으로 기본키의 값이 
+         차례대로 1씩 증가하는 경우 체크한다. 기본값이 가장 큰수보다 
+         1증가된 수가 입력
+
+-- 수강 테이블 생성하는 쿼리문
+CREATE TABLE `portal`.`course` (
+  `co_num` INT NOT NULL AUTO_INCREMENT,
+  `co_st_num` VARCHAR(10) NOT NULL,
+  `co_cl_code` VARCHAR(10) NOT NULL,
+  PRIMARY KEY (`co_num`),
+  CONSTRAINT `co_st_num`
+    FOREIGN KEY (`co_st_num`)
+    REFERENCES `portal`.`student` (`st_num`)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE,
+  CONSTRAINT `co_cl_code`
+    FOREIGN KEY (`co_cl_code`)
+    REFERENCES `portal`.`class` (`cl_code`)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE);
+
+A : CREATE TABLE 테이블명();과
+B : CREATE TABLE 데이터베이스명.테이블명();으로 생성할 때 차이점
+A를 이용한 경우 현재 활성화된(USE를 이용하여 선택한) DB안에 테이블을
+생성
+B를 이용한 경우 현재 활성화된 DB와 상관없이 정해진 데이터베이스명에
+해당 테이블을 생성
+
+
+
+
+
+
+
+
