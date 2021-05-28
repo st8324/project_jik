@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `portal` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `portal`;
 -- MySQL dump 10.13  Distrib 8.0.25, for Win64 (x86_64)
 --
 -- Host: localhost    Database: portal
@@ -45,7 +43,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES ('2020160001','abc123','010527-3456789','abc123','가나','컴공'),('2020160002','abc124','010528-3456789','abc124','가다','컴공'),('2020160003','abc','010527-4567890','abc','나다','컴공'),('2020160004','qwe123','011010-4567890','qwe123','라마','컴공'),('2020160005','abc789','010527-4567891','abc789','라마가','컴공'),('2020160006','qwe789','010527-4567892','abc789','박씨','컴공');
+INSERT INTO `student` VALUES ('2020135001','qwe123','011010-4567890','qwe123','라마','화학'),('2020135002','abc789','010527-4567891','abc789','라마가','화학'),('2020140001','qwe789','010527-4567892','abc789','박씨','기계'),('2020160001','abc123','010527-3456789','abc123','가나','컴퓨터'),('2020160002','abc124','010528-3456789','abc124','가다','컴퓨터'),('2020160003','abc','010527-4567890','abc','나다','컴퓨터');
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-27 17:11:04
+-- Dump completed on 2021-05-28 17:12:22
