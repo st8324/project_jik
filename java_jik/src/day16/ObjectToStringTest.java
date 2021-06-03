@@ -48,5 +48,8 @@ class Student{
 	public String toString() {
 		return "Student [name=" + name + ", grade=" + grade + ", classNum=" + classNum + ", num=" + num + "]";
 	}
-	
+	public void print() {
+		System.out.println("이름 : " + name + "\n학년 : " + grade 
+				+ "\n반 : " + classNum + "\n번호 : " + num);
+	}
 }
