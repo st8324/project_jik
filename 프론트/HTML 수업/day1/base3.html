@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기본 예제3</title>
+</head>
+<body>
+    <!-- 
+    - table 태그 : 표를 만들 때 사용하는 태그 
+        - caption, thead, tbody, tfoot, tr, th, td 태그가 안에서 사용된다.
+        - caption : 표 제목
+        - thead : 표 앞의 행들의 모임으로 속성값들의 제목을 표기
+        - tbody : 표 가운데 행들의 모임으로 실제 값들을 표기
+        - tfoot : 표 마지막 행들의 모임으로 합계와 같은 값들을 표기
+        - thead와 tbody와 tfoot은 순서를 바꿔도 순서가 유지
+        - tr : 한 행을 의미하는 태그
+        - th/td : 한 행의 한 열을 의미하는 테그로, th는 가운데 정렬 굵은 글씨, 
+                  td는 왼쪽 정렬 얇은 글씨
+    -->
+    <table border="1">
+        <caption>과일 가격표</caption>
+        <thead>
+            <tr>
+                <th>과일명</th>
+                <th>가격</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>사과</td>
+                <td>1000원</td>
+            </tr>
+            <tr>
+                <td>배</td>
+                <td>1500원</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>딸기</td>
+                <td>3000원</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
