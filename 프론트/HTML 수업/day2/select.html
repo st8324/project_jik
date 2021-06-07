@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>select 태그 예제</title>
+</head>
+<body>
+    <!-- 
+        - select 태그
+            - 미리 지정된 값들 중 하나를 선택할 때 사용하는 태그
+            - 생년월일 선택할 때 사용
+            - option태그와 같이 사용
+            - option태그에 selected 속성이 없으면 첫번째 
+              option태그에 있는 값이 보임
+            - form태그를 이용하여 데이터 전송시에 선택된 option
+              태그의 value값이 전송됨
+    -->
+    <form action="">
+        <select name="gender">
+            <option value="">선택안함</option>
+            <option value="male" selected>남성</option>
+            <option value="female">여성</option>
+        </select>
+        <button>전송</button>
+    </form>
+</body>
+</html>

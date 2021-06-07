@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>비디오와 오디오 예제</title>
+</head>
+<body>
+  <!-- 
+		- video
+			- 비디오를 재생하는 태그
+			- src : 파일명
+			- width : 폭
+			- height : 높이
+			- controls : 컨트롤러 보여주기
+			- autoplay : 자송 재생
+			- muted : 음소거
+			- loot : 반복
+		- audio
+			- 오디오를 재생하는 태그
+	 -->
+	<video src="2-10.mp4" autoplay controls loop muted>
+		viedo 태그를 지원하지 않은 브라우저입니다.
+	</video>
+	<video>
+		<source src="2-10.mp4" type="video/mp4">
+	</video>
+	<audio src="2-10.mp4" autoplay controls loop muted>
+		audio 태그를 지원하지 않은 브라우저입니다.
+	</audio>
+</body>
+</html>
