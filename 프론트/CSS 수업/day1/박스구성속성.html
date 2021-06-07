@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>박스구성속성</title>
+	<style>
+		/* 
+		- 블록 태그는 width, height을 조절할 수 있다
+		- 인라인 태그는 width, height을 조절할 수 없다
+		- 블록에서 적용되는 margin,padding은
+			인라인에서 적용되는 margin,padding과 약간
+			다르다.
+			- 인라인에서 margin-top/margin-bottom 적용 안됨
+			- 인라인에서 padding-top/padding-bottom은 컨텐츠를 기준으로
+				위로/아래로 여백을 주기 때문에 컨텐츠의 위치가 변하지 않음
+		- margin : 여백, 테두리 밖의 여백
+			- margin-A
+			- A : top, right, bottom, left
+		- background은 컨텐츠 + padding
+		- border : 테두리
+			- border-A-B
+			- A : top, right, bottom, left
+			- B : width, style, color
+		*/
+		.div-box{
+			background-color: yellow;
+			margin-top: 50px;
+			margin-left: 50px;
+			padding-top: 40px;
+			padding-left: 50px;
+			padding-bottom: 10px;
+			border-top-width: 1px;
+			border-top-style: solid;
+			border-top-color: blue;
+		}
+		.span-box{
+			background-color: green;
+			color: white;
+			margin-top: 50px;
+			margin-left: 50px;
+			padding-top: 20px;
+			padding-left: 50px;
+			margin-bottom: 50px;
+			padding-bottom: 5px;
+			border-bottom-width: 1px;
+			border-bottom-style: solid;
+			border-bottom-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="div-box">박스1</div>
+	<div class="div-box">박스1</div>
+	<span class="span-box">박스2</span>
+	<div class="div-box">박스1</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>색상 관련 속성</title>
+	<style>
+		/* 
+		- color  : 글자색
+		- background-color : 배경색
+		- border-color : 테두리색
+		- 색상 표현방법
+			1. 미리 지정된 색으로 표현
+				- red, blue, yello 등 140개 색
+			2. rgb(red,green,blue) 함수를 이용
+			   rgba(red,green,blue,투명도) 함수를 이용
+			3. 16진수로 표현
+				- #rrggbb순으로 표현
+				- rr끼리, gg끼리, bb끼리 값이 같으면
+					#rgb로 줄여 쓸수 있다.
+					- 빨강
+						#ff0000 => #f00
+		*/
+		/* id가 color인 요소 */
+		#color{
+			color: red;
+			background-color: rgb(255, 255, 0);
+			border-color: #00ff00;
+			border-style: solid;
+			border-width: 1px;
+		}
+	</style>
+</head>
+<body>
+  <div id="color">안녕하세요.</div>
+</body>
+</html>

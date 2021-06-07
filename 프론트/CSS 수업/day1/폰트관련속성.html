@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>폰트관련 속성</title>
+	<style>
+		/* 
+		- font-size : 폰트 크기
+		- font-style : 폰트 기울이기
+		- font-weight : 폰트 굵기
+			- 100부터 900까지 100씩 증가
+			- 700은 bold라는 값으로 지정되어 있음
+		- font-family : 폰트 종류 
+			- 폰트가 공백으로 이루어진 경우는 '' 또는 ""을 써서 표기해야한다.
+			- 한글 폰트는 한글명을 먼저 쓰고, 해당 폰트의 영문명을 뒤에 써주는 것이 좋다. 
+		- font : font-style, font-weight, font-size, font-family 순으로 지정된 단축 속성
+			- font-size와 font-family는 생략 가능
+		*/
+		.family1{
+			/* Times New Roman 글자 폰트가 없으면 Times, Times가 없으면 serif */
+			font-family: 'Times New Roman', Times, serif;
+			font-size: 20px;
+			font-weight: bold;
+			font-style: italic;
+			font : italic bold 20px 'Times New Roman', Times, serif;
+		}
+		.family2{
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 2em;
+			font-weight: 200;
+		}
+	</style>
+</head>
+<body>
+	<div class="family1">안녕하세요.</div>
+	<div class="family2">안녕하세요.</div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>선택자</title>
+	<!-- 
+	- 선택자 : 요소들을 선택할 수 있게 하는 것
+		- 태그 선택자 : 태그 이름을 사용, 해당 태그 전체에 적용
+		- 클래스선택자: 태그의 class 속성의 이름을 이용방법으로
+			- 클래스명 앞에 .을 붙임
+			- 해당 클래스를 가지고 있는 요소들을 선택
+			- 클래스는 여러개를 띄워쓰기로 추가할 수 있다
+		- 아이디선택자: 태그의 id 속성을 이용하는 방법
+			- 아이디명 앞에 #을 붙임
+			- 아이디는 중복되면 안됨
+		- 가상 클래스 선택자 : 특정 상황에 동작하는 선택자
+			- 종류 많음
+			- hover : 마우스를 요소 위에 올렸을 때
+			- active: 마우스로 요소를 클릭 중일때
+			- focus : 요소가 포커스 받고 있을 때
+					- input태그에 커서가 활성화 되었을 때
+			- visited : 방문한 링크일 때
+					- a태그
+			- nth-child(A)/nth-of-type(A) : 해당 선택자와
+				일치하는 A번째 요소를 선택
+				- 숫자: 해당 숫자번째 요소를 선택(1개선택)
+				- 2n/even : 해당 선택자 중에서 짝수번째 요소들을 선택
+				- 2n-1/odd : 해당 선택자 중에서 홀수번째 요소들을 선택
+				- 태그에 따라 nth-child가 적용되는 태그가 있고
+					nth-of-type이 적용되는 태그
+			- ::before : 요소 앞에 새로운 요소를 추가하는 선택자
+					- 요소 앞에 가운데 점 또는 | 또는 아이콘과 같은
+						요소를 추가할 때용
+			- ::after : 요소 뒤에 새로운 요소를 추가하는 선택자
+		- 전체 선택자 : *로 모든 요소에 적용
+		- 속성 선택자 : 속성을 이용하여 요소를 선택
+			- 선택자[속성] : 속성이 포함된 요소들을 선택
+			- 선택자[속성=값1]: 속성의 값이 값1과 같은 요소들을 선택
+			- 선택자[속성~=값1]: 속성의 값이 값1을 포함하는 요소들을 선택,
+													공백을 기준으로 분리된값이 포함
+				[class~="col"] : class="col row"인 경우는 포함됨,
+													class="colrow"인 경우는 포함이 안됨
+			- 선택자[속성^=값1]: 속성의 값이 값1로 시작하는 요소를 선택
+			- 선택자[속성$=값1]: 속성의 값이 값1로 끝나는 요소를 선택
+			- 선택자[속성*=값1]: 속성의 값이 값1을 포함하는 요소들을 선택
+				[class*="col"] : class="col row"인 경우는 포함됨,
+													class="colrow"인 경우는 포함됨
+			- 선택자[속성|=값1]: 속성의 값이 값1이거나 값1로 시작하는 요소들을 선택
+		- 선택자의 관계(여러 선택자들이 있을 때)
+			- 자식 관계 : >로 표현
+				- 선택자1이 부모요소, 선택자2가 자식 요소
+					선택자1 > 선택자2
+			- 자손 관계 : 공백으로 표현
+				- 선택자1이 조상요소, 선택자2가 자손 요소
+					선택자1 선택자2
+			- 본인 관계 : 붙여서 사용
+				- 선택자1과 선택자2 모두 본인을 지칭
+					선택자1선택자2
+				- 태그클래스(o), 태그아이디(o), 클래스클래스(o), 클래스아이디(o), 아이디클래스(o)
+				- 클래스태그(x), 아이디태그(x), 태그태그(x), 아이디아이디(x)
+				- div.a, div#id, .a.b, .a#id, #id.a
+				- .adiv, #iddiv, diva, #id1#id2
+	- 선택자를 이용하여 css 적용 방법(방법2 or 방법3)
+	선택자 {
+			속성1: 값1;
+			속성2: 값2;
+	}
+	-->
+	<style>
+		/* 태그 선택자 */
+		h1{
+				color: red;
+		}
+		/* 클래스 선택자 */
+		.color-blue{
+				color: blue;
+		}
+		/* 아이디 선택자 */
+		#green{
+				color: green;
+		}
+		/* 전체 선택자 */
+		*{
+				font-size: 30px;
+		}
+		div:nth-child(2n-1){
+				text-decoration: underline;
+		}
+		div[data-target="test"]{
+				font-weight: bold;
+		}
+		div>a{
+			color: red;
+		}
+		body a{
+			font-size: 15px;
+		}
+		div.link-list > a{
+			font-style: italic;
+		}
+		a:hover{
+			color: black;
+		}
+	</style>
+</head>
+<body>
+    <h1>안녕하세요.</h1>
+    <h1>안녕하세요.</h1>
+    <div class="color-blue bg-color-red">안녕하세요.</div>
+    <div>안녕하세요.</div>
+    <div id="green">안녕하세요.</div>
+    <div data-target="test">안녕하세요.</div>
+		<div class="link-list">
+			<a href="http://naver.com" target="_blank">네이버</a>
+		</div>
+</body>
+</html>
