@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>margin 예제</title>
+	<style>
+		.box1{
+			/* 속성 이름이 중복되는 경우 마지막 값이 적용 */
+			background-color: yellow;
+			margin: 10px 10px 10px 10px;/* 상:10px, 우:10px, 하:10px, 좌: 10px*/
+			margin: 10px 10px 10px;/* 상:10px, 좌/우:10px, 하:10px*/
+			margin: 10px 10px;/* 상/하:10px, 좌/우:10px*/
+			margin: 100px;/* 상/하/좌/우:10px*/
+		}
+		.box2{
+			background-color: blue;
+			color: white;
+			margin: 110px;
+			margin-top: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1">박스1</div>
+	<div class="box2">박스2</div>
+</body>
+</html>

@@ -15,18 +15,44 @@
 			- 인라인에서 margin-top/margin-bottom 적용 안됨
 			- 인라인에서 padding-top/padding-bottom은 컨텐츠를 기준으로
 				위로/아래로 여백을 주기 때문에 컨텐츠의 위치가 변하지 않음
+		- padding : 여백, 테두리 안의 여백
+		  - padding-A
+			- A : top, right, bottom, left
+			- padding : 위, 오른쪽, 아래, 왼쪽순으로 여백을 설정
 		- margin : 여백, 테두리 밖의 여백
 			- margin-A
 			- A : top, right, bottom, left
+			- margin : 위, 오른쪽, 아래, 왼쪽순으로 여백을 설정
+		- 두 요소의 margin인 겹치면(요소A 밑에 요소 B가 있고, 요소A의 margin-bottom이 있고,
+		  요소B의 margin-top이 있는 경우) margin의 새로겹침이 일어나서 두 margin 중 큰
+			값으로 적용
 		- background은 컨텐츠 + padding
 		- border : 테두리
 			- border-A-B
 			- A : top, right, bottom, left
-			- B : width, style, color
+			- B : width(두께), style(선종류), color(색상)
+			- border-A : A방향의 width,style,color를 설정
+			- border-B : 위쪽 오른쪽 아래 왼쪽순으로 B를 설정
+			- border : 위쪽 테두리, 오른쪽 테두리, 아래쪽 테두리, 왼쪽 테두리를 설정
+				- 모든 방향의 테두리 스타일 다 다른경우
+				- border : 1px solid black,
+									 1px solid red,
+									 1px solid blue,
+									 1px solid green
+				- 위 아래는 다르지만 좌우가 대칭인 경우
+				- border : 1px solid black,
+									 1px solid red,
+									 1px solid blue
+				- 위 아래가 테두리가 같고, 좌우 테두리가 같은 경우
+				- border : 1px solid black,
+									 1px solid red
+				- 모든 테두리가 같은 경우
+				- border : 1px solid black
 		*/
 		.div-box{
 			background-color: yellow;
 			margin-top: 50px;
+			margin-bottom: 50px;
 			margin-left: 50px;
 			padding-top: 40px;
 			padding-left: 50px;
