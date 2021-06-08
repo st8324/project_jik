@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>마우스 커서 예제</title>
+	<style>
+		/* 
+		- 모든 태그는 지정된 기본 커서 모양이 있다.
+			- input : text
+			- button : default
+			- div : text
+			- a : pointer
+		- cursor 속성을 통해 기본 커서 모양이 아닌 원하는 모양을 선택 할 수 있다.
+			- auto/defualt, corsshair, pointer, move, copy, help, progress,
+				text, wait, zoom-in, zoom-out, n_resize, e-resize, ne-resize
+		*/
+		button{ cursor: pointer;}
+		.menu{cursor: pointer;}
+	</style>
+</head>
+<body>
+	<input type="text"> <br>
+	<button>버튼</button> <br>
+	<div>내용</div>
+	<a href="">네이버</a> <br>
+	<div class="menu">
+		<div>메뉴1</div>
+		<div>메뉴2</div>
+		<div>메뉴3</div>
+	</div>
+</body>
+</html>

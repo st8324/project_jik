@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>display 예제</title>
+	<style>
+	/*  
+	- 모든 태그의 기본 display는 inline, block, inline-block이다.
+	- 모든 요소는 상황에 따라 display값을 변경하여 원하는 형태의 박스 모델로 만들 수 있다.
+		- a태그를 inline-block 또는 block으로 변경할 수 있다
+	- 일반적으로 inline을 inline-block 또는 block로, inline-block을 block으로 만들지만
+		block을 inline-block 또는 inline으로 만들지 않음
+	*/
+	.inline>span,
+	.block>div,
+	.inline-block>input{	width: 80px; height: 80px; background: yellow; margin-top: 50px;}
+	.box{
+		width: 100px;
+		height: 100px;
+		background-color: red;
+		display: inline-block;
+	}
+	</style>
+</head>
+<body>
+	<div class="inline">
+		<span>박스1-1</span>
+		<span>박스1-2</span>
+		<span>박스1-3</span>
+	</div>
+	<div class="block">
+		<div>박스2-1</div>
+		<div>박스2-2</div>
+		<div>박스2-3</div>
+	</div>
+	<div class="inline-block">
+		<input type="text" placeholder="박스3-1">
+		<input type="text" placeholder="박스3-2">
+		<input type="text" placeholder="박스3-3">
+	</div>
+	<span class="box">안녕</span>
+	<span class="box">안녕</span>
+</body>
+</html>

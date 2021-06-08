@@ -12,9 +12,22 @@
 			- 좌 : 1px solid black
 			- 우 : 1px solid red
 		 */
+		/* border-radius : 테두리 끝부분을 둥글게 만들어 주는 속성
+			- 좌상 우상 우하 좌하순으로 속성 값을 입력 
+		*/
+		.box{
+			border : 1px solid black;
+			border-right-color: red;
+		}
+		.box2{
+			border: 3px solid red;
+			margin-top: 10px;
+			border-radius: 10px 20px 30px 40px;
+		}
 	</style>
 </head>
 <body>
-	
+	<div class="box">박스</div>
+	<div class="box2">박스2 <br><br><br><br></div>
 </body>
 </html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>relative 예제</title>
+	<style>
+	/*  
+	- 일반적으로 각 요소들은 html에 작성된 순서대로 배치가 된다.
+	- position 속성을 이용하면 순서에 상관없이 원하는 위치에 배치할 수 있다.
+	- position을 이용하여 요소를 다양한 방법으로 배치할 수 있다.
+		- static : 정적배치 (기본)
+		- relative : 상대배치
+			- top, bottom, left, right 속성을 이용하지 않으면 static과 큰 차이가 없다.
+			- 자손 요소중에서 position이 absolute인 요소가 없으면 static과 큰 차이가 없다.
+		- absolute : 절대배치
+			- 원하는 위치에 직접 배치
+		- fixed : 고정배치
+			- 브라우저 내에 특정 위치에 고정
+				=> 스크롤을 이용하여 화면 위치를 변경하더라도 브라우저 내에 해당 요소의 위치는 변하지
+					 않음
+			- 위로가기 버튼
+	*/
+	.box{
+		width: 50px;	height: 50px;	position: relative;
+		background-color: red;	text-align: center;	line-height: 50px;
+		display: inline-block;	color: #fff;
+	}
+	.box:nth-child(2n){	background-color: green;}
+	/* top : 현재 위치를 기준으로 아래로 20px */
+	.box:nth-child(1){	top: 20px;}
+	/* left : 현재 위치를 기준으로 오른쪽으로 10px */
+	.box:nth-child(2){	left: 10px;}
+	.box:nth-child(3){	top: -20px;}
+	.box:nth-child(4){	bottom: -10px; right: 10px;}
+	</style>
+</head>
+<body>
+	<div class="box">T</div>
+	<div class="box">H</div>
+	<div class="box">A</div>
+	<div class="box">N</div>
+	<div class="box">K</div>
+	<div class="box">S</div>
+</body>
+</html>

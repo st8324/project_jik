@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>absolute 예제</title>
+	<style>
+		/* 
+		- absolute에서 top, bottom, left, right의 기준은 조상 요소 중에서
+			position이 relative 요소가 있으면 해당 조상을 기준으로 삼고, 없으면 html태그를 
+			기준으로 한다. 
+		- absolute는 top,left, bottom, right의 값을 지정하지 않으면 static의 위치와 같다
+		- postion이 absolute인 요소는 inline-block처럼 생각하면 된다.(가로,세로 길이를 변경)
+		- absolute는 top, bottom, left, right를 이용하여 가로 세로의 길이를 만들 수 있다
+		*/
+		.box1{	width: 300px;	height: 300px; 	background-color: yellow;}
+		.box2{	
+			width: 100px;	height: 100px;	background-color: greenyellow;
+			position: absolute;	top: 0;	left: 0;
+		}
+		/* 
+		- relative.html 예제에서처럼 position:relative를 쓸수 있지만 일반적으로
+			relative는 absoulte의 기준점을 잡을 때 조상요소에 사용된다
+		*/
+		.box3{	height: 200px;	background-color: red;	position: relative;}
+		.box3-1{	
+			width: 100px; height: 100px;	background-color: gray;
+			position: absolute;	top: 0;	left: 0;
+		}
+		.box4{
+			position: absolute;	top: 200px;	left: 200px;	bottom: 200px;	right: 200px;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+	<div class="box2"></div>
+	<div class="box3">
+		<div class="box3-1"></div>
+	</div>
+	<span class="box4"></span>
+</body>
+</html>

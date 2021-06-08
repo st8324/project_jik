@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>텍스트 그림자 예제</title>
+	<style>
+		/* 
+		- text-shadow : 글자에 그림자 효과
+		- text-shadow : h-shadow v-shadow blur-radius color|none
+			- h-shdow : 수평 거리(필수)
+			- v-shdow : 수직 거리(필수)
+			- blur-radius : 그림자를 흐릿하게 만드는 값으로 클수록 흐릿(선택)
+			- color : 그림자 색
+			- none : 그림자 효과 없음
+		 */
+		*				{		font-size: 50px;	}
+		.shadow1{		text-shadow: 5px 0px 2px red;		}
+		.shadow2{		text-shadow: 0px 5px 2px red;		}
+		.shadow3{		text-shadow: 5px 5px 2px red;		}
+		.shadow4{		text-shadow: 5px 5px 5px red;		}
+		.shadow5{		text-shadow: 0px 0px 3px darkblue; color: white;		}
+		.shadow6{		text-shadow: 2px 2px 4px black; color: white;		}
+		.shadow7{		
+			text-shadow: 2px 2px 2px black, 0 0 25px blue, 0 0 5px darkblue; 
+			color: yellow;		
+		}
+	</style>
+</head>
+<body>
+	<div class="shadow1">ABCDE</div>
+	<div class="shadow2">ABCDE</div>
+	<div class="shadow3">ABCDE</div>
+	<div class="shadow4">ABCDE</div>
+	<div class="shadow5">ABCDE</div>
+	<div class="shadow6">ABCDE</div>
+	<div class="shadow7">ABCDE</div>
+</body>
+</html>

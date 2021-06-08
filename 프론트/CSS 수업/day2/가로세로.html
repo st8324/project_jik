@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>가로와 세로 예제</title>
+	<style>
+		/* 
+		- 요소의 가로와 세로를 지정
+		- 블록 요소나 인라인 블록 요소는 가로와 세로를 지정할 수 있지만
+			인라인 요소는 가로와 세로를 지정할 수 없다
+		- 블록 요소는 가로를 지정하면 가로 이외의 나머지 부분이 margin으로 할당 된다
+		- width : 가로
+		- height: 높이
+		- line-height 
+			- 글자들의 한 라인의 높이를 지정
+			- line-height를 기준으로 글자가 가운데 오도록 배치
+			- 글자를 위아래로 가운데 정렬 할 때 사용
+		 */
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: yellow;
+			text-align: center;
+			line-height: 100px;
+		}
+		input{
+			width: 200px;				height: 200px;
+		}
+		span{
+			width: 300px;				height: 300px;		background-color: greenyellow;
+			line-height: 300px;
+		}
+	</style>
+</head>
+<body>
+	<div>박스1</div>
+	<input type="text"> <br>
+	<p>
+		<span>박스2</span>
+	</p>
+</body>
+</html>
