@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>박스 분할 예제</title>
+	<style>
+		.box::after{	content: '';	clear: both;	display: block;	}
+		.box{	border: 2px solid black;	padding: 10px;}
+		.left{	float: left;	width: calc((100% - 10px) / 2);}
+		.right{	float: right;	width: calc(50% - 5px);}
+		.left-top{	height: 200px;	background: green; margin-bottom: 10px;}
+		.left-bottom{	height: 200px;	background: red;}
+		.right-top{	height: 100px;	background: blue;	margin-bottom: 10px;}
+		.right-bottom{	height: 300px;	background: violet;}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="left">
+			<div class="left-top"></div>
+			<div class="left-bottom"></div>
+		</div>
+		<div class="right">
+			<div class="right-top"></div>
+			<div class="right-bottom"></div>
+		</div>
+	</div>
+</body>
+</html>
