@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>3등분 예제3</title>
+	<style>
+		/* div, p와 같은 블록 태그들은 높이를 지정하지 않으면 안에 있는 요소들(자손들)의 
+			크기만큼 높이가 잡힌다. */
+		.box::after{	clear: both;	content: '';	display: block;}
+		.box{	border: 2px solid black;	padding: 10px;}
+		.box>div{width: calc((100% - 20px) / 3);	height: 400px;	float: left;}
+		.left{	background-color: red;}
+		.middle{background-color: blue;	margin-left: 10px;}
+		.box>.right{	background-color: green;	float: right;}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="left"></div>
+		<div class="middle"></div>
+		<div class="right"></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>fixed 예제</title>
+	<style>
+		/* 
+		- position의 값이 fixed와 absolute는 요소가 inline, block, inline-block에 상관
+			없이 가로 세로를 지정할 수 있다. 
+			가로 세로가 없으면 요소가 안보임 => 가로와 세로를 지정하거나 top,bottom,left,
+			right를 이용하여 가로와 세로를 대체해야 한다.
+		*/
+		body{	height: 1000px;}
+		.up{
+			width: 80px;	height: 80px;	border: 1px solid black;	background-color: yellow;
+			line-height: 80px;	text-align: center;	cursor: pointer;	position: fixed;
+			right: 10px;	bottom: 10px;
+		}
+	</style>
+</head>
+<body id="body">
+	<a href="#body" class="up">위로</a>
+</body>
+</html>

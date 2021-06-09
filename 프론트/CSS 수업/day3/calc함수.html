@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>calc 함수 예제</title>
+	<style>
+		/* 
+		- 길이를 계산할 때 단위가 다르면 계산할 수 없다
+		- calc(식) : 단위가 다른 값들을 계산할 때 사용하는 함수
+			- 식에서 연산자 앞뒤로 공백을 써야 한다.
+				- calc(50%-10px) (x)
+				- calc(50% - 10px) (o)
+		*/
+		.box::after{	clear: both;	display: block;	content: '';}
+		.left-box{
+			width: calc(100% - 100px);	height: 400px;	background: red;	float: left;
+		}
+		.right-box{
+			width: 100px;	height: 400px;	background: blue;	float: right;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="left-box"></div>
+		<div class="right-box"></div>
+	</div>
+</body>
+</html>

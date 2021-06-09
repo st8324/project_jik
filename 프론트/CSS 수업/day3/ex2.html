@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>이등분 예제2</title>
+	<style>
+		.box::after{	clear: both;	display: block;	content: '';		}
+		.box{	border: 2px solid black;	padding: 10px;	}
+		.left-box{	width: 50%;	height: 400px;	float: left;	background: red;}
+		.right-box{	width: 50%;	height: 400px;	float: right;	background: blue;}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="left-box"></div>
+		<div class="right-box"></div>
+	</div>
+</body>
+</html>
