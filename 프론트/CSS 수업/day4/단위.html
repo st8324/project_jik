@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>단위 예제</title>
+	<style>
+		/* 
+		- vw, vh : view width, view height의 약자
+		- 브라우저 화면 가로와 세로의 길이를 100으로 본다
+			- 브라우저 화면 가로 길이 100vw, 브라우저 화면 세로 길이 100vh
+		*/
+		/* 가로 400px, 세로 400px 사각형을 브라우저 가운데 배치하도록 작성하세요. */
+		body{margin: 0;}
+		.box{width: 100vw; height: 100vh; background: yellow;}
+		.center-box{
+			width: 400px; height: 400px; border: 1px solid red; position: absolute;
+			top: calc(50vh - 201px); left: calc(50vw - 201px);
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="center-box"></div>
+	</div>
+</body>
+</html>

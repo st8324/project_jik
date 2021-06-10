@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>말줄임 예제</title>
+	<style>
+		/* 
+		- text-overflow : 글자가 넘어가는 경우 어떻게 처리할지를 나타내는 속성
+		*/
+		.box{
+			width: 300px; border: 1px solid black;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		안녕하세요. 제 이름은 홍길동입니다. 만나서 반갑습니다.
+	</div>
+</body>
+</html>

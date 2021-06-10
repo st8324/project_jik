@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>애니메이션 예제</title>
+	<style>
+		/* 
+		- 애니메이션을 등록
+		@keyframes 애니메이션명{
+			시간비율{
+				속성1; 값1; //이전 시점에서 시간 비율까지 적용할 속성
+				속성2; 값2;
+			}
+			시간비율{
+				속성1; 값1;
+				속성2; 값2;
+			}
+		}
+		- 애니메이션을 호출
+		선택자{
+			animation-name : 애니메이션명;
+			animation-duration : 시간s; //
+			animation-iteration-count : 애니메이션반복횟수; //반복횟수는 숫자 or infinite
+		}
+		*/
+		/* 꽝이라는 글자가 20px에서 100px까지 커졌다가 다시 20px로 줄어들도록 코드를 작성하세요. */
+		@keyframes textScale {
+			0%{font-size: 20px;}
+			50%{font-size: 100px;}
+			100%{font-size: 20px;}
+		}
+		.scale{	
+			animation-name: textScale; 
+			animation-duration: 3s; 
+			animation-iteration-count: 1;
+		}
+		/* 호버라는 글자에 마우스를 가져다 대면 글자가 20px에서 100px까지 커져다가 20px로
+		작아지도록 코드를 작성하세요. */
+		.hover:hover{
+			animation-name: textScale; 
+			animation-duration: 3s; 
+			animation-iteration-count: 1;
+		}
+	</style>
+</head>
+<body>
+	<span class="scale">꽝</span>
+	<span class="hover">호버</span>
+</body>
+</html>

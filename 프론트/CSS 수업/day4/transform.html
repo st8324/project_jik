@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>transfrom 예제</title>
+	<style>
+		/* 
+		- transform은 회전, 확대와 같이 모양을 변결할 때 사용
+			- translate(x,y) : x, y만큼 이동
+			- translateX(x) : x축값이 x만큼 이동, 좌, 우로 이동
+			- translateY(y) : y축값이 y만큼 이동, 상, 하로 이동
+			- scale(w,h) : 가로방향으로 w배만큼 조절, 세로 방향으로 h배만큼 조절
+			- scaleX(w) : 폭을 w배만큼 조절, 가로 길이 조절
+			- scaleY(h) : 높이를 h배만큼 조절, 세로 길이 조절
+			- rotate(a) : a각도만큼 시계 방향 회전
+			- skewX(x) : x축 기준으로 x만큼 기울임
+			- skewY(y) : y축 기준으로 y만큼 기울임
+			- skew(x,y): x축과 y축 방향으로 x,y만큼 기울임
+		*/
+		.box{	width: 150px; height: 100px; border: 2px solid red; position: absolute;}
+		
+		.box1{ top: 20px; left:20px; transition: transform 2s;}
+		.box1:hover{		transform: translate(50px, 50px);		}
+
+		.box2{ top: 170px; left:20px; transition: transform 2s;}
+		.box2:hover{		transform: scale(2);		}
+
+		.box3{ top: 20px; left:220px; transition: transform 2s;}
+		.box3:hover{		transform: skewX(30deg);		}
+		
+		.box4{ top: 170px; left:220px; transition: transform 2s;}
+		.box4:hover{		transform: skewY(30deg);		}
+		
+		.box5{ top: 20px; left:420px; transition: transform 2s;}
+		.box5:hover{		transform: rotate(30deg);		}
+	</style>
+</head>
+<body>
+	<div class="box box1"></div>
+	<div class="box box2"></div>
+	<div class="box box3"></div>
+	<div class="box box4"></div>
+	<div class="box box5"></div>
+</body>
+</html>

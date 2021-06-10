@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>transition 예제</title>
+	<style>
+		/* 
+		- 애니메이션은 요소의 변화를 직접 제어
+			- 속성값을 직접 변화
+		- transition은 요소가 변화하면 변화하는 과정을 부드럽게(서서히) 진행하도록 하는 속성
+			- 다른 누군가가 속성을 변화하면 변화가 자연스럽게 이뤄지도록 해주는 속성
+		*/
+		.box{	
+			width: 100px;	height: 100px;	display: inline-block;	background: red;
+			transition: width 3s, height 1s;
+		}
+		/* box에 마우스를 가져다대면 크기가 200px x 200px이 되도록 작성해보세요. */
+		.box:hover{ width: 200px; height: 200px;}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>
