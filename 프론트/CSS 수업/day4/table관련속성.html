@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>table 관련 속성</title>
+	<style>
+		table.table1{ border: 1px solid black; border-collapse: collapse;}
+		.table1 td,.table1 th{ border: 1px solid black; text-align: center;}
+
+		.table2{width: 100%; border-collapse: collapse;}
+		.table2 th:first-child,.table2 td:first-child{	width: 10%;}
+		.table2 th:nth-child(3),.table2 td:nth-child(3){	width: 20%;}
+		.table2 th:nth-child(4),.table2 td:nth-child(4){	width: 10%;}
+		.table2 thead th{
+			border: 1px solid black;
+			border-width: 1px 0;
+		}
+		.table2 tr>td{text-align: center;}
+		.table2 tr>td:nth-child(2){text-align: left;}
+		.table2 tr>td:nth-child(2)>a{text-decoration: none; color: black;}
+		.table2 tr>td:nth-child(2)>a:hover{text-decoration: underline;}
+		.table2 tbody tr:hover{background-color: yellow;}
+	</style>
+</head>
+<body>
+	<table class="table1">
+		<thead>
+			<tr>
+				<th>과목</th>
+				<th>이름</th>
+				<th>성적</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td rowspan="3">HTML</td>
+				<td>홍길동</td>
+				<td>100</td>
+			</tr>
+			<tr>
+				<td>임꺽정</td>
+				<td>90</td>
+			</tr>
+			<tr>
+				<td>논개</td>
+				<td>100</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="2">총합</td>
+				<td>290</td>
+			</tr>
+		</tfoot>
+	</table>
+
+	<table class="table2">
+		<thead>
+			<tr>
+				<th>번호</th><th>제목</th><th>작성자</th><th>조회수</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>3</td><td><a href="#">게시글</a></td><td>홍길동</td><td>0</td>
+			</tr>
+			<tr>
+				<td>2</td><td><a href="#">6월10일</a></td><td>홍길동</td><td>1</td>
+			</tr>
+			<tr>
+				<td>1</td><td><a href="#">제목입니다</a></td><td>홍길동</td><td>10</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

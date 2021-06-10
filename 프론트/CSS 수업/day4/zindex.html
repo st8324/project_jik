@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>z-index 예제</title>
+	<style>
+		/* 
+		- z-index : 요소들이 겹쳐 있을 때 누가 위로가고 아래로 갈지를 정해주는 속성
+			- z-index는 정수값, 기본이 0, 음수도 가능
+		- 요소들은 특별한 상황이 아니면 html코드 순서대로 겹칩
+			- 기본적으로 z-index 값을 설정하지 않으면 0으로 같음
+		- 한 요소의 position이 static(기본값)이고 한 요소의 position이 absolute이면
+			z-index 값에 상관없이 absolute가 위에 간다
+		*/
+		.box1{	
+			position: absolute;	top: 100px;	left: 100px;	background: red;	
+			width: 100px;	height: 100px;	z-index: 3;
+		}
+		.box2{	
+			position: absolute;	top: 50px;	left: 50px;	background: blue;	
+			width: 100px;	height: 100px;	z-index: 2;
+		}
+		.box3{
+			position: absolute;	top: 0px;	left: 0px;	background: violet;	
+			width: 100px;	height: 100px;
+		}
+		.box{	width: 200px;	height: 200px;	background: yellow;	z-index: 100;}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="box1"></div>
+	<div class="box2"></div>
+	<div class="box3"></div>
+</body>
+</html>

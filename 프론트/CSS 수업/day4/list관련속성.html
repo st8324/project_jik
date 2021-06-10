@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>리스트 관련 속성</title>
+	<style>
+		/* 
+		- list-style-type : 리스트 마커 지정, 마커는 리스트 앞에 있는 숫자나 모양
+		- list-style-image: 리스트 마커를 이미지를 이용하여 지정
+		- list-style-position : 리스트 마커의 위치(안(inside)/밖(outside, 기본))
+		- list-style : 위 3개를 한번에 지정
+		- 모든 태그에서 css와 관련된 속성들은 사용하지 않는것이 표준
+			- ul태그에서 type속성을 이용하여 마커를 지정하지 말고 css를 이용하여 지정
+		*/
+		ul{	background: yellow;	list-style-position: inside;	list-style-type: none;
+			list-style-image: url("../img/강아지1.jpg");
+		}
+		li{ background: greenyellow;	margin-bottom: 5px;}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>사과</li>
+		<li>포도</li>
+		<li>배</li>
+	</ul>
+</body>
+</html>

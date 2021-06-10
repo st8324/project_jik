@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>왼쪽 메뉴 예제</title>
+	<style>
+		.nav{	width: 200px;	float: left; background: lemonchiffon;}
+		body::after{content: ''; display: block; clear: both;}
+		.nav ul{ list-style: none; padding: 0; margin: 0;}
+		.nav li{ 
+			height: 50px; border: 1px solid black; text-align: center; 
+			line-height: 50px; 
+		}
+		.nav a{ color: black; text-decoration: none; display: block;}
+		.nav li:first-child,
+		.nav li:nth-child(2){ border-bottom: none;}
+
+	</style>
+</head>
+<body>
+	<nav class="nav">
+		<ul class="menu">
+			<li><a href="#1">메뉴1</a></li>
+			<li><a href="#2">메뉴2</a></li>
+			<li><a href="#3">메뉴3</a></li>
+		</ul>
+	</nav>
+</body>
+</html>
