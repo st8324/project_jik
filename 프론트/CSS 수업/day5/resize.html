@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>resize 속성</title>
+	<style>
+		/*
+		- resize : 화면에서 요소의 크기를 조절하는 속성
+			- none : 크기를 조절할수 없게 함
+			- vertical : 높이 조절가능
+			- horizontal : 가로 조절 가능
+			- both : 가로 높이 조절 가능
+		*/
+		.box{ 
+			width: 300px; height: 50px; border: 1px solid black; resize: both; 
+			overflow: auto;
+		}
+		textarea{resize: none;}
+	</style>
+</head>
+<body>
+	<!-- 대부분의 일반 태그들은 resize값이 none -->
+	<div class="box"></div>
+	<!-- textarea태그는 resize 값이 both -->
+	<textarea></textarea>
+</body>
+</html>

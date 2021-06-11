@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>길이 예제</title>
+	<style>
+		/* 
+		- width : 가로,폭, height : 세로, 높이
+		- min-width/min-height 
+		  - 가로/세로의 최소 길이를 설정
+		  - 브라우저가 작으면 700px, 크면 100%
+		- max-width/max-height : 
+			- 가로/세로의 최대 길이를 설정
+			- 브라우저의 가로/세로의 길이가 max-widht/max-height 보다 작으면 브라우저의
+				가로/세로의 길이에 맞춰 설정 됨
+				=> 브라우저가 작으면 100%, 크면 700px
+		*/
+		.box1{	width: 700px; height: 50px; background-color: yellow;}
+		.box2{	min-width: 700px; height: 50px; background-color: red;}
+		.box3{	max-width: 700px; height: 50px; background-color: blue;}
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+	<div class="box2"></div>
+	<div class="box3"></div>
+</body>
+</html>

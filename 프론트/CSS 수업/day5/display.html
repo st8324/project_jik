@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>display 속성 예제</title>
+	<style>
+		/* 
+		- display 
+		  - block
+			- inline
+			- inline-block
+			- none : 요소를 안보이게 함. 요소의 위치를 없앰
+			- flex : float과 비슷한 효과
+		
+		- visibility : 요소를 보여줄지 말지를 결정하는 속성
+			- hidden : 요소를 안보이게 함. 요소의 위치는 그대로 놓아둠
+		- flex : flex-grow, flex-shrink, flex-basis를 한번에 쓰는 속성
+			- flex-grow : 자식요소가 작아서 공간이 남을 때 어떻게 처리할지를 설정
+				- 0 : 기본값
+				- 1 : 모든 자식요소들이 1이면 크기가 같음
+				- 양수 : 비율에 따라 달라짐, 숫자가 커질수록 넓어짐
+			- flex-shrink : 자식요소가 커서 공간이 부족할 때 어떻게 처리할지를 설정
+				- 0 : 기본값
+				- 1 : 모든 자식요소들이 1이면 크기가 같음
+				- 양수 : 숫자가 커질수록 좁아짐
+			- flex-basis : 자식요소의 초기 길이를 설정
+		- flex : 1, flex: 1 1 0
+			- flex-grow : 1, flex-shrink와 flex-basis는 생략
+		- flex : 100px, flex : 1 1 100px
+			- flex-basis : 100px, flex-grow와 flex-shrink는 생략
+		*/
+		.display-none{ display: none;}
+		.visibility{ visibility: hidden;}
+
+		.nav{ border: 1px solid red;}
+		.menu{list-style: none; padding: 0; margin: 0; display: flex;}
+		.menu>li{ 
+			height: 50px; text-align: center; line-height: 50px; width: 1000px;
+			border-right: 1px solid red; flex: 1;
+		}
+		.menu>li:nth-child(2){flex-grow: 2;}
+		.menu>li:last-child{ border-right: none;}
+		.menu>li>a{
+			text-decoration: none; color: #000; display: block; width: 100%;
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="box display-none">안녕하세요1.</div>
+	<div class="box visibility">안녕하세요2.</div>
+	<div class="box">안녕하세요3.</div>
+	
+	<nav class="nav">
+		<ul class="menu">
+			<li><a href="#1">메뉴1</a></li>
+			<li><a href="#1">메뉴2</a></li>
+			<li><a href="#1">메뉴3</a></li>
+		</ul>
+	</nav>
+</body>
+</html>

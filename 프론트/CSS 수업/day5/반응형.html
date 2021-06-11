@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>반응형 예제1</title>
+	<style>
+		/* 
+		- 해당 화면 크기일 때 안에 있는 css를 적용
+		@media 화면크기{
+			선택자{ 속성들; }
+		}
+		@media [미디어타입 and] 화면크기{
+			선택자{ 속성들; }
+		}
+		- 미디어타입
+			- all : 모든 장치(기본값)
+			- print : 프린터에 사용
+			- screen: PC, 태블릿, 스마튼에 사용
+			- speech: 스크린리더기가 페이지를 읽는데 사용
+		- 화면 크기
+			- (min-width : 600px) : 600px이상
+			- (max-width : 600px) : 600px미만
+		- @media를 이용하여 반응형으로 만들 때 배치 순서 중요
+		*/
+		.box, .box2, .box3{	width: 100px;	height: 100px; background: red; margin-bottom: 10px;}
+		/* 브라우저크기가 600px이상 */
+		@media screen and (min-width:600px) {
+			.box{width: 300px;height: 300px;}
+		}
+		/* 브라우저크기가 600px미만 */
+		@media screen and (max-width:600px){
+			.box2{width: 300px;height: 300px;}
+		}
+		/* 브라우저크기가 600px이상 1200px미만 */
+		@media screen and (min-width:600px) and (max-width:1200px){
+			.box3{width: 300px;height: 300px;}
+		}
+	</style>
+</head>
+<body>
+	<div class="box">600px이상</div>
+	<div class="box2">600px미만</div>
+	<div class="box3">600px이상 1200px미만</div>
+</body>
+</html>
