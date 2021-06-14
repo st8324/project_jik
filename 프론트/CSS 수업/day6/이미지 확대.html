@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>이미지 확대 예제</title>
+	<style>
+		.box{ 
+			width: 200px;	height: 200px; overflow: hidden;
+		}
+		.box img{
+			width: 200px; height: 200px;
+			transition: transform 0.5s;
+		}
+		.box:hover img{
+			transform: scale(1.2);
+		}
+	</style>
+</head>
+<body>
+	<!-- 
+	- 가로 200px, 세로 200px 박스안에 이미지를 넣어서 화면에 보이게 하세요. 
+		단, 이미지 태그로
+	-->
+	<div class="box">
+		<img src="../img/강아지1.jpg" alt="">
+	</div>
+</body>
+</html>
