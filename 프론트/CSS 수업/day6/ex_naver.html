@@ -12,19 +12,94 @@
 
 		.container{ width: 1190px; margin: 0 auto;}
 		.box1{ box-sizing: border-box; height: 49px; border: 1px solid red;}
-		.box2{ box-sizing: border-box; height: 160px; border: 1px solid orange;}
-		.box3{ box-sizing: border-box; height: 52px; border: 1px solid green;}
-		.box4{ box-sizing: border-box; min-height: 1000px; border: 1px solid blue;}
+		.box2{ height: 160px; position: relative;}
+		.box3{ 
+			box-sizing: border-box; height: 52px; border-top: 1px solid #e4e8eb; 
+			min-width: 1190px; box-shadow: 0 1px 3px 0 rgba(0,0,0,0.12);
+		}		
+		.box4{ 
+			box-sizing: border-box; height: 1000px; 
+			padding: 20px 30px;
+		}
 		.box5{ box-sizing: border-box; height: 423px; border: 1px solid violet;}
+
+		.logo-box{
+			width: 222px; height: 52px; box-sizing: border-box; border: 1px solid red;
+			position: absolute; top: calc(50% - 26px); left: 0;
+		}
+		.search-box{ 
+			width: 586px; height: 56px; box-sizing: border-box; border: 2px solid #19ce60;
+			position: absolute; top: 50%; left: 268px; margin-top: -28px;
+		}
+		/* 
+		- 자식의 position이 absolute이고, 부모의 position이 absolute이면 자식은 부모를
+		  기준으로 잡는다.
+		*/
+		.search-btn{
+			width: 56px; height: 56px; border: none; background-color: #19ce60;
+			position: absolute; right: -2px; top: -2px;
+		}
+		.search-input{
+			display: block; padding: 14px 15px; width: 444px; height: 24px; line-height: 24px;
+			border: none;
+		}
+		.search-input:focus{ border: none; outline: none;}
+		.menu{
+			height: 100%; box-sizing: border-box; border: 1px solid blue;
+		}
+		.box4-inner{
+			height: 100%;
+		}
+		.left-box{
+			width: 750px; height: 100%; border: 1px solid red; float: left;
+			box-sizing: border-box;
+		}
+		.right-box{
+			width: 350px; height: 100%; border: 1px solid orange; float: right;
+			box-sizing: border-box;
+		}
+		.after::after{
+			clear: both; display: block; content: '';
+		}
+		.left1, .right1{
+			height: 135px; border: 1px solid green; box-sizing: border-box;
+			margin-bottom: 12px;
+		}
+		.left2{
+			height: 367px; border: 1px solid skyblue; box-sizing: border-box;
+		}
+		.right2{
+			height: 49px; border: 1px solid skyblue; box-sizing: border-box;
+		}
+
 	</style>
 </head>
 <body>
 	<div class="box1 container"></div>
 	<div class="box2 container">
 		<div class="logo-box"></div>
+		<div class="search-box">
+			<form action="">
+				<input type="text" class="search-input">
+				<button type="submit" class="search-btn"></button>
+			</form>
+		</div>
 	</div>
-	<div class="box3"></div>
-	<div class="box4 container"></div>
+	<div class="box3">
+		<div class="menu container"></div>
+	</div>
+	<div class="box4 container">
+		<div class="box4-inner after">
+			<div class="left-box">
+				<div class="left1"></div>
+				<div class="left2"></div>
+			</div>
+			<div class="right-box">
+				<div class="right1"></div>
+				<div class="right2"></div>
+			</div>
+		</div>
+	</div>
 	<div class="box5 container"></div>
 </body>
 </html>
