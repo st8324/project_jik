@@ -19,7 +19,6 @@
 			min-width: 1190px; box-shadow: 0 1px 3px 0 rgba(0,0,0,0.12);
 		}		
 		.box4{ 
-			box-sizing: border-box; height: 1000px; 
 			padding: 20px 30px;
 		}
 		.box5{ box-sizing: border-box; height: 423px; border: 1px solid violet;}
@@ -56,8 +55,7 @@
 			box-sizing: border-box;
 		}
 		.right-box{
-			width: 350px; height: 100%; border: 1px solid orange; float: right;
-			box-sizing: border-box;
+			width: 350px;float: right;
 		}
 		.after::after{
 			clear: both; display: block; content: '';
@@ -169,6 +167,32 @@
 			width: 2px; height: 2px; border-radius: 50%;
 			background-color: #505050; position: relative; margin-right: 5px;
 			top: -5px;
+		}
+		.right3{ height: 200px; margin-top: 12px; background: yellow; }
+		.right4{ height: 1539px; margin-top: 15px; background-color: yellow;}
+		.right4-top-box{ 	height: 44px; background-color: blue;	}
+		.right4-bot-box{ border: 1px solid #e4e8eb; box-sizing: border-box;}
+		.right4-bot1{ 
+			height: 70px; background: #f7f9fa; border-bottom: 1px solid  #e4e8eb;
+			box-sizing: border-box; padding: 12px 4px 11px 10px;
+		}
+		.mall-link{
+			float: left; height: 23px; line-height: 23px; font-size: 12px;
+		}
+		.point1, .point2{
+			width: 3px; height: 3px; background-color: #c9cccf; border-radius: 50%;
+			float: left; margin: 10px 10px 0 10px; 
+		}
+		.point2{ margin: 10px 6px 0 6px;}
+		.mall-link:hover{ text-decoration: underline;}
+
+		.right4-bot2{ height: 886px; background: green;}
+		.right4-bot3{ height: 262px; background: skyblue;}
+		.right4-bot4{ height: 274px; background: whitesmoke;}
+
+		.bold{ font-weight: bold;}
+		.mall-list::after	{ 
+			content: ''; display: block; clear: both;
 		}
 	</style>
 </head>
@@ -327,6 +351,43 @@
 					<div class="btn-box">
 						<div class="prev-btn"><i class="fas fa-chevron-left"></i></div>
 						<div class="next-btn"><i class="fas fa-chevron-right"></i></div>
+					</div>
+				</div>
+				<div class="right3"></div>
+				<div class="right4">
+					<div class="right4-top-box"></div>
+					<div class="right4-bot-box">
+						<div class="right4-bot1">
+							<div class="mall-list">
+								<a href="#" class="mall-link bold">G마켓</a>
+								<span class="point1"></span>
+								<a href="#" class="mall-link">옥션</a>
+								<span class="point1"></span>
+								<a href="#" class="mall-link">11번가</a>
+								<span class="point1"></span>
+								<a href="#" class="mall-link bold">이마트몰</a>
+								<span class="point1"></span>
+								<a href="#" class="mall-link">티몬</a>
+								<span class="point1"></span>
+								<a href="#" class="mall-link">위메프</a>
+							</div>
+							<div class="mall-list">
+								<a href="#" class="mall-link">쿠팡</a>
+								<span class="point2"></span>
+								<a href="#" class="mall-link bold">신세계몰</a>
+								<span class="point2"></span>
+								<a href="#" class="mall-link bold">올리브명</a>
+								<span class="point2"></span>
+								<a href="#" class="mall-link">GS샵</a>
+								<span class="point2"></span>
+								<a href="#" class="mall-link">롯데i몰</a>
+								<span class="point2"></span>
+								<a href="#" class="mall-link">CJ온스타일</a>
+							</div>
+						</div>	
+						<div class="right4-bot2"></div>	
+						<div class="right4-bot3"></div>	
+						<div class="right4-bot4"></div>	
 					</div>
 				</div>
 			</div>
