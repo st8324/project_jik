@@ -66,6 +66,10 @@
 			height: 135px; border: 1px solid green; box-sizing: border-box;
 			margin-bottom: 12px;
 		}
+		.right1{ 
+			padding: 16px 16px 12px 17px; background-color: #f7f9fa;
+			border: 1px solid #dae1e6;
+		}
 		.left2{
 			height: 367px; background: yellow;
 		}
@@ -140,6 +144,31 @@
 		}
 		.right2 .btn-box .next-btn{
 			margin-left: -1px;
+		}
+		.inner-right1-box{ position: relative; height: 100%;}
+		.inner-right1-box>p.title{
+			height: 16px; line-height: 16px; 
+			font-size: 12px; color: gray;
+		}
+		.inner-right1-box>a.login-link{
+			height: 48px; background-color: #19ce60; display: block; margin-top: 11px;
+			line-height: 48px; font-size: 16px; text-align: center; font-weight: bold;
+			color: #fff; border: 1px solid #15c654; border-radius: 2px;
+		}
+		.find-box{
+			position: absolute; bottom: 0; left: 0;
+		}
+		.signup-link{
+			position: absolute; bottom: 0; right: 0;
+		}
+		.signup-link, .findid-link, .findpw-link{
+			color: #505050; font-size: 12px;
+		}
+		.findpw-link::before{
+			content: '';	display: inline-block;
+			width: 2px; height: 2px; border-radius: 50%;
+			background-color: #505050; position: relative; margin-right: 5px;
+			top: -5px;
 		}
 	</style>
 </head>
@@ -283,7 +312,17 @@
 				</div>
 			</div>
 			<div class="right-box">
-				<div class="right1"></div>
+				<div class="right1">
+					<div class="inner-right1-box">
+						<p class="title">네이버를 더 안전하고 편리하게 이용하세요.</p>
+						<a href="#" class="login-link">NAVER 로그인</a>
+						<div class="find-box">
+							<a href="#" class="findid-link"><i class="fas fa-lock"></i>아이디</a>
+							<a href="#" class="findpw-link">비밀번호찾기</a>
+						</div>
+						<a href="#" class="signup-link"><i class="fas fa-user"></i>회원가입</a>
+					</div>
+				</div>
 				<div class="right2">
 					<div class="btn-box">
 						<div class="prev-btn"><i class="fas fa-chevron-left"></i></div>

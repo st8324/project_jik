@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>이미지 확대 예제3</title>
+	<style>
+		*{ padding: 0; margin: 0; text-decoration: none; color: #000; }
+		
+		.box{ padding: 10px; width: 410px; border: 1px solid black; float: left; }
+		.box:nth-child(2){ float: right;}
+		.inner-box::after,.inner-container::after
+		{ clear: both; content: ''; display: block;}
+		
+		.img-box{ width: 200px; height: 200px; overflow: hidden; float: left;}
+		.img-box img{ width: 200px; height: 200px; transition: transform 1s; }
+		.box:hover img{ transform: scale(1.1); }
+
+		.group-box{ width: 200px; height: 200px; float: right; }
+		p.title{ height: 25px; line-height: 25px; font-size: 20px; }
+		p.contents{ height: 175px; line-height: 25px; font-size: 20px;}
+
+		.group-box:hover p.title{ text-decoration: underline;}
+
+		.container{ width: 874px; padding: 10px; border: 1px solid red;}
+		
+
+	</style>
+</head>
+<body>
+	<!-- 864 -->
+	<div class="container">
+		<div class="inner-container">
+			<div class="box">
+				<div class="inner-box">
+					<div class="img-box">
+						<img src="../img/강아지1.jpg" alt="">
+					</div>
+					<div class="group-box">
+						<p class="title">제목입니다.</p>
+						<p class="contents">내용입니다.</p>
+					</div>
+				</div>
+			</div>
+			<div class="box">
+				<div class="inner-box">
+					<div class="img-box">
+						<img src="../img/강아지1.jpg" alt="">
+					</div>
+					<div class="group-box">
+						<p class="title">제목입니다.</p>
+						<p class="contents">내용입니다.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
