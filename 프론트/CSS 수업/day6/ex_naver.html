@@ -186,12 +186,49 @@
 		.point2{ margin: 10px 6px 0 6px;}
 		.mall-link:hover{ text-decoration: underline;}
 
-		.right4-bot2{ height: 886px; background: green;}
+		.right4-bot2{ 
+			height: 886px; 
+			padding: 55px 8px 22px; box-sizing: border-box;
+		}
 		.right4-bot3{ height: 262px; background: skyblue;}
 		.right4-bot4{ height: 274px; background: whitesmoke;}
+		
+		.right4-bot2 .inner-container{
+			margin-top: -10px; margin-right: -5px;
+		}
+		.right4-bot2 .goods-items{
+			float: left; width: calc(100% / 3); padding-right: 5px; box-sizing: border-box;
+			margin-top: 10px;
+		}
+		.right4-bot2 .goods-items>.goods-area{
+			display: block; 
+		}
+		.right4-bot2 .goods-items>.goods-area .img-box{
+			overflow: hidden; position: relative;
+		}
+		.right4-bot2 .goods-items>.goods-area .img-box img{
+			display: block;
+			transition: transform 1s;
+		}
+		.right4-bot2 .goods-items>.goods-area:hover .img-box img{
+			transform: scale(1.1);
+		}
+		.right4-bot2 .goods-items>.goods-area:hover .title-box .title{
+			text-decoration: underline;
+		}
+
+		.right4-bot2 .goods-items>.goods-area .title-box{
+			margin-top: 5px;
+		}
+		.right4-bot2 .goods-items>.goods-area .title-box .title{
+			font-size: 12px; height: 16px; line-height: 16px; white-space: nowrap;
+			overflow: hidden; text-overflow: ellipsis; text-align: center;
+		}
+
 
 		.bold{ font-weight: bold;}
-		.mall-list::after	{ 
+		.mall-list::after,
+		.right4-bot2 .inner-container::after{ 
 			content: ''; display: block; clear: both;
 		}
 	</style>
@@ -385,7 +422,144 @@
 								<a href="#" class="mall-link">CJ온스타일</a>
 							</div>
 						</div>	
-						<div class="right4-bot2"></div>	
+						<div class="right4-bot2">
+							<div class="inner-container">
+								<ul>
+									<li class="goods-items">
+										<a href="#" class="goods-area">
+											<div class="img-box">
+												<img src="../img/강아지1.jpg" alt="" width="100%" height="146px">
+											</div>
+											<div class="title-box">
+												<p class="title bold">BEST 여름필수템</p>
+												<p class="title">폭신폭신 구름위~</p>
+											</div>
+										</a>
+									</li>
+									<li class="goods-items">
+										<a href="#" class="goods-area">
+											<div class="img-box">
+												<img src="../img/강아지1.jpg" alt="" width="100%" height="146px">
+											</div>
+											<div class="title-box">
+												<p class="title bold">BEST 여름필수템</p>
+												<p class="title">폭신폭신 구름위~</p>
+											</div>
+										</a>
+									</li>
+									<li class="goods-items">
+										<a href="#" class="goods-area">
+											<div class="img-box">
+												<img src="../img/강아지1.jpg" alt="" width="107.33px" height="146px">
+											</div>
+											<div class="title-box">
+												<p class="title bold">BEST 여름필수템</p>
+												<p class="title">폭신폭신 구름위~</p>
+											</div>
+										</a>
+									</li>
+									<li class="goods-items">
+										<a href="#" class="goods-area">
+											<div class="img-box">
+												<img src="../img/강아지1.jpg" alt="" width="100%" height="146px">
+											</div>
+											<div class="title-box">
+												<p class="title bold">BEST 여름필수템</p>
+												<p class="title">폭신폭신 구름위~</p>
+											</div>
+										</a>
+									</li>
+									<li class="goods-items">
+										<a href="#" class="goods-area">
+											<div class="img-box">
+												<img src="../img/강아지1.jpg" alt="" width="100%" height="146px">
+											</div>
+											<div class="title-box">
+												<p class="title bold">BEST 여름필수템</p>
+												<p class="title">폭신폭신 구름위~</p>
+											</div>
+										</a>
+									</li>
+									<li class="goods-items">
+										<a href="#" class="goods-area">
+											<div class="img-box">
+												<img src="../img/강아지1.jpg" alt="" width="100%" height="146px">
+											</div>
+											<div class="title-box">
+												<p class="title bold">BEST 여름필수템</p>
+												<p class="title">폭신폭신 구름위~</p>
+											</div>
+										</a>
+									</li>
+									<li class="goods-items">
+										<a href="#" class="goods-area">
+											<div class="img-box">
+												<img src="../img/강아지1.jpg" alt="" width="100%" height="146px">
+											</div>
+											<div class="title-box">
+												<p class="title bold">BEST 여름필수템</p>
+												<p class="title">폭신폭신 구름위~</p>
+											</div>
+										</a>
+									</li>
+									<li class="goods-items">
+										<a href="#" class="goods-area">
+											<div class="img-box">
+												<img src="../img/강아지1.jpg" alt="" width="100%" height="146px">
+											</div>
+											<div class="title-box">
+												<p class="title bold">BEST 여름필수템</p>
+												<p class="title">폭신폭신 구름위~</p>
+											</div>
+										</a>
+									</li>
+									<li class="goods-items">
+										<a href="#" class="goods-area">
+											<div class="img-box">
+												<img src="../img/강아지1.jpg" alt="" width="100%" height="146px">
+											</div>
+											<div class="title-box">
+												<p class="title bold">BEST 여름필수템</p>
+												<p class="title">폭신폭신 구름위~</p>
+											</div>
+										</a>
+									</li>
+									<li class="goods-items">
+										<a href="#" class="goods-area">
+											<div class="img-box">
+												<img src="../img/강아지1.jpg" alt="" width="100%" height="146px">
+											</div>
+											<div class="title-box">
+												<p class="title bold">BEST 여름필수템</p>
+												<p class="title">폭신폭신 구름위~</p>
+											</div>
+										</a>
+									</li>
+									<li class="goods-items">
+										<a href="#" class="goods-area">
+											<div class="img-box">
+												<img src="../img/강아지1.jpg" alt="" width="100%" height="146px">
+											</div>
+											<div class="title-box">
+												<p class="title bold">BEST 여름필수템</p>
+												<p class="title">폭신폭신 구름위~</p>
+											</div>
+										</a>
+									</li>
+									<li class="goods-items">
+										<a href="#" class="goods-area">
+											<div class="img-box">
+												<img src="../img/강아지1.jpg" alt="" width="100%" height="146px">
+											</div>
+											<div class="title-box">
+												<p class="title bold">BEST 여름필수템</p>
+												<p class="title">폭신폭신 구름위~</p>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>	
 						<div class="right4-bot3"></div>	
 						<div class="right4-bot4"></div>	
 					</div>
