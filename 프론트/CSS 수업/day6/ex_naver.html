@@ -169,7 +169,7 @@
 			top: -5px;
 		}
 		.right3{ height: 200px; margin-top: 12px; background: yellow; }
-		.right4{ height: 1539px; margin-top: 15px; background-color: yellow;}
+		.right4{ height: 1539px; margin-top: 15px;}
 		.right4-top-box{ 	height: 44px; background-color: blue;	}
 		.right4-bot-box{ border: 1px solid #e4e8eb; box-sizing: border-box;}
 		.right4-bot1{ 
@@ -187,7 +187,7 @@
 		.mall-link:hover{ text-decoration: underline;}
 
 		.right4-bot2{ 
-			height: 886px; 
+			height: 886px; position: relative;
 			padding: 55px 8px 22px; box-sizing: border-box;
 		}
 		.right4-bot3{ height: 262px; background: skyblue;}
@@ -224,7 +224,33 @@
 			font-size: 12px; height: 16px; line-height: 16px; white-space: nowrap;
 			overflow: hidden; text-overflow: ellipsis; text-align: center;
 		}
-
+		.right4-bot2 .shop-control-box{
+			position: absolute; right: 8px; top: 13px; 
+		}
+		.right4-bot2 .shop-control-box .index-box,
+		.right4-bot2 .shop-control-box .control-box{
+			float: left; line-height: 29px; font-size: 12px;
+			margin-left: 7px;
+		}
+		.right4-bot2 .shop-control-box .control-box .prev-btn,
+		.right4-bot2 .shop-control-box .control-box .next-btn{
+			width: 29px; height: 29px; line-height: 29px; border: 1px solid #e4e8eb;
+			text-align: center; font-size: 12px; float: left; box-sizing: border-box;
+			cursor: pointer;
+		}
+		.right4-bot2 .shop-control-box .control-box .next-btn{
+			margin-left: -1px;
+		}
+		.right4-bot2 .shop-control-box2{
+			line-height: 29px; height: 29px; text-align: center;
+			margin-top: 18px;
+		}
+		.right4-bot2 .shop-control-box2 .prev-btn,
+		.right4-bot2 .shop-control-box2 .next-btn{
+			width: 29px; height: 29px; border: 1px solid #e4e8eb; box-sizing: border-box;
+			display: inline-block; line-height: 29px; text-align: center; cursor: pointer;
+		}
+		
 
 		.bold{ font-weight: bold;}
 		.mall-list::after,
@@ -423,6 +449,13 @@
 							</div>
 						</div>	
 						<div class="right4-bot2">
+							<div class="shop-control-box">
+								<div class="index-box"><span class="bold">1</span> / 18</div>
+								<div class="control-box">
+									<div class="prev-btn"><i class="fas fa-chevron-left"></i></div>
+									<div class="next-btn"><i class="fas fa-chevron-right"></i></div>
+								</div>
+							</div>
 							<div class="inner-container">
 								<ul>
 									<li class="goods-items">
@@ -558,6 +591,11 @@
 										</a>
 									</li>
 								</ul>
+							</div>
+							<div class="shop-control-box2">
+								<div class="prev-btn"><i class="fas fa-chevron-left"></i></div>
+								<span class="bold">1</span> / 18
+								<div class="next-btn"><i class="fas fa-chevron-right"></i></div>
 							</div>
 						</div>	
 						<div class="right4-bot3"></div>	
