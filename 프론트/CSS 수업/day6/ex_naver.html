@@ -226,21 +226,29 @@
 			font-size: 12px; height: 16px; line-height: 16px; white-space: nowrap;
 			overflow: hidden; text-overflow: ellipsis; text-align: center;
 		}
-		.right4-bot2 .shop-control-box{
+		.right4-bot2 .shop-control-box,
+		.right4-bot4 .shop-control-box{
 			position: absolute; right: 8px; top: 13px; 
 		}
+		.right4-bot4 .shop-control-box{ top: 14px; }
+
 		.right4-bot2 .shop-control-box .index-box,
-		.right4-bot2 .shop-control-box .control-box{
+		.right4-bot2 .shop-control-box .control-box,
+		.right4-bot4 .shop-control-box .index-box,
+		.right4-bot4 .shop-control-box .control-box{
 			float: left; line-height: 29px; font-size: 12px;
 			margin-left: 7px;
 		}
 		.right4-bot2 .shop-control-box .control-box .prev-btn,
-		.right4-bot2 .shop-control-box .control-box .next-btn{
+		.right4-bot2 .shop-control-box .control-box .next-btn,
+		.right4-bot4 .shop-control-box .control-box .prev-btn,
+		.right4-bot4 .shop-control-box .control-box .next-btn{
 			width: 29px; height: 29px; line-height: 29px; border: 1px solid #e4e8eb;
 			text-align: center; font-size: 12px; float: left; box-sizing: border-box;
 			cursor: pointer;
 		}
-		.right4-bot2 .shop-control-box .control-box .next-btn{
+		.right4-bot2 .shop-control-box .control-box .next-btn,
+		.right4-bot4 .shop-control-box .control-box .next-btn{
 			margin-left: -1px;
 		}
 		.right4-bot2 .shop-control-box2{
@@ -254,6 +262,7 @@
 		}
 		.right4-bot4 .bot4-container{
 			border-top: 1px solid #e4e8eb; padding-top: 50px;
+			position: relative;
 		}
 		.right4-bot4 .bot4-container .inner-container{
 			margin-right: -5px;
@@ -631,6 +640,13 @@
 						<div class="right4-bot3"></div>	
 						<div class="right4-bot4">
 							<div class="bot4-container">
+								<div class="shop-control-box">
+									<div class="index-box"><span class="bold">1</span> / 18</div>
+									<div class="control-box">
+										<div class="prev-btn"><i class="fas fa-chevron-left"></i></div>
+										<div class="next-btn"><i class="fas fa-chevron-right"></i></div>
+									</div>
+								</div>
 								<div class="inner-container">
 									<div class="sub-box">
 										<div class="sub-in-box">
