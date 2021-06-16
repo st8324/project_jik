@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>부트스트랩 예제</title>
+	<!-- 
+	- 부트 스트랩
+ 		- css 라이브러리
+ 		- 클래스들을 미리 정해놓고 css를 만들어 놓음
+		- 어떤 클래스들이 어떤 역할을 하는지 알고 사용하면 됨
+	-->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<style>
+		.box{
+			margin-bottom: 20px; background: yellow;
+		}
+		.sub-box{
+			height: 100px; border: 2px solid red;
+		}
+		.div{
+			padding: 20px; width: 400px; border: 2px solid black;
+		}
+		.div-box{
+			border: 1px solid blue; height: 200px;
+		}
+	</style>
+</head>
+<body>
+	<!-- 
+		container-fluid는 부모 컨텐츠 가로의 100%
+		container는 브라우저 크기를 구간으로 지정하여 지정된 구간마다 고정된 크기가 있다
+	-->
+	<div class="box container">
+		<div class="row">
+			<div class="sub-box col-3 col-sm-4 col-md-5 col-lg-6"></div>
+			<div class="sub-box col-3 col-sm-3 col-md-4 col-lg-6"></div>
+		</div>
+	</div>
+	<div class="box container-fluid">
+		<div class="row">
+			<div class="sub-box col-3"></div>
+			<div class="sub-box col-3"></div>
+		</div>
+	</div>
+	<div class="div">
+		<div class="container">
+			<div class="row">
+				<div class="div-box col-6"></div>
+				<div class="div-box col-6"></div>
+			</div>
+		</div>
+	</div>
+	<button type="button" class="btn btn-outline-primary">Primary</button>
+</body>
+</html>
