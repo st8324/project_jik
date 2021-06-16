@@ -191,7 +191,9 @@
 			padding: 55px 8px 22px; box-sizing: border-box;
 		}
 		.right4-bot3{ height: 262px; background: skyblue;}
-		.right4-bot4{ height: 274px; background: whitesmoke;}
+		.right4-bot4{ 
+			padding: 0 8px 30px;
+		}
 		
 		.right4-bot2 .inner-container{
 			margin-top: -10px; margin-right: -5px;
@@ -250,11 +252,39 @@
 			width: 29px; height: 29px; border: 1px solid #e4e8eb; box-sizing: border-box;
 			display: inline-block; line-height: 29px; text-align: center; cursor: pointer;
 		}
-		
+		.right4-bot4 .bot4-container{
+			border-top: 1px solid #e4e8eb; padding-top: 50px;
+		}
+		.right4-bot4 .bot4-container .inner-container{
+			margin-right: -5px;
+		}
+		.right4-bot4 .bot4-container .inner-container .sub-box{
+			width: 50%; float: left;
+		}
+		.right4-bot4 .bot4-container .inner-container .sub-in-box{
+			margin-right: 5px;
+		}
+		.right4-bot4 .bot4-container .inner-container .img-box{
+			position: relative; overflow: hidden; height: 163px;
+		}
+		.right4-bot4 .bot4-container .inner-container .img-box img{
+			transition: transform 0.5s;
+		}
+		.right4-bot4 .bot4-container .inner-container .sub-box:hover img{
+			transform: scale(1.1);
+		}
+		.right4-bot4 .bot4-container .inner-container .title-box{
+			text-align: center; line-height: 16px; height: 16px; font-weight: bold;
+			margin-top: 9px;
+		}
+		.right4-bot4 .bot4-container .inner-container .sub-box:hover .title-box{
+			text-decoration: underline;
+		}
 
 		.bold{ font-weight: bold;}
 		.mall-list::after,
-		.right4-bot2 .inner-container::after{ 
+		.right4-bot2 .inner-container::after,
+		.right4-bot4 .bot4-container .inner-container::after{ 
 			content: ''; display: block; clear: both;
 		}
 	</style>
@@ -599,7 +629,28 @@
 							</div>
 						</div>	
 						<div class="right4-bot3"></div>	
-						<div class="right4-bot4"></div>	
+						<div class="right4-bot4">
+							<div class="bot4-container">
+								<div class="inner-container">
+									<div class="sub-box">
+										<div class="sub-in-box">
+											<div class="img-box">
+												<img src="../img/강아지1.jpg" alt="" width="100%" height="163px">
+											</div>
+											<div class="title-box">강아지~~</div>
+										</div>
+									</div>
+									<div class="sub-box">
+										<div class="sub-in-box">
+											<div class="img-box">
+												<img src="../img/강아지1.jpg" alt="" width="100%" height="163px">
+											</div>
+											<div class="title-box">강아지~~</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
 					</div>
 				</div>
 			</div>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>분할 예제</title>
+	<style>
+		.box{
+			width: 400px; border: 2px solid black;
+			padding: 10px;
+		}
+		.inner-box{
+			margin-right: -10px;
+		}
+		.inner-box::after{
+			content: ''; clear: both; display: block;
+		}
+		.sub-box{
+			width: 50%; float: left; 
+		}
+		
+		.sub-in-box{
+			margin-right: 10px;
+			height: 200px; background: yellow;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="inner-box">
+			<div class="sub-box">
+				<div class="sub-in-box"></div>
+			</div>
+			<div class="sub-box">
+				<div class="sub-in-box"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
