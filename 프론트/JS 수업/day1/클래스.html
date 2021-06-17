@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>클래스 예제</title>
+</head>
+<body>
+	<script>
+		/*
+		class 클래스명{
+			constructor(매개변수){
+				초기화;
+			}
+			메소드명(){
+				구현;
+			}
+			get 메소드명(){
+				구현;
+			}
+			set 메소드명(){
+				구현;
+			}
+		}
+		*/
+		class Student{
+			constructor(grade, classNum, num, name){
+				this.grade = grade;
+				this.classNum = classNum;
+				this.num = num;
+				this.name = name;
+			}
+			print(){
+				console.log(this.grade+'학년'+this.classNum+'반'+this.num+'번 '+this.name);
+			}
+			get grade2(){
+				return this.grade;
+			}
+			set grade2(grade){
+				this.grade = grade;
+			}
+		}
+		var std1 = new Student(1,1,1,'홍길동');
+		std1.print();
+		std1.grade2 = 2;
+		std1.print();
+	</script>
+</body>
+</html>

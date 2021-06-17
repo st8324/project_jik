@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>재귀함수</title>
+</head>
+<body>
+	<script>
+		/*- 재귀함수 : 함수를 선언하는데 자기 자신이 구현부에서 호출되는 함수 
+		function a(){
+			a();
+		}
+		*/
+		//5! = 5*4*3*2*1
+		//팩토리얼 함수
+		function factorial1(num){
+			var res = 1;
+			for(i=num; i>=2; i-- ){
+				res *= i;
+			}
+			return res;
+		}
+		document.write(`5! = ${factorial1(5)}<br>`);
+		//재귀함수를 이용한 팩토리얼 함수
+		function factorial2(num){
+			if(num < 0)
+				return;
+			if(num <= 1)
+				return 1;
+			return num * factorial2(num-1);
+		}
+		document.write(`5! = ${factorial2(5)}<br>`);
+	</script>
+</body>
+</html>

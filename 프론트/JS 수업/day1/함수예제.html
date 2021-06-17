@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>함수 예제</title>
+</head>
+<body>
+	<script>
+		/*
+		- 두 정수와 산술 연산자가 주어졌을 때 산술 연산 결과를 알려주는 함수를 선언하고,
+		  두 정수와 산술 연산자 결과를 출력하는 코드를 작성하세요.
+		*/
+		function calc(num1, op, num2){
+			switch(op){
+				case '+': return num1 + num2;
+				case '-': return num1 - num2;
+				case '*': return num1 * num2;
+				case '/': return num1 / num2;
+				case '%': return num1 % num2;
+			}
+		}
+		var res = calc('+', '*', 2);
+		if(res != undefined){
+			document.write(`${1} ${'?'}  ${2} = ${res}`);
+		}else{
+			document.write(`${'?'}는 올바른 산술 연산자가 아닙니다.`);
+		}
+	</script>
+</body>
+</html>

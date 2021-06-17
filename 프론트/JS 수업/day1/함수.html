@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>함수 예제</title>
+</head>
+<body>
+	<script>
+		/* 
+		- JS에서 함수는 리턴타입을 쓰지 않음, 매개변수 부분에 타입을 안씀(var를 제거)
+		- 선언적 함수 : 함수 선언위치와 호출 위치가 중요하지 않음
+		- 익명 함수 : 함수 선언위치와 호출 위치가 중요함
+			=> 선언하는 코드가 호출하는 코드보다 위에 있어야 한다.
+		- 선언적 함수
+			function 함수명(매개변수1, ...){
+				실행문;
+			}
+		- 익명 함수
+			var 변수 = function(매개변수1,...){
+				실행문;
+			}
+		*/
+		//Hello를 출력하는 printHello 함수를 선언적함수 방법으로 선언
+		function printHello(){
+			document.write('Hello<br>');
+		}
+		//printHello 함수를 호출
+		printHello();
+
+		//Hi를 출력하는 printHi 함수를 익명 함수 방법으로 선언
+		var printHi = function(){
+			document.write('Hi<br>');
+		}
+		//printHi 함수를 호출
+		printHi();
+		
+		//두 정수의 합을 출력하는 함수
+		function sum(num1, num2){
+			document.write(`${num1} + ${num2} = ${num1+num2}<br>`);
+		}
+		/*
+		- 자바에서는 선언된 메소드의 매개변수가 다르면 에러가 발생하지만,
+		  JS에서는 에러가 발생하지 않고 실행됨
+			- 매개변수가 많은 경우 남는 부분을 버림
+			- 매개변수가 부족하면 해당하는 매개변수는 undefined가 됨
+		*/
+		sum(11,22);
+		sum(11,22,33);
+		sum();
+		//두 수의 차를 알려주는 함수
+		function sub(num1, num2){
+			return num1 - num2;
+		}
+		document.write(`2 - 1 = ${sub(2,1)}<br>`);
+		/*
+		- 매개변수의 갯수가 정해지지 않은 경우 arguments 객체를 이용
+		*/
+		//수강 과목이 주어지면 주어진 과목을 출력하는 함수
+		function printClass(){
+			for(var i = 0; i<arguments.length; i++){
+				document.write(`${arguments[i]}<br>`);
+			}
+		}
+		printClass('css','html','js');
+		/*
+		- 익명함수의 변형
+		var 함수명 = function(매개변수){
+			실행문;
+		}
+		var 함수명 = (매개변수) => {
+			실행문;
+		}
+		*/
+		//두 수의 곲을 출력하는 함수
+		var printMul = (num1, num2) =>{
+			document.write(`${num1} * ${num2} = ${num1 * num2}<br> `);
+		}
+		printMul(11,11);
+	</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>전역과 지역변수 예제</title>
+</head>
+<body>
+	<script>
+		/*- 자바에서는 조건문에서 선언한 변수는 조건문에서만 사용 가능
+			- JS에서는 조건문에서 선언한 var 변수를 이후 코드에서 사용 가능 */
+		var num1 = 10;//전역 변수
+		if(true){
+			var num2 = 20;
+			document.write(`조건문 안 num2 = ${num2}<br>`);
+		}
+		document.write(`조건문 밖 num2 = ${num2}<br>`);
+		
+		/*- JS에서는 조건문에서 선언한 let 변수를 이후 코드에서 사용 불가능*/
+		let num3 = 10;
+		if(true){
+			let num4 = 20;
+			document.write(`조건문 안 num4 = ${num4}<br>`);
+		}
+		// document.write(`조건문 안 num4 = ${num4}<br>`); //에러 발생
+		/*-함수 안에서 선언한 변수는 지역 변수로 함수 밖에서 사용할 수 없다*/
+		test();
+		function test(){
+			var num5 = 20; //지역변수
+			document.write(`함수 안 num5 = ${num5}<br>`);
+		}
+		// document.write(`함수 밖 num5 = ${num5}<br>`); //에러 발생
+
+		var num6 = 10;//전역
+		{
+			var num6 = 20;//전역
+			document.write(`괄호 안 num6 = ${num6}<br>`);
+		}
+		document.write(`괄호 밖 num6 = ${num6}<br>`);
+
+		let num7 = 10;//전역변수
+		{
+			let num7 = 20;//지역변수
+			document.write(`괄호 안 num7 = ${num7}<br>`);
+		}
+		document.write(`괄호 밖 num7 = ${num7}<br>`);
+	</script>
+</body>
+</html>

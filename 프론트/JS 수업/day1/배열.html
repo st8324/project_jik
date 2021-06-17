@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>배열 예제</title>
+</head>
+<body>
+	<script>
+		/*
+		- 자바에서는 한 배열에 같은 타입의 값만 저장할 수 있다.
+		- JS에서는 한 배열에 여러 타입의 값을 저장할 수 있다.
+		- 자바에서 배열은 기능이 없지만, JS에서 배열은 여러가지 메소드들을 제공해준다.
+		*/
+		var tmp = {grade:1};//객체
+		var arr1 = ['html',1,true];//배열
+		var arr2 = new Array('html',1,true);//배열
+		document.write(arr1[0]+'<br>');
+		/*
+		- slice() : 전체를 복사
+		- slice(index) : index 번지 이후의 모든 배열값을 반환, 부분 배열을 복사하여 반환
+		- slide(start, end): start번지부터 end 이전까지의 배열을 반환
+		*/
+		console.log(arr1);
+		var arr3 = arr1.slice(1);
+		console.log(arr3);
+		arr3[0] = 2;
+		console.log(arr1);
+		/*
+		- splice(start) : start번지부터 끝까지 삭제 후 삭제된 요소들을 반환
+		- splice(start, count) : start번지부터 count개만큼 삭제 후 삭제된 요소를 반환
+		*/
+		arr3 = arr1.splice(1);
+		console.log(arr3);
+		console.log(arr1);
+		/*
+		- concat(배열) : 두 배열을 연결한 배열을 반환
+		*/
+		arr1 = arr1.concat(arr3);
+		console.log(arr1);
+		/*
+		- push(값) : 값을 배열 마지막에 추가
+		- unshift(값) : 값을 맨 앞에 추가
+		- pop() : 맨 마지막 값을 삭제 후 반환
+		- shift() : 매 앞의 값을 삭제 후 반환
+		*/
+		arr1.push('css');
+		arr1.unshift('js');
+		console.log(arr1);
+		console.log(arr1.pop());
+		console.log(arr1);
+		console.log(arr1.shift());
+		console.log(arr1);
+		/* 
+		- reverse() : 배열을 역순으로 정렬
+		*/
+		arr1.reverse();
+		console.log(arr1);
+		arr1 = [2,5,7,2,4,10];
+		arr1.sort(function(a,b){
+			return a-b;
+		})
+		console.log(arr1);
+	</script>
+</body>
+</html>

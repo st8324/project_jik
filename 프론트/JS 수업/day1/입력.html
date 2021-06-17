@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>입력 예제</title>
+</head>
+<body>
+	<script>
+		/* prompt('안내문구') : 입력 팝업창을 생성되며, 입력된 값을 가져오는 함수 */
+		/* 두 정수와 산술 연산자를 입력받아 산술연산 결과를 출력하는 코드를 작성하세요. */
+		var num1 = prompt('정수1을 입력하세요');
+		var num2 = prompt('정수2을 입력하세요');
+		var op = prompt('산술 연산자를 입력하세요');
+		
+		var res = calc(num1, op, num2);
+		
+		if(res == 'NaN')
+			document.write('숫자가 아닌 값을 산술연산할 수 없음');
+		else if(res == 'wrong opearator')
+			document.write(`${op}는 산술 연산자가 아닙니다.`);
+		else
+			document.write(`${num1} ${op}  ${num2} = ${res}`);
+				
+		function calc(num1, op, num2){
+			if(isNaN(num1) || isNaN(num2))
+				return 'NaN';
+			num1 = parseFloat(num1);
+			num2 = parseFloat(num2);
+			switch(op){
+				case '+': return num1 + num2;
+				case '-': return num1 - num2;
+				case '*': return num1 * num2;
+				case '/': return num1 / num2;
+				case '%': return num1 % num2;
+				default: return 'wrong opearator';
+			}
+		}
+		
+
+	</script>
+</body>
+</html>

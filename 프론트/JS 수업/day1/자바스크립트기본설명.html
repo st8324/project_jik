@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JS설명 예제</title>
+	<!--
+		- 자바스크립트 적용 방법
+		1. script태그 안에 코드를 구현 하는 방법
+			- script 태그를 head태그안에 작성
+			- script 태그를 body태그안에 작성(보통 body태그 제일 하단에 작성)
+		2. script태그를 이용하여 만들어져 있는 js파일을 연결하는 방법
+	 -->
+	<!-- 방법1 :  script 태그안에 코드 구현 -->
+	<script>
+	/* 
+	- 출력하는 방법 
+		1. 브라우저 화면에 출력
+			- document.write(출력할내용);
+		2. 콘솔에 출력
+			- console.log(출력할내용);
+		3. 알림창 출력
+			- alert(출력할내용)
+	*/
+	document.write('자바스크립트');
+	console.log('자바스크립트');
+	// alert('자바스크립트');
+	/*
+	- JS에서 문자열은 "", '' 둘다 문자열이다.
+		- 강사는 주로 태그안에 들어가는 문자열을 "", 스크립트에서는 ''로 쓴다.
+	- JS에서 문자의 끝을 의미하는 ;를 생략해도 상관없지만 쓰도록 하자.
+	- JS에서 변수는 다음과 같이 선언한다. var와 let을 이용
+		- JS에서 하나의 변수는 다양한 타입의 값을 저장할 수 있다.
+			- var num; 변수를 선언 후 변수 num에 정수, 실수, 문자열, 논리값등 다양한 값을
+				저장 가능
+		- 자바에서 하나의 변수는 해당 타입의 값만 저장할 수 있다.
+			- int num; 변수를 선언 후 변수 num에 정수 값만 저장 가능
+	var 변수명;
+	let 변수명;
+		- JS에서는 var를 이용하여 변수의 중복 선언이 가능
+		- var는 중복 선언 가능
+		- lef는 중복 선언이 불가능
+	*/
+	var num = 10;
+	console.log('1: num = ' + num);
+	var num = 20;
+	console.log('2: num = ' + num);
+	let num2 = 10;
+	console.log('3: num2= ' + num2);
+	//let num2 = 20;
+	//console.log('4: num2= ' + num2);
+	/*
+	- 상수는 const
+	*/
+	const PI = 3.141592;
+	console.log(PI);
+	// PI = 2;//상수는 수정 불가능
+	</script>
+	<!-- 방법2 : script 태그를 이용하여 js 파일을 -->
+	<script src=""></script>
+	<!--
+	- 자바는 전체를 컴파일해서 하나라도 이상이 있으면 실행하지 않음
+	- JS는 한줄씩 실행하기 때문에 중간에 이상이 있으면 해당 부분 전까지 실행하고,
+	  그 이후에는 실행하지 않음
+
+	-->
+</head>
+<body>
+	
+</body>
+</html>

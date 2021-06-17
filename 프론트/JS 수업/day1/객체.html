@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>객체 예제</title>
+</head>
+<body>
+	<script>
+	/*
+	var 객체명 = {
+		변수명 : 값,
+		변수명 : 값,
+		메서드명 : function(){
+			구현;
+		}
+	}
+	*/
+	var student = {
+		name : '홍길동',
+		grade: 1,
+		class: 1,
+		num  : 1,
+		print: function(){
+			document.write(`${this.grade}학년 ${this.class}반 ${this.num}번 ${this.name}`);
+			document.write('<br>');
+		}
+	}
+	student.print();
+	//새로운 속성을 추가
+	student.age = 17;
+	//메소드를 수정
+	student.print = function(){
+		document.write(`${this.grade}학년 ${this.class}반 ${this.num}번 ${this.name}`);
+		document.write(` 나이 : ${this.age}<br>`);
+	}
+	student.print();
+	//속성을 삭제
+	delete student.age;
+	student.print();
+	//메소드를 추가
+	student.upGrade = function(){
+		this.grade = this.grade + 1;
+	}
+	student.upGrade();
+	student.print();
+	/*
+	- 객체 생성자 함수 : 해당 함수를 이용하여 여러 객체를 생성할 수 있다.
+	function 클래스명(매개변수){
+		this.속성 = 매개변수;
+		this.속성 = 매개변수;
+		this.메소드 = function(){
+			구현;
+		}
+	}
+	var 객체명 = new 클래스명(매개변수);
+	*/
+	function Student(grade, classNum, num, name, age){
+		this.grade = grade;
+		this.classNum = classNum;
+		this.num = num;
+		this.name = name;
+		this.age = age;
+		this.print = function(){
+			document.write(`${this.grade}학년${this.classNum}반${this.num}번 ${this.name}`);
+			document.write(` 나이 : ${this.age}<br>`);
+		}
+	}
+	var std1 = new Student(1,1,1,'홍길동',17);
+	var std2 = new Student(1,1,2,'임꺽정',17);
+	std1.print();
+	std2.print();
+	console.log(std1.name);
+	console.log(std1['name']);
+	/* for in문 */
+	for(var index in std1){
+		console.log(index + " : " + std1[index]);
+	}
+	</script>
+</body>
+</html>

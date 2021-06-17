@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>내장 함수</title>
+</head>
+<body>
+	<script>
+		/*- isNaN(변수) : 변수의 값이 숫자인지 아닌지를 판별, 숫자가 아니면 true, 
+				숫자이면 false. is Not a Number의 약자
+			- isFinite(변수) : 유한값인지 무한값인지 판별, 유한하면 true, 무한이면 false
+			- Number(변수) : 숫자로 변환하는 함수
+			- parseInt(변수) : 정수로 변환하는 함수, 정수부분까지만 변환
+			- parseFloat(변수) : 실수로 변환하는 함수, 소수부분까지만 변환
+			- String(변수) : 문자열로 바꾸는 함수
+		*/
+		var num = '123';
+		document.write(`문자열123은 숫자가 아닙니까? ${isNaN(num)}<br>`);
+		num = 'abc';
+		document.write(`문자열abc 숫자가 아닙니까? ${isNaN(num)}<br>`);
+		num = 1/0;
+		document.write(`유한대입니까? ${isFinite(num)}<br>`);
+		document.write(`문자열 123.2abc를 Number() : ${Number('123.2abc')}<br>`);
+		document.write(`문자열 123.2abc를 parseInt() : ${parseInt('123.2abc')}<br>`);
+		document.write(`문자열 123.2abc를 parseFloat() : ${parseFloat('123.2abc')}<br>`);
+		/* 
+		- 두 숫자와 산술연산자가 주어졌을 때 산술연산결과를 알려주는 함수를 만들고
+			테스트 하는 코드를 작성하세요. 단, 두 숫자가 숫자인지 아닌지 확인한 후 산술 연산을
+			하세요. */
+		function calc(num1, op, num2){
+			if(isNaN(num1) || isNaN(num2))
+				return 'NaN';
+			switch(op){
+				case '+': return num1 + num2;
+				case '-': return num1 - num2;
+				case '*': return num1 * num2;
+				case '/': return num1 / num2;
+				case '%': return num1 % num2;
+				default: return 'wrong opearator';
+			}
+		}
+		var num1 = 1, num2 = 2, op = '?';
+		var res = calc(num1, op, num2);
+		if(res == 'NaN')
+			document.write('숫자가 아닌 값을 산술연산할 수 없음');
+		else if(res == 'wrong opearator')
+			document.write(`${op}는 산술 연산자가 아닙니다.`);
+		else
+			document.write(`${num1} ${op}  ${num2} = ${res}`);
+	</script>
+</body>
+</html>
