@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>location 객체</title>
+</head>
+<body>
+	<script>
+		/* 
+		- location 객체
+			- 웹 브라우저의 URL과 관련된 객체
+			- http://localhost:5500/day2/location객체.html?id=abc123#top
+			- hash : 앵커명을 반환, #top
+			- host : 주소의 호스트명과 포트번호를 반환
+					- http://localhost:5500
+			- port : 포트번호, 5500
+			- pathname : 경로명, /day2/location객체.html
+			- href : 주소값
+					- http://localhost:5500/day2/location객체.html?id=abc123#top
+			- protocol : 주소의 프로토콜명을 반환, http:
+			- search : 주소의 쿼리 문자열을 반환,?id=abc123
+		*/
+		console.log('hash : ' +location.hash);
+		console.log('host : ' +location.host);
+		console.log('port : ' +location.port);
+		console.log('pathname : ' +location.pathname);
+		console.log('href : ' +location.href);
+		console.log('protocol : ' +location.protocol);
+		console.log('search : ' +location.search);
+
+		//2초 뒤 네이버로 이동
+		setTimeout(function(){
+			//현재 URL 주소를 http://naver.com으로 수정
+			//location.href = 'http://naver.com';
+		},2000);
+	</script>
+</body>
+</html>

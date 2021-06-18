@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>이벤트 예제</title>
+</head>
+<body>
+	<button onclick="sum(10);">클릭</button>
+	<button id="btn2">클릭</button>
+	<button id="btn3">클릭</button>
+	<a href="http://naver.com" id="naverLink">네이버</a>
+	<div id="box">
+		<div id="innerBox">클릭</div>
+	</div>
+	<script>
+		/*
+		- 이벤트 : 화면에서 발생하는 동작
+			- 마우스 이벤트
+				- click, dbclick, mouseover, mouseout, mousedown, mouseup, mosemove 등
+			- 키 이벤트
+				- keydown, keyup, keypress 등
+			- 폼 이벤트
+				- focus, blur, change, submit, reset, select 등
+			- 기타
+				- load, abort, resize, scroll 등
+		- 이벤트 연결
+			- on을 이용
+			- 태그에 이벤트를 추가
+				<button onclick="실행문;">버튼</button>
+			- JS에서 이벤트를 등록
+				- 기본 이벤트 모델
+				요소.on이벤트명 = function(){
+					실행문;
+				}
+				- 표준 이벤트 모델
+				요소.addEventListener('이벤트명',function(){
+					실행문;
+				});
+				- 기본 이벤트 모델과 표준 이벤트 모델의 차이점
+					- 기본 이벤트 모델은 동일한 이벤트에 대해 등록된 이벤트가 여러개이어도
+					  하나만 실행
+					- 표준 이벤트 모델은 동일한 이벤트에 대해 등록된 이벤트가 여러개이면 
+					  여러개를 실행
+		*/
+		function sum(num){
+			var res = 0;
+			for(var i = 1; i<=num; i++){
+				res += i;
+			}
+			alert(res);
+		}
+		var btn2 = document.getElementById('btn2');
+		btn2.onclick = function(){
+			sum(10);
+		}
+		btn2.onclick = function(){
+			console.log('버튼2 클릭');
+		}
+		var btn3 = document.getElementById('btn3');
+		btn3.addEventListener('click',function(){
+			sum(10);
+		})
+		btn3.addEventListener('click',function(e){
+			console.log('버튼3 클릭');
+			for(var index in e){
+				console.log(index + " : " + e[index]);
+			}
+		})
+		/*
+		- 이벤트 객체
+			- 이벤트가 발생하면 발생된 이벤트 정보를 객체로 만들어 함수의 매개변수로 전달받을
+				수 있다.
+			function(event){
+				실행문;
+			}
+			- 속성
+				- target : 이벤트를 발생시킨 객체를 반환
+				- type : 이벤트 이름을 반환
+				- clientX/clientY : 브라우저 기준 이벤트 발생 x좌표/y좌표
+				- screenX/screenY : 모니터 기준 이벤트 발생 x좌표/y좌표
+				- button : 마우스 왼쪽(0), 가운데(1), 오른쪽(2) 버튼값을 반환
+			- 메서드
+				- preventDefault() : 기본 이벤트 실행 막아줌
+					- 예를 들어 a태그의 페이지 이동
+				- stopPropagation(): 이벤트 버블링을 방지
+					- 이벤트 버블링 : 요소에 이벤트가 발생되면 해당 요소의 조상들에 이벤트가 발생
+		*/
+		var link = document.getElementById('naverLink');
+		link.addEventListener('click',function(e){
+			e.preventDefault();
+		})
+		var box = document.getElementById('box');
+		box.addEventListener('click',function(){
+			console.log('박스 클릭');
+		})
+		var innerBox = document.getElementById('innerBox');
+		innerBox.addEventListener('click', function(e){
+			console.log('이너 박스 클릭');
+			e.stopPropagation();
+		})
+	</script>
+</body>
+</html>

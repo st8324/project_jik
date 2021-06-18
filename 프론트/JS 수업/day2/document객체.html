@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>document 객체</title>
+</head>
+<body>
+	<div class="box" id="box1" name="a">박스1</div>
+	<div class="box" id="box2" name="a">박스1</div>
+	<div class="box" id="box3" name="b">박스1</div>
+	<p class="box" id="box4" name="b">박스1</p>
+	<script>
+		/*
+		- document 객체
+			- HTML 요소들을 선택, 생성, 삭제등을 위해 사용하는 객체
+			- 요소 선택 메소드
+				- getElementById('아이디명');
+					- 아이디가 일치하는 요소 하나를 가져옴(최대 하나)
+				- getElementsByClassName('클래스명');
+					- 클래스명이 일치하는 요소들을 배열로 가져옴
+				- getElementsByTagName('태그명');
+					- 태그명이 일치하는 요소들을 배열로 가져옴
+				- getElementsByName('name명');
+					- 속성 name이 name명과 일치하는 요소들을 배열로 가져옴
+				- querySelector('선택자');
+					- 선택자와 일치하는 첫번째 요소를 가져옴(최대 하나)
+				- querySelectorAll('선택자');
+					-	선택자와 일치하는 요소들을 배열로 가져옴
+		*/
+		var box1 = document.getElementById('box1');
+		console.log('아이디로 요소 선택')
+		console.log(box1);
+		
+		var boxes = document.getElementsByClassName('box');
+		console.log('클래스로 요소 선택')
+		for(var box of boxes){
+			console.log(box);
+		}
+
+		var tags = document.getElementsByTagName('p');
+		console.log('태그로 요소 선택')
+		for(var box of tags){
+			console.log(box);
+		}
+
+		var names = document.getElementsByName('a');
+		console.log('name으로 요소 선택');
+		for(var box of names){
+			console.log(box);
+		}
+
+		var box2 = document.querySelector('#box2');
+		console.log('#box2로 요소 선택');
+		console.log(box2);
+
+		var tags2 = document.querySelectorAll('div');
+		console.log('div로 요소 선택');
+		for(var box of tags2){
+			console.log(box);
+		}
+	</script>
+</body>
+</html>

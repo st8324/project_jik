@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>반복문 예제</title>
+</head>
+<body>
+	<script>
+		/*
+		- for in : 인덱스를 가져와서 활용 하는 방법
+			- 인덱스 : 배열인 경우 번지, 객체인 경우 속성명
+		*/
+		var arr = [1,2,3];
+		var obj = {grade : 1, name : '홍길동'};
+		console.log('배열');
+		for(var index in arr){
+			console.log('arr['+index+'] = ' + arr[index]);
+		}
+		console.log('객체');
+		for(var index in obj){
+			console.log(index+' = ' + obj[index]);
+		}
+		/*
+		- for of : 값을 가져와서 활용하는 방법(자바의 향상된 for문), 객체 사용 불가능
+		*/
+		console.log('배열');
+		for(var value of arr){
+			console.log(value);
+		}
+		console.log('객체');
+		//객체 사용 불가능
+		/*for(var value of obj){
+			console.log(value);
+		}*/
+		/*
+		- forEach(function(value,index, array){}) : 메서드, 원소 하나당 한번씩 실행
+		*/
+		arr.forEach(function(value, index, array){
+			console.log('arr['+index+'] = ' + arr[index]);
+			console.log('arr['+index+'] = ' + array[index]);
+			console.log('arr['+index+'] = ' + value);
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>날짜 예제</title>
+</head>
+<body>
+	<script>
+		//- Date 객체 : 날짜와 시간에 대한 정보를 가진 객체
+		var date = new Date();
+		document.write(date);
+		
+		
+		document.write('<br>')
+		document.write(getDate(date));
+
+		function getDate(date){
+			var year = date.getFullYear();//년도를 4자리로 가져옴
+			var month = date.getMonth()+1;//월을 가져옴 0~11
+			//if(month < 10)
+			//	month = '0'+month;
+			var day = date.getDate();			//일을 가져옴
+			var hour = date.getHours(); 	//시간을 가져옴
+			var minute = date.getMinutes();	//분을 가져옴
+			var second = date.getSeconds();	//초를 가져옴
+
+			var str = '' + year + '-' + addZero(month) + '-' + addZero(day)
+				+ " " + addZero(hour) + ':' + addZero(minute)	+ ':' + addZero(second);
+			return str;
+		}
+		function addZero(num){
+			return num < 10 ? '0' + num : num;
+		}
+	</script>
+</body>
+</html>

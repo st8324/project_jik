@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>screen 객체</title>
+</head>
+<body>
+	<script>
+		/* 
+		- 모니터 화면 정보와 관련된 객체
+			- width : 화면 너비
+			- height: 화면 높이
+			- availWidth : 화면에서 작업표시줄을 제외한 너비
+			- availheight: 화면에서 작업표시줄을 제외한 높이
+			- colorDepth : 화면에서 사용 가능한 색상수
+			- pixelDepth : 화면의 색상 해상도
+		*/
+		console.log('화면 너비 : ' + screen.width);
+		console.log('화면 높이 : ' + screen.width);
+		console.log('화면 너비(작업표시줄제외) : ' + screen.availWidth);
+		console.log('화면 높이(작업표시줄제외) : ' + screen.availHeight);
+		console.log('색상수    : ' + screen.colorDepth);
+		console.log('색상해상도: ' + screen.pixelDepth);
+	</script>
+</body>
+</html>

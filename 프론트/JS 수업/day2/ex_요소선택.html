@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>요소선택 예제</title>
+</head>
+<body>
+	<button id="btn1" class="btn">클릭</button>
+	<script>
+		/* 
+		- 클릭 버튼을 클릭했을 때 '안녕하세요' 알림창이 뜨도록 코드를 작성하세요.
+		*/
+		
+		var btn = document.getElementById('btn1');
+		btn.addEventListener('click',function(){
+			alert('안녕하세요1');
+		});
+		
+		var btn = document.getElementsByClassName('btn');
+		btn[0].addEventListener('click',function(){
+			alert('안녕하세요2');
+		});
+
+		var btn = document.querySelector('#btn1');
+		btn.addEventListener('click',function(){
+			alert('안녕하세요3');
+		});
+		var btn = document.querySelectorAll('.btn');
+		btn[0].addEventListener('click',function(){
+			alert('안녕하세요4');
+		});
+	</script>
+</body>
+</html>
