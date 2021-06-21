@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>페이드 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			/*
+			- fadeIn(speed, callback);
+			- fadeOut(speed, callback);
+			- fadeToggle(speed, callback);
+			- fadeTo(speed,opacity, callback)
+			- fade는 투명도를 0으로 한 후 안보이게 하거나(display:none)
+				보이게한 후(display:지정속성) 투명도를 0에서 지정 투명도까지 보여주게 한다.
+			*/
+			$('#btn1').click(function(){
+				$('.box1').fadeIn(1000);
+			})
+			$('#btn2').click(function(){
+				$('.box1').fadeOut(1000);
+			})
+			$('#btn3').click(function(){
+				$('.box1').fadeToggle(1000);
+			})
+			$('#btn4').click(function(){
+				$('.box1').fadeTo(1000,0.5);
+			})
+		})
+	</script>
+</head>
+<body style="background-color: black;">
+	<button id="btn1">in</button>
+	<button id="btn2">out</button>
+	<button id="btn3">toggle</button>
+	<button id="btn4">to</button>
+	<div class="box1" style="height: 50px; background: yellow;"></div>
+	<div class="box2" style="height: 50px; background: red;"></div>
+</body>
+</html>

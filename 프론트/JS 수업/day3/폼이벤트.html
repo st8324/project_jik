@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>폼 이벤트 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			/* 
+			- submit() : form태그 안에서 데이터를 서버로 전송하기 직전에 호출되는 이벤트
+				- form태그 안 button태그의 타입이 없거나, submit인 button을 클릭할 때 실행
+				- 해당 버튼 클릭하면 click 이벤트 실행 후 submit 이벤트가 실행됨
+				- submit 이벤트는 리턴값이 false이면 서버에 데이터 전송을 안함
+				- form태그에만 발생하는 이벤트
+				- form태그안에 있는 정보들을 체크할 때 사용
+			*/
+			$('form').submit(function(){
+				alert('전송');
+				return false;
+			});
+			/*
+			- focus() : input 태그 등이 선택되어 활성화 되는 경우 focus 상태
+			- blur()  : 포커스된 input 태그 등이 비 활성화 되는 경우 blur 상태
+			*/
+			$('#id').focus(function(){
+				console.log('포커스');
+			});
+			$('#id').blur(function(){
+				console.log('블러');
+			});
+			/*
+			- change() : input/textarea/select 태그등의 값이 바뀌는 경우
+				- input : 값을 입력하고 엔터 또는 다른 곳을 클릭하면 change 이벤트 발생
+					- 값이 변경되어야 동작
+				- select: 다른 값을 클릭하여 선택되면 chane 이벤트 발생
+			*/
+			$('#id').change(function(){
+				console.log('input 변경');
+			});
+			$('select').change(function(){
+				console.log('select 변경');
+			})
+		});
+	</script>
+</head>
+<body>
+	<form action="키보드이벤트.html">
+		<input type="text" id="id">
+		<select name="hobby">
+			<option value="농구">농구</option>
+			<option value="축구">축구</option>
+		</select>
+		<button type="submit">전송</button>
+	</form>
+</body>
+</html>

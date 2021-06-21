@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>롤링예제2</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		var mt = -50;
+		$(function(){
+			setInterval(function(){
+				$('.box:first-child').animate({'margin-top': mt+'px'},1200);
+				mt = mt - 50;
+				mt = mt == -250? 0:mt;
+			},2000);
+		})
+	</script>
+	<style>
+		.view{
+			height: 50px; border: 2px solid red; overflow: hidden;
+		}
+		.box{
+			height: 50px; line-height: 50px; background: yellow; text-align: center;
+			font-size: 30px;
+		}
+		.box:nth-child(2n){
+			background: gray;
+		}
+	</style>
+</head>
+<body>
+	<div class="view">
+		<div class="box">1</div>
+		<div class="box">2</div>
+		<div class="box">3</div>
+		<div class="box">4</div>
+		<div class="box">5</div>
+	</div>
+</body>
+</html>

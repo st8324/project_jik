@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>애니메이션</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		/*
+		- $(selector).animate({params},speed,callback);
+			- params : css속성과 값
+			- speed  : 애니메이션 속도
+			- callback : 애니메이션 끝난 후 해야할 작업을 호출하는 함수
+		*/
+		$(function(){
+			$('#right').click(function(){
+				$('.box').stop().animate({left:'200px'}, 1000,function(){
+					console.log('오른쪽으로 이동 완료');
+				})
+			})
+			/* 왼쪽 버튼을 클릭하면 왼쪽으로 이동하는 코드를 작성하세요. */
+			$('#left').click(function(){
+				$('.box').stop().animate({left:'0px'},1000);
+			})
+		})
+	</script>
+	<style>
+		.box{
+			width: 100px; height: 100px; background: yellow; position: relative;
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<body>
+	<button id="right">오른쪽</button>
+	<button id="left">왼쪽</button>
+	<div class="box"></div>
+</body>
+</html>

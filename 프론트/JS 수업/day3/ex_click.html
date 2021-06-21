@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>클릭 예제</title>
+</head>
+<body>
+	<button id="start">시작</button>
+	<button id="end" onclick="alert('종료');">종료</button>
+	<script>
+		/*
+		- 버튼 두개를 만들고, 버튼1을 클릭하면 시작이라는 알림창이, 버튼 2를 클릭하면
+			종료라는 알림창이 뜨도록 코드를 작성하세요.
+		*/
+		var startBtn = document.getElementById('start');
+		startBtn.addEventListener('click', function(){
+			alert('시작');
+		})
+		
+	</script>
+</body>
+</html>
