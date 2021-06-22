@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>get set 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			/*
+			- get : HTML에 있는 요소의 정보를 가져오는 것
+			- set : HTML에 있는 요소의 정보를 설정하는 것
+			- get과 set은 메소드명이 같고, 매개변수의 갯수가 다르다
+			- get
+				- text() : 요소 안에 문자열을 가져오는 메소드
+				- html() : 요소 안에 있는 html 코드를 가져오는 메소드
+				- val()  : 요소(input, textarea, select 등)에 입력/선택 된 값을 가져오는 메소드
+			*/
+			var text = $('#btn').text();
+			var html = $('#btn').html();
+			console.log(`text() : ${text}, html() : ${html}`);
+			
+			$('#btn').click(function(){
+				var val = $('input[name=id]').val();
+				console.log('id : ' + val);
+			});
+			/*
+			- set
+				- text('문자열') : 해당 요소 안에 있는 문자열을 지정한 문자열로 수정
+				- html('문자열') : 해당 요소 안에 지정된 문자열로 html코드로 수정
+				- val('값')      : 해당 요소의 값을 지정된 값으로 수정
+			*/
+			$('#btn2').html('<i>버튼</i>');
+			$('#btn2>i').text('버튼입니다.');
+			$('input[name=id2]').val(1234);
+		})
+	</script>
+</head>
+<body>
+	<input type="text" name="id"> <br>
+	<button id="btn"><span>버튼</span></button> <br>
+	<input type="text" name="id2"> <br>
+	<button id="btn2"><span>버튼</span></button>
+</body>
+</html>

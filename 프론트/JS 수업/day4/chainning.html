@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>체이닝</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			$('#btn').click(function(){
+				$('.box').slideUp(1000).slideDown(1000);
+				/*$('.box').slideUp(1000,function(){
+					$(this).slideDown(1000);
+				})*/
+			});
+		});
+	</script>
+</head>
+<body>
+	<button id="btn">클릭</button>
+	<div class="box" style="height: 50px; background: red;"></div>
+</body>
+</html>

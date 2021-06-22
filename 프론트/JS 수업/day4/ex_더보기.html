@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>더보깅 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			$('#more').on('click', function(){
+				$('.blue-box').show();
+				$('#fold').show();
+				$(this).hide();
+			});
+			$('#fold').click(function(){
+				$('.blue-box').hide();
+				$('#more').show();
+				$(this).hide();
+			});
+		})
+	</script>
+	<style>
+		.container{
+			position: relative;
+		}
+		.red-box{
+			height: 50px; background: red;
+		}
+		.green-box{
+			height: 400px; background: green;
+		}
+		.blue-box{
+			height: 300px; background: blue; position: absolute;
+			top: 0; left: 0; right: 0; display: none;
+		}
+		#fold{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<button id="more">더보기</button>	
+	<button id="fold">접기</button>	
+	<div class="container">
+		<div class="red-box"></div>
+		<div class="green-box"></div>
+		<div class="blue-box"></div>
+	</div>
+</body>
+</html>
