@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>메뉴</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			/*$('.menu a').click(function(){
+				var target = $(this).attr('data-target');
+				$('.box').hide();
+				$(target).show();
+			})*/
+			$('.menu>li:nth-child(1) a').click(function(){
+				$('.box').hide();
+				$('.box:nth-child(1)').show();
+			})
+			$('.menu>li:nth-child(2) a').click(function(){
+				$('.box').hide();
+				$('.box:nth-child(2)').show();
+			})
+			$('.menu>li:nth-child(3) a').click(function(){
+				$('.box').hide();
+				$('.box:nth-child(3)').show();
+			})
+		})
+	</script>
+	<style>
+		*{
+			padding: 0; margin: 0; text-decoration: none; color: #000;
+			list-style: none;
+		}
+		.menu::after{
+			display: block; content: ''; clear: both;
+		}
+		.menu{
+			display: flex; border: 1px solid black;
+		}
+		.menu>li{
+			width: 100%; border-right: 1px solid black;
+		}
+		.menu>li>a{
+			display: block; height: 50px; 
+			text-align: center; line-height: 50px;
+		}
+		.menu>li:last-child{
+			border-right: none;
+		}
+		.menu>li:hover{
+			background-color: yellow;
+		}
+		.box{
+			height: 200px; margin-top: 20px; background-color: yellow;
+		}
+		.box2, .box3{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<nav class="nav">
+		<ul class="menu">
+			<li><a href="#" data-target=".box1">메뉴1</a></li>
+			<li><a href="#" data-target=".box2">메뉴2</a></li>
+			<li><a href="#" data-target=".box3">메뉴3</a></li>
+		</ul>
+	</nav>
+	<div class="container">
+		<div class="box box1">1</div>
+		<div class="box box2">2</div>
+		<div class="box box3">3</div>
+	</div>
+</body>
+</html>

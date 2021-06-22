@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>속성정보 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			/* 
+			-요소의 속성정보 가져오기 
+				- attr('속성명')
+				- prop('속성명')
+				- 둘다 속성 정보를 가져오는 역할지만 가져오는 값이 다름
+			*/
+			var href1 = $('.link-naver').attr('href');
+			var href2 = $('.link-naver').prop('href');
+			console.log('href(attr) : ' + href1);
+			console.log('href(prop) : ' + href2);
+			var read1 = $('#id').attr('readonly');
+			var read2 = $('#id').prop('readonly');
+			console.log('readonly(attr) : ' + read1);
+			console.log('readonly(prop) : ' + read2);
+			/*
+			- 요소의 속성정보 설정하기
+				- attr('속성명', '값');
+				- prop('속성명', '값');
+			*/
+			$('#male').prop('checked', true);
+			$('#pw').prop('readonly', true);
+		})
+	</script>
+</head>
+<body>
+	<a href="http://www.naver.com" class="link-naver">네이버</a> <br>
+	<input type="text" id="id" readonly> <br>
+	<input type="checkbox" name="gender" id="male" value="male"> 남성 <br>
+	<input type="checkbox" name="gender" id="female" value="female"> 여성 <br>
+	<input type="text" id="pw"><br>
+</body>
+</html>

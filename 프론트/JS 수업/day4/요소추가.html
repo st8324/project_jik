@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>요소 추가</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			/*
+			- 요소 추가하기 : 태그로 이루어진 요소를 추가, 
+				- html('문자열')과 다름. html()은 요소안에 있는 내용을 지우고, 지정된 문자열로
+					덮어씌우는 메소드
+				- $('부모요소선택자').append('자식요소로,html코드')   : 부모 안 요소들중 마지막에 새로운 요소를 추가
+				- $('부모요소선택자').prepend('자식요소로,html코드')  : 부모 안 요소들중 맨 처음에 새로운 요소를 추가
+				- $('자식요소로,html코드').appendTo('부모요소선택자') : 부모 안 요소들중 마지막에 새로운 요소를 추가
+				- $('자식요소로,html코드').prependTo('부모요소선택자'): 부모 안 요소들중 맨 처음에 새로운 요소를 추가
+				- $('선택자').after('html코드') : 요소 바로 다음에 새로운 요소를 추가
+				- $('선택자').before('html코드'): 요로 바로 앞에 새로운 요소를 추가
+				- append, prepend는 자식 요소를 추가
+				- after, before는 형제 요소를 추가			
+				- appendTo와 append를 사용하는 타이밍은 기준이 되는 요소가 부모이면 append
+					자식이면 appendTo
+				- 요소를 추가할 때 추가하는 곳이 기준이면 append, 추가할 요소가 기준이면
+					appendTo	
+			*/
+			/*
+			- 요소가 추가되기 전에 등록된 이벤트는 요소가 추가된 후에 자동으로 이벤트가 추가되지
+				않음
+			*/
+			$('.box').click(function(){
+				console.log('box 클릭');
+			})
+			$('.box').append('<div class="inner-box">2</div>');
+			$('.box').prepend('<div class="inner-box">3</div>');
+			$('<div class="inner-box">4</div>').appendTo('.box');
+			$('<div class="inner-box">5</div>').prependTo('.box');
+			$('.box').after('<div class="box" onclick="console.log(\'box 클릭\');">2</div>');
+			$('.box').before('<div class="box" onclick="console.log(\'box 클릭\');">3</div>');
+			
+		})
+	</script>
+	<style>
+		.box{
+			height: 50px; margin-bottom: 20px; padding: 10px; background: yellow;
+		}
+		.inner-box{
+			float: left; width: 50px; height: 50px; margin-right: 10px; background: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="inner-box">1</div>
+	</div>
+</body>
+</html>
