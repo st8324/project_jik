@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>길이 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			/*
+			- width()/height() : 컨텐츠의 가로/세로 길이
+			- innerWidth()/innerHeight() : 컨텐츠와 패딩을 합친 가로/세로 길이
+			- outerWidth()/outerHeight() : 컨텐츠와 패딩과 테두리를 합친 가로/세로 길이
+			- outerWidth(true)/outerHeight(true) : 
+				컨텐츠와 패딩과 테두리와 마진을 합친 가로/세로 길이
+			- width(숫자)/height(숫자) : 컨텐츠의 가로/세로 길이를 설정
+			*/
+			console.log('가로(컨텐츠) : ' + $('.box').width());
+			console.log('가로(컨텐츠+패딩) : ' + $('.box').innerWidth());
+			console.log('가로(컨텐츠+패딩+테두리) : ' + $('.box').outerWidth());
+			console.log('가로(컨텐츠+패딩+테두리+마진) : ' + $('.box').outerWidth(true));
+		})
+	</script>
+	<style>
+		.box{
+			margin: 20px; padding: 20px; border: 3px solid black;
+			background: yellow; width: 150px; height: 150px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

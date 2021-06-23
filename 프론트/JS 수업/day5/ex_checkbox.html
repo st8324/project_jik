@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>체크박스 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		var arr = [];
+		$(function(){
+			$('input[name=hobby]').click(function(){
+				var value = $(this).val();
+				var index = arr.indexOf(value);
+				//선택한 항목이 있으면(체크를 해제하면)
+				if(index >= 0){
+					arr.splice(index,1);
+				}
+				//선택한 항목이 없으면(체크 하면)
+				else{
+					arr.push(value);
+				}
+				$('.view-box').text(arr.join(','));
+			});
+		})
+	</script>
+	<style>
+		.view-box{
+			min-height: 20px; border: 1px solid black; line-height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="view-box"></div>
+	<label><input type="checkbox" name="hobby" value="농구">농구</label>
+	<label><input type="checkbox" name="hobby" value="야구">야구</label>
+	<label><input type="checkbox" name="hobby" value="축구">축구</label>
+</body>
+</html>

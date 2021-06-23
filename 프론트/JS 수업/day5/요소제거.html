@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>요소 제거</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			/*
+			- 요소 제거
+				- remove : 요소를 포함하여 자손요소들까지 같이 제거
+				- empty  : 요소를 제외하고 자손요소들을 제거
+			*/
+			$('#btn1').click(function(){
+				$('.box1').remove();
+			})
+			$('#btn2').click(function(){
+				$('.box2').empty();	
+			})
+		});
+	</script>
+	<style>
+		.box1,.box2{
+			height: 50px; background: yellow; margin-bottom: 20px;
+		}
+		.box1{
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn1">remove</button> <button id="btn2">empty</button>
+	<div class="box1">
+		<input type="text">
+	</div>
+	<div class="box2">
+		<input type="text">
+	</div>
+</body>
+</html>

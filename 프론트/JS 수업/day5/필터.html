@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>필터 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			/* 
+			- 필터 : 요소들 중 원하는 요소를 찾을 때 사용
+				- first() : 요소들 중 첫번째 요소
+				- last() : 요소들 중 마지막 요소
+				- eq(n) : n+1번째 요소
+				- filter('선택자') : 요소들 중 선택자와 일치하는 요소
+				- not('선택자') : 요소들 중 선택자와 일치하지 않은 요소
+			- 탐색 : 요소의 조상/형제/자손 요소를 찾을 때 사용
+			- is('상태') : 상태이면 true, 아니면 false를 알려줌
+			*/
+			console.log( $('li').first().text() );//첫번째
+			console.log( $('li').last().text() );//4번째
+			console.log( $('li').eq(2).text() );//세번째
+			console.log( $('li').filter('.list3').text() );//세번째
+			$('li').not('.list3').css('color','red');
+		})
+	</script>
+</head>
+<body>
+	<ul>
+		<li class="list">첫번째</li>
+		<li class="list">두번째</li>
+		<li class="list list3">세번째</li>
+		<li class="list">4번째</li>
+	</ul>
+</body>
+</html>

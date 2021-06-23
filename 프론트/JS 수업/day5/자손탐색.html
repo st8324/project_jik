@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>자손 탐색 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			/*
+			- children() : 자식요소들을 선택
+			- children('선택자') : 자식 요소 중 선택자와 일치하는 요소를 선택
+			- find('선택자') : 자손 요소 중 선택자와 일치하는 요소를 선택
+			*/
+			$('.box').children().css('border-color','black');
+			$('.box').children('.ch1').css('border-width','3px');
+			$('.box').find('.link').css('background','yellow');
+		})
+	</script>
+	<style>
+		*{ padding: 10px; list-style: none; background: white; border: 2px solid red;}
+		a{ display: block; }
+	</style>
+</head>
+<body>
+	<div class="box">
+		box
+		<div class="inner-box ch1">
+			inner-box
+			<ul>
+				ul
+				<li>
+					li
+					<a href="#" class="link">메뉴1</a>
+				</li>
+			</ul>
+		</div>
+		<div class="inner-box">
+			inner-box
+			<ul>
+				ul
+				<li>
+					li
+					<a href="#" class="link">메뉴1</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>형제탐색</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			/*
+			- siblings() : 모든 형제 요소들을 선택(본인 제외)
+			- siblings('선택자') : 형제 요소들중 선택자와 일치하는 요소 선택
+			- next()/prev()
+				- 다음/이전 형제 요소
+			- nextAll()/prevAll() 
+				- 다음/이전 형제 요소들
+			- nextAll('선택자')/prevAll('선택자')
+				- 다음/이전 형제 요소들 중 선택자와 일치하는 요소들을 선택
+			- nextUntil('선택자')/prevUntil('선택자')
+				- 다음/이전 요소들 중 선택자와 일치하는 요소 전까지 요소들을 선택
+			*/
+			$('#four').siblings().css('background','yellow');
+			$('#four').siblings('#one').css('border','1px solid black');
+			$('#four').prev().css('color','red');
+			$('#four').next().css('font-weight','700');
+			$('#four').prevAll().css('text-decoration','underline');
+			$('#four').nextAll().css('padding-left','20px');
+			$('#four').prevAll('#one').css('width','400px');
+			$('#four').nextAll('.six').css('text-align','center');
+		})
+	</script>
+</head>
+<body>
+	<ul>
+		<li class="list" id="one">1</li>
+		<li class="list">2</li>
+		<li class="list">3</li>
+		<li class="list" id="four">4</li>
+		<li class="list">5</li>
+		<li class="list six">6</li>
+	</ul>
+</body>
+</html>

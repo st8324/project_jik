@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>메뉴선택 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			$('.menu a').click(function(e){
+				e.preventDefault();
+				$('.menu a').removeClass('selected');
+				$(this).addClass('selected');
+			})
+		});
+	</script>
+	<style>
+		*{
+			margin: 0; padding: 0; text-decoration: none; list-style: none; color: #000;
+		}
+		.menu{
+			border: 1px solid black; display: flex;
+		}
+		.menu>li{
+			border-right: 1px solid black; width: 100%;
+		}
+		.menu>li:last-child{
+			border-right: none;
+		}
+		.menu>li>a{
+			display: block; height: 50px; line-height: 50px; font-size: 35px;
+			text-align: center; cursor: pointer;
+		}
+		.selected{
+			background: yellow;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<ul class="menu">
+			<li><a href="#">메뉴1</a></li>
+			<li><a href="#">메뉴2</a></li>
+			<li><a href="#">메뉴3</a></li>
+		</ul>
+	</nav>
+</body>
+</html>
