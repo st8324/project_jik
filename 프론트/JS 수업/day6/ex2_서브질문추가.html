@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>질문 추가 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.q-box,.q-main-box{
+			position: relative;
+		}
+		.main-add-btn{
+			position: absolute; top: 0; right: 0; z-index: 2;
+		}
+		.sub-add-btn{
+			position: absolute; top: 40px; right: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="q-box">
+		<button class="main-add-btn">메인질문추가</button>
+		<div class="q-main-box">
+			<div class="main-title">질문1</div>
+			<button class="sub-add-btn">서브질문추가</button>
+			<div class="q-sub-box">
+				<div class="sub-title">질문1-1</div>
+				<input type="text" class="sub-input">
+			</div>
+		</div>
+	</div>
+	<script>
+		$(function(){
+			/* 
+			- append, appendTo, prepend, prependTo, after, before, html 등으로 추가된
+				요소에는 기존의 등록한 이벤트들이 적용되지 않을 수 있다.
+			*/
+			$('.main-add-btn').click(function(){
+				var num = $('.q-main-box').last().find('.main-title').text();
+				num = num.substr(2);
+				num = parseInt(num);
+				var str = 
+				'<div class="q-main-box">'+
+					'<div class="main-title">질문'+ ++num +'</div>'+
+					'<button class="sub-add-btn">서브질문추가</button>'+
+					'<div class="q-sub-box">'+
+						'<div class="sub-title">질문'+ num +'-1</div>'+
+						'<input type="text" class="sub-input">'+
+					'</div>'+
+				'</div>';
+				$('.q-box').append(str);
+				//방법1 : 새로 추가된 요소에만 이벤트를 추가
+				//새로 추가된 서브질문추가 버튼에만 이벤트를 추가
+				//addEventSubBtnClick($('.q-main-box').last().find('.sub-add-btn'));
+				
+				//방법2 : 모든 서브질문추가 버튼에 이벤트를 제거하고 모든 서브질문추가 버튼에
+				//			 클릭 이벤트를 추가
+				$('.sub-add-btn').off('click');
+				addEventSubBtnClick($('.sub-add-btn'));
+				
+			});
+			addEventSubBtnClick($('.sub-add-btn'));
+		})
+		function addEventSubBtnClick(obj){
+			obj.click(function(){
+				var mainNum = $(this).siblings('.q-sub-box').last().find('.sub-title').text();
+				var index = mainNum.indexOf('-');
+				var num = mainNum.substr(index+1);
+				num = parseInt(num);
+				mainNum = mainNum.substr(0,index+1);
+				var str = 
+				'<div class="q-sub-box">'+
+					'<div class="sub-title">'+mainNum + ++num+'</div>'+
+					'<input type="text" class="sub-input">'+
+				'</div>';
+				$(this).parent().append(str);
+			})
+		}
+	</script>
+</body>
+</html>
