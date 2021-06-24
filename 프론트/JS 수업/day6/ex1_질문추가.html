@@ -24,13 +24,31 @@
 		</div>
 	</div>
 	<script>
+		/*
+		var num = 2;
 		$(function(){
 			$('#main_add_btn').click(function(){
 				var str = 
 					'<div class="q-main-box">' + 
-						'<div class="main-title">질문1</div>' +
+						'<div class="main-title">질문' + num++ + '</div>' +
 						'<input type="text" class="main-input">' +
 					'</div>';
+				$('.q-box').append(str);
+			})
+		})*/
+	</script>
+	<script>
+		$(function(){
+			$('#main_add_btn').click(function(){
+				var num = $('.q-main-box').last().children('.main-title').text();
+				num = num.substr(2);
+				num = parseInt(num);
+				var str = 
+					'<div class="q-main-box">' + 
+						'<div class="main-title">질문' + ++num + '</div>' +
+						'<input type="text" class="main-input">' +
+					'</div>';
+				$('.q-box').append(str);
 			})
 		})
 	</script>
