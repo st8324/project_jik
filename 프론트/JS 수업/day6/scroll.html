@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>스크롤 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			/*
+			- scroll() : 요소에 마우스 스크롤을 할 때 발생하는 이벤트
+			- scrollTop() : y축 방향으로 스크롤의 위치
+			- scrollLeft(): x축 방향으로 스크롤의 위치
+			*/
+			$('div').scroll(function(){
+				printScroll();
+			})
+		})
+		function printScroll(){
+			console.log($('div').scrollTop());
+			console.log($('div').scrollLeft());
+		}
+	</script>
+</head>
+<body >
+	<div style="width: 200px; height: 100px; overflow: scroll;">
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	</div>
+</body>
+</html>
