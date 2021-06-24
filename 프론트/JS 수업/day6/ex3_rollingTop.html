@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/rolling.js"></script>
+	<script>
+		var id1, id2, id3;
+		
+		$(function(){
+			id1 = rollingTop('.box1','li',-50,800,1000);
+			id2 = rollingTop('.box2','li',-50,1000,1500);
+			id3 = rollingTop('.box3','li',-50,1500,2000);
+			$('.box1').hover(function(){
+				clearInterval(id1);
+			},function(){
+				id1 = rollingTop('.box1','li',-50,800,1000);
+			})
+			$('.box2').hover(function(){
+				clearInterval(id2);
+			},function(){
+				id2 = rollingTop('.box2','li',-50,1000,1500);
+			})
+			$('.box3').hover(function(){
+				clearInterval(id3);
+			},function(){
+				id3 = rollingTop('.box3','li',-50,1500,2000);
+			})
+		})
+		
+	</script>
+	<style>
+		ul{
+			list-style: none; height: 50px; background: yellow; overflow: hidden;
+		}
+		li{
+			text-align: center;line-height: 50px; height: 50px;
+		}
+	</style>
+</head>
+<body>
+	<ul class="box1">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+	<ul class="box2">
+		<li>a</li>
+		<li>b</li>
+		<li>c</li>
+		<li>d</li>
+	</ul>
+	<ul class="box3">
+		<li>a</li>
+		<li>b</li>
+		<li>c</li>
+		<li>d</li>
+	</ul>
+</body>
+</html>
