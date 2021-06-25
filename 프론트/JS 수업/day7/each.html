@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>each 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			/* 
+			- each() : 요소들 각각을 불러오는 메소드
+			- each(function(){}) : 요소들을 각각 불러와 함수 안에 있는 코드를 실행
+			*/
+			for(var i = 0; i<$('.box').length; i++){
+				var text = $('.box').eq(i).text();
+				console.log(text);
+			}
+			$('.box').each(function(i){
+				console.log(i + ':'+$(this).text());
+			})
+		})
+	</script>
+</head>
+<body>
+	<div class="box">1</div>
+	<div class="box">2</div>
+	<div class="box">3</div>
+</body>
+</html>

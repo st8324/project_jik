@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>메뉴 선택</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.menu-box{
+			height: 50px; margin: 0 40px; position: relative;
+		}
+		.menu-container-box{
+			height: 50px; width: 100%; overflow: hidden; border: 2px solid black; box-sizing: border-box;
+		}
+		.menu-wrap-box{
+			width: 300%; height: 50px;
+		}
+		.menu{
+			width: calc(100% / 3); float: left; list-style: none; padding: 0; margin: 0;
+		}
+		.menu .menu-item{
+			width: 25%; float: left; box-sizing: border-box; border-right: 2px solid black;
+			height: 50px; line-height: 50px; text-align: center;
+		}
+		.menu .menu-item:nth-child(4n){
+			border-right: none;
+		}
+		.menu-btn-box .prev-btn, .menu-btn-box .next-btn{
+			width: 40px; height: 40px; background: white; border: 2px solid black; border-radius: 50%;
+			text-align: center; line-height: 40px; position: absolute; top: 3px; left: 0; 
+			margin-left: -20px; cursor: pointer;
+		}
+		.menu-btn-box .next-btn{
+			left: auto; right: 0; margin-right: -20px;
+		}
+		.selected{
+			background: cornflowerblue;
+		}
+	</style>
+</head>
+<body>
+	<div class="menu-box">
+		<div class="menu-btn-box">
+			<div class="prev-btn"><</div>
+			<div class="next-btn">></div>
+		</div>
+		<div class="menu-container-box">
+			<div class="menu-wrap-box">
+				<ul class="menu">
+					<li class="menu-item selected">메뉴1</li>
+					<li class="menu-item">메뉴2</li>
+					<li class="menu-item">메뉴3</li>
+					<li class="menu-item">메뉴4</li>
+				</ul>
+				<ul class="menu">
+					<li class="menu-item">메뉴5</li>
+					<li class="menu-item">메뉴6</li>
+					<li class="menu-item">메뉴7</li>
+					<li class="menu-item">메뉴8</li>
+				</ul>
+				<ul class="menu">
+					<li class="menu-item">메뉴9</li>
+					<li class="menu-item">메뉴10</li>
+					<li class="menu-item">메뉴11</li>
+					<li class="menu-item">메뉴12</li>
+				</ul>
+			</div>
+		</div>
+	</div>	
+	<script>
+		$(function(){
+			$('.menu-btn-box .next-btn').click(function(){
+				var selected = $('.selected');
+				//메뉴 4, 메뉴8, 메뉴12
+				if(selected.next().length == 0){
+					//마지막 메뉴인 경우(메뉴 12)
+					if(selected.parent().next().length == 0){
+						return;
+					}
+					//애니메이션
+					var ml = $('.menu-wrap-box').css('margin-left');
+					ml = parseFloat(ml);
+					var width = $('.menu').first().width();
+					ml = ml - width;
+					$('.menu-wrap-box').animate({'margin-left':ml+'px'},500);
+					//이동 후 다음 큰 메뉴에서 첫번 째 메뉴에 seleted 클래스 추가
+					selected.parent().next().children('.menu-item').first().addClass('selected');
+					selected.removeClass('selected');
+				}else{
+					//큰 메뉴내에서 다음으로 이동
+					selected.removeClass('selected').next().addClass('selected');
+				}
+			})
+			$('.menu-btn-box .prev-btn').click(function(){
+				var selected = $('.selected');
+				//메뉴 1, 메뉴5, 메뉴9
+				if(selected.prev().length == 0){
+					//첫번째 메뉴인 경우(메뉴 1)
+					if(selected.parent().prev().length == 0){
+						return;
+					}
+					//애니메이션
+					var ml = $('.menu-wrap-box').css('margin-left');
+					ml = parseFloat(ml);
+					var width = $('.menu').first().width();
+					ml = ml + width;
+					$('.menu-wrap-box').animate({'margin-left':ml+'px'},500);
+					//이동 후 다음 큰 메뉴에서 첫번 째 메뉴에 seleted 클래스 추가
+					selected.parent().prev().children('.menu-item').last().addClass('selected');
+					selected.removeClass('selected');
+				}else{
+					//큰 메뉴내에서 다음으로 이동
+					selected.removeClass('selected').prev().addClass('selected');
+				}
+			})
+		})
+	</script>
+</body>
+</html>

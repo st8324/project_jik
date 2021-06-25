@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>체크박스 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		var arr = [];
+		$(function(){
+			$('input[name=hobby]').click(function(){
+				var value = $(this).val();
+				var index = arr.indexOf(value);
+				//선택한 항목이 있으면(체크를 해제하면)
+				if(index >= 0){
+					arr.splice(index,1);
+				}
+				//선택한 항목이 없으면(체크 하면)
+				else{
+					//배열에 저장된 갯수가 3보다 작으면 배열에 추가
+					if(arr.length < 3){
+						arr.push(value);
+					}
+					//배열에 저장된 갯수가 3보다 크거나 같으면 배열에 추가하지 않고,
+					//지금 막 체크된 체크 박스를 체크해제
+					else{
+						$(this).prop('checked', false);
+						alert('최대 3개입니다.');
+					}
+				}
+				$('.view-box .box').each(function(i){
+					var val = typeof arr[i] == 'undefined' ? '' : arr[i];
+					$('.view-box .box').eq(i).text(val);
+				})
+			});
+		})
+	</script>
+	<style>
+		.view-box .box{
+			height: 40px; width: 100px; border: 1px solid black; line-height: 40px;
+			text-align: center; margin-right: 20px; float: left;
+		}
+		.view-box{
+			height: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="view-box">
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+	</div>
+	<label><input type="checkbox" name="hobby" value="농구">농구</label>
+	<label><input type="checkbox" name="hobby" value="야구">야구</label>
+	<label><input type="checkbox" name="hobby" value="축구">축구</label>
+	<label><input type="checkbox" name="hobby" value="볼링">볼링</label>
+	<label><input type="checkbox" name="hobby" value="독서">독서</label>
+</body>
+</html>
