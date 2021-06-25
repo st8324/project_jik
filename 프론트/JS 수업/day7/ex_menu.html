@@ -48,26 +48,40 @@
 		<div class="menu-container-box">
 			<div class="menu-wrap-box">
 				<ul class="menu">
-					<li class="menu-item selected">메뉴1</li>
-					<li class="menu-item">메뉴2</li>
-					<li class="menu-item">메뉴3</li>
-					<li class="menu-item">메뉴4</li>
+					<li class="menu-item selected" data-target=".box1">메뉴1</li>
+					<li class="menu-item" data-target=".box2">메뉴2</li>
+					<li class="menu-item" data-target=".box3">메뉴3</li>
+					<li class="menu-item" data-target=".box4">메뉴4</li>
 				</ul>
 				<ul class="menu">
-					<li class="menu-item">메뉴5</li>
-					<li class="menu-item">메뉴6</li>
-					<li class="menu-item">메뉴7</li>
-					<li class="menu-item">메뉴8</li>
+					<li class="menu-item" data-target=".box5">메뉴5</li>
+					<li class="menu-item" data-target=".box6">메뉴6</li>
+					<li class="menu-item" data-target=".box7">메뉴7</li>
+					<li class="menu-item" data-target=".box8">메뉴8</li>
 				</ul>
 				<ul class="menu">
-					<li class="menu-item">메뉴9</li>
-					<li class="menu-item">메뉴10</li>
-					<li class="menu-item">메뉴11</li>
-					<li class="menu-item">메뉴12</li>
+					<li class="menu-item" data-target=".box9">메뉴9</li>
+					<li class="menu-item" data-target=".box10">메뉴10</li>
+					<li class="menu-item" data-target=".box11">메뉴11</li>
+					<li class="menu-item" data-target=".box12">메뉴12</li>
 				</ul>
 			</div>
 		</div>
 	</div>	
+	<div class="contents-box">
+		<div class="box1">박스1</div>
+		<div class="box2">박스2</div>
+		<div class="box3">박스3</div>
+		<div class="box4">박스4</div>
+		<div class="box5">박스5</div>
+		<div class="box6">박스6</div>
+		<div class="box7">박스7</div>
+		<div class="box8">박스8</div>
+		<div class="box9">박스9</div>
+		<div class="box10">박스10</div>
+		<div class="box11">박스11</div>
+		<div class="box12">박스12</div>
+	</div>
 	<script>
 		$(function(){
 			$('.menu-btn-box .next-btn').click(function(){
@@ -91,6 +105,7 @@
 					//큰 메뉴내에서 다음으로 이동
 					selected.removeClass('selected').next().addClass('selected');
 				}
+				$('.selected').click();
 			})
 			$('.menu-btn-box .prev-btn').click(function(){
 				var selected = $('.selected');
@@ -113,7 +128,16 @@
 					//큰 메뉴내에서 다음으로 이동
 					selected.removeClass('selected').prev().addClass('selected');
 				}
+				$('.selected').click();
 			})
+			$('.menu-item').click(function(){
+				$('.menu-item').removeClass('selected');
+				$(this).addClass('selected');
+				var target = $(this).attr('data-target');
+				$('.contents-box div').hide();
+				$(target).show();
+			})
+			$('.menu-item').eq(0).click();
 		})
 	</script>
 </body>
