@@ -5,6 +5,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>네이버 구조 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/rolling.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 	<style>
 		* { padding: 0; margin: 0; }
@@ -73,7 +75,7 @@
 		}
 		.right2{
 			height: 49px; border: 1px solid skyblue; box-sizing: border-box;
-			position: relative;
+			position: relative; padding: 10px;
 		}
 		.left2-1{
 			height: 49px; background-color: violet;
@@ -143,6 +145,17 @@
 		.right2 .btn-box .next-btn{
 			margin-left: -1px;
 		}
+		.right2 .view-box{
+			height: 29px; width: 270px; overflow: hidden;
+		}
+		.right2 .view-box .contents-box{
+			width: calc(270px * 4);
+		}
+		.right2 .view-box .contents-box li{
+			width: 270px; height: 29px; line-height: 29px; background: yellow;
+			float: left;
+		}
+
 		.inner-right1-box{ position: relative; height: 100%;}
 		.inner-right1-box>p.title{
 			height: 16px; line-height: 16px; 
@@ -293,7 +306,8 @@
 		.bold{ font-weight: bold;}
 		.mall-list::after,
 		.right4-bot2 .inner-container::after,
-		.right4-bot4 .bot4-container .inner-container::after{ 
+		.right4-bot4 .bot4-container .inner-container::after,
+		.right2 .view-box .contents-box::after{ 
 			content: ''; display: block; clear: both;
 		}
 	</style>
@@ -453,6 +467,14 @@
 					<div class="btn-box">
 						<div class="prev-btn"><i class="fas fa-chevron-left"></i></div>
 						<div class="next-btn"><i class="fas fa-chevron-right"></i></div>
+					</div>
+					<div class="view-box">
+						<ul class="contents-box">
+							<li>내용1</li>
+							<li>내용2</li>
+							<li>내용3</li>
+							<li>내용4</li>
+						</ul>
 					</div>
 				</div>
 				<div class="right3"></div>
@@ -673,5 +695,32 @@
 		</div>
 	</div>
 	<div class="box5 container"></div>
+	<script>
+		var id;
+		$(function(){
+			id = rollingLeft('.right2 .view-box .contents-box', 'li', 800, 1500);
+			$('.right2').hover(function(){
+				clearInterval(id);
+			},function(){
+				id = rollingLeft('.right2 .view-box .contents-box', 'li', 800, 1500);
+			})
+			$('.right2 .btn-box .next-btn').click(function(){
+				if(!$('.right2 .contents-box li').first().is(':animated')){
+					var width = $('.right2 .contents-box li').first().width();
+					$('.right2 .contents-box li').first()
+						.animate({'margin-left': -width+'px'},800,function(){
+							$(this).detach().appendTo('.right2  .contents-box').removeAttr('style');
+						})
+				}
+			})
+			$('.right2 .btn-box .prev-btn').click(function(){
+				if(!$('.right2 .contents-box li').first().is(':animated')){
+					var width = $('.right2 .contents-box li').first().width();
+					$('.right2 .contents-box li').last().detach().prependTo('.right2  .contents-box')
+						.css('margin-left',-width+'px').animate({'margin-left':0}, 800);
+				}
+			})
+		})
+	</script>
 </body>
 </html>

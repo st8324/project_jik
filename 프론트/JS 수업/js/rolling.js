@@ -12,14 +12,14 @@ function rollingTop(list, listItem, marginTop, animateTime, intervalTime){
 
 function rollingLeft(list, listItem, animateTime, intervalTime){
 	var id = setInterval(function(){
-		if($(list +' ' + listItem).first()){
+		if(!$(list +' ' + listItem).first().is(':animated')){
 			var width = $(list +' ' + listItem).first().width();
 			$(list +' ' + listItem).first()
 				.animate({'margin-left':'-'+width}, animateTime,function(){
 				$(this).detach().appendTo(list).removeAttr('style');
 			})
 		}
-	},1500);
+	},intervalTime);
 	return id;
 }
 function rollingRight(list, listItem, animateTime, intervalTime){
