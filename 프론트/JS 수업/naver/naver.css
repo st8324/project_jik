@@ -10,6 +10,7 @@ a { text-decoration: none; color: #000;}
 .box3{ 
 	box-sizing: border-box; height: 52px; border-top: 1px solid #e4e8eb; 
 	min-width: 1190px; box-shadow: 0 1px 3px 0 rgba(0,0,0,0.12);
+	position: relative; z-index: 2;
 }		
 .box4{ 
 	padding: 20px 30px; box-sizing: border-box;
@@ -37,9 +38,84 @@ a { text-decoration: none; color: #000;}
 	border: none;
 }
 .search-input:focus{ border: none; outline: none;}
+/* 중간 메뉴 부분 */
 .menu{
-	height: 100%; box-sizing: border-box; border: 1px solid blue;
+	height: 100%; box-sizing: border-box;
 }
+.menu.container{
+	padding: 10px 30px; position: relative;
+}
+.menu .list-item{
+	line-height: 30px; height: 30px; margin-right: 10px; float: left; font-weight: bold;
+}
+.menu .green-menu-list .list-item a{
+	color: #03c75a;
+}
+.menu .green-menu-list,
+.menu .black-menu-list{
+	float: left;
+}
+.menu .more-btn,
+.menu .fold-btn{
+	float: left; line-height: 30px; height: 30px; font-size: 12px; margin-left: 10px;
+	cursor: pointer;
+}
+.menu .fold-btn{
+	display: none;
+}
+.box3 .menu-box{
+	position: absolute; left: 0; right: 0; height: 300px; background: white; top: 52px;
+	box-shadow: 0 3px 3px 0 rgba(0,0,0,0.12); display: none;
+}
+.menu .weather-box{
+	background: red; height: 30px; width: 270px; float: right;
+}
+.menu .menu-btn-box{
+	height: 30px; width: 270px; position: absolute;top: 10px; right: 30px; background: white;
+	display: none;
+}
+.box3 .menu-box .container{
+	width: 1190px; padding: 20px 30px; display: flex; box-sizing: border-box;
+}
+.box3 .menu-box .menu-list{
+	width: 100%; box-sizing: border-box; border-left: 1px solid red; height: 260px;
+	padding: 0 14px;
+}
+.box3 .menu-box .menu-list:last-child{
+	border-right: 1px solid red;
+}
+.menu .menu-btn-box .btn-box1,
+.menu .menu-btn-box .btn-box2{
+	float: right;
+}
+.menu .menu-btn-box .btn-box2{
+	display: none;
+}
+.menu .btn-box1 .service-btn,
+.menu .btn-box1 .set-btn,
+.menu .btn-box2 .save-btn,
+.menu .btn-box2 .init-btn{
+	box-sizing: border-box; height: 30px; border: 1px solid red; border-radius: 15px;
+	margin-left: 10px; float: left; padding: 0 5px; background: white; cursor: pointer;
+}
+.menu .btn-box2 .save-btn{
+	background: #19ce60; border-color: #00c73c; color: #fff;
+}
+.box3 .menu-box .menu-list li{
+	font-size: 13px; line-height: 26px; letter-spacing: -.6px;
+}
+.box3 .menu-box .menu-list li.title{
+	font-weight: bold; font-size: 14px; margin-bottom: 5px;
+}
+.box3 .menu-box .menu-list a:hover{
+	text-decoration: underline;
+}
+.box3 .menu-box .menu-list input[type=checkbox]{
+	margin-right: 10px;
+}
+
+
+
 .box4-inner{
 	height: 100%;
 }
@@ -295,9 +371,17 @@ a { text-decoration: none; color: #000;}
 }
 
 .bold{ font-weight: bold;}
+.display-none{
+	display: none !important;
+}
 .mall-list::after,
 .right4-bot2 .inner-container::after,
 .right4-bot4 .bot4-container .inner-container::after,
-.right2 .view-box .contents-box::after{ 
+.right2 .view-box .contents-box::after,
+.menu.container::after,
+.menu .black-menu-list::after,
+.menu .green-menu-list::after,
+.menu .btn-box1::after,
+.menu .btn-box2::after{ 
 	content: ''; display: block; clear: both;
 }
