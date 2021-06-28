@@ -604,6 +604,9 @@
 				$('.box3 .menu .menu-btn-box').hide();
 				$('.box3 .menu .menu-btn-box .btn-box1').show();//서비스 전체보기, 메뉴설정 버튼을 보여주고
 				$('.box3 .menu .menu-btn-box .btn-box2').hide();//초기화, 저장 버튼은 감춤
+
+				//검은 메뉴 출력
+				setMenuBox(selMenu, oriMenu);
 			})
 			//메뉴 설정 버튼 클릭
 			$('.box3 .set-btn').click(function(){
@@ -633,6 +636,22 @@
 					}
 				}
 			})
+		}
+		function setMenuBox(selArr, oriArr){
+			//선택된 메뉴가 있으면 선택된 메뉴를 화면에 출력하고, 선택된 메뉴가 없으면 미리 지정된 메뉴를 출력
+			//하기 위해 arr를 상황에 따라 선정
+			var arr = selArr.length == 0 ? oriArr: selArr;
+			$('.black-menu-list .list-item').each(function(index){
+				$(this).removeClass('display-none');
+				//메뉴를 보여줘야 하기 때문에 메뉴 선택할 때 사용된 박스를 제거
+				$(this).removeClass('selected input-box');
+				if(index < arr.length){
+					$(this).find('a').text(arr[index]);
+				}else{
+					$(this).addClass('display-none');
+				}
+			})
+			
 		}
 	</script>
 </body>
