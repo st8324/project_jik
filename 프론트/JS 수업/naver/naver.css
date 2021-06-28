@@ -48,6 +48,12 @@ a { text-decoration: none; color: #000;}
 .menu .list-item{
 	line-height: 30px; height: 30px; margin-right: 10px; float: left; font-weight: bold;
 }
+.menu .list-item.input-box{
+	width: 70px; border: 1px solid red; box-sizing: border-box;
+}
+.menu .list-item.input-box.selected{
+	border-color: blue;
+}
 .menu .green-menu-list .list-item a{
 	color: #03c75a;
 }
