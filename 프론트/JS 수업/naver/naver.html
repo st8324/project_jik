@@ -609,6 +609,8 @@
 
 				//검은 메뉴 출력
 				setMenuBox(selMenu, oriMenu);
+				tmpMenu = [];
+				initCheckbox(selMenu);
 			})
 			//메뉴 설정 버튼 클릭
 			$('.box3 .set-btn').click(function(){
@@ -617,6 +619,7 @@
 				$('.box3 .btn-box2').show();
 				$('.box3 .btn-box1').hide();
 				initMenuBox(selMenu);
+				tmpMenu = selMenu.slice(0);
 			})
 			//메뉴 설정에서 체크박스 클릭
 			$('.menu-list input[type=checkbox]').click(function(){
@@ -637,10 +640,26 @@
 				}
 				initMenuBox(tmpMenu);
 			})
+			//메뉴설정에서 저장 버튼 클릭
+			$('.btn-box2 .save-btn').click(function(){
+				selMenu = tmpMenu.slice(0);
+				$('.menu .fold-btn').click();
+			})
+			//메뉴설정에서 초기화 버튼 클릭
+			$('.btn-box2 .init-btn').click(function(){
+				alert('초기 설정으로 돌아갑니다');
+				selMenu = [];
+				$('.menu .fold-btn').click();
+			})
 		})
+		/*
+		- 메뉴 설정을 눌렀을 때 검은 메뉴 창에 메뉴를 선택할 수 있는 박스를 보여주도록
+			화면을 구성하는 함수로, 선택된 메뉴가 있으면 글자가, 아니면 박스가 보여지고
+			최대 4개 보여진다
+		*/
 		function initMenuBox(arr){
 			$('.black-menu-list .list-item').each(function(index){
-				$(this).removeClass('input-box selected');
+				$(this).removeClass('input-box selected display-none');
 				//5번째 검은색 메뉴를 안보이게 함
 				if(index >= 4){
 					$(this).addClass('display-none');
@@ -659,6 +678,10 @@
 				}
 			})
 		}
+		/*
+		- 선택된 메뉴에 따라 검은색 메뉴를 보여주는 부분
+			선택된 메뉴가 없으면 기본 메뉴를 화면에 보여줌
+		*/
 		function setMenuBox(selArr, oriArr){
 			//선택된 메뉴가 있으면 선택된 메뉴를 화면에 출력하고, 선택된 메뉴가 없으면 미리 지정된 메뉴를 출력
 			//하기 위해 arr를 상황에 따라 선정
@@ -673,7 +696,18 @@
 					$(this).addClass('display-none');
 				}
 			})
-			
+		}
+		/* 메뉴 설정에서 선택된 메뉴에 따라 체크 박스 체크 여부가 결정되게 함수*/
+		function initCheckbox(arr){
+			$('.menu-list input[type=checkbox]').each(function(){
+				var value = $(this).val();
+				//선택된 메뉴에 값이 있으면
+				if(arr.indexOf(value) >= 0){
+					$(this).prop('checked', true);
+				}else{
+					$(this).prop('checked', false);
+				}
+			})
 		}
 	</script>
 </body>
