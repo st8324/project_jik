@@ -375,6 +375,54 @@ a { text-decoration: none; color: #000;}
 .right4-bot4 .bot4-container .inner-container .sub-box:hover .title-box{
 	text-decoration: underline;
 }
+.left3 {
+	margin-top: 8px;
+}
+.left3 .menu-box{
+	height: 50px; position: relative; width: 750px;
+}
+.left3 .menu-container-box{
+	height: 50px; width: 750px; overflow: hidden; border: 1px solid black;
+	box-sizing: border-box;
+}
+.left3 .menu-wrap-box{
+	width: 400%; height: 50px;
+}
+.left3 .menu{
+	width: calc(100% / 4); float: left; list-style: none; padding: 0; margin: 0;
+}
+.left3 .menu .menu-item{
+	width: 94px; float: left; box-sizing: border-box; border-right: 1px solid black;
+	height: 50px; line-height: 50px; text-align: center; font-weight: bold;
+}
+.left3 .menu .menu-item:nth-child(8n+1){
+	width: 92px;
+}
+.left3 .menu .menu-item:nth-child(8n){
+	border-right: none; width: 92px;
+}
+.left3 .menu-btn-box .prev-btn, .menu-btn-box .next-btn{
+	width: 40px; height: 40px; background: white; border: 2px solid black; border-radius: 50%;
+	text-align: center; line-height: 40px; position: absolute; top: 3px; left: 0; 
+	margin-left: -20px; cursor: pointer;
+}
+.left3 .menu-btn-box .next-btn{
+	left: auto; right: 0; margin-right: -20px;
+}
+.left3 .selected{
+	background: cornflowerblue;
+}
+.left3 .contents-box{
+	width: 750px;
+}
+
+.left3 .menu-item:nth-child(1):not(.selected):hover{ color: blue;}
+.left3 .menu-item:nth-child(2):not(.selected):hover{ color: red;}
+
+.left3 .menu-item:nth-child(1).selected{ color: white; background: blue;}
+.left3 .menu-item:nth-child(2).selected{ color: white; background: red;}
+
+
 
 .bold{ font-weight: bold;}
 .display-none{

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>메뉴 선택</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.left3 .menu-box{
+			height: 50px; position: relative; width: 750px;
+		}
+		.left3 .menu-container-box{
+			height: 50px; width: 750px; overflow: hidden; border: 1px solid black;
+			box-sizing: border-box;
+		}
+		.left3 .menu-wrap-box{
+			width: 400%; height: 50px;
+		}
+		.left3 .menu{
+			width: calc(100% / 4); float: left; list-style: none; padding: 0; margin: 0;
+		}
+		.left3 .menu .menu-item{
+			width: 94px; float: left; box-sizing: border-box; border-right: 1px solid black;
+			height: 50px; line-height: 50px; text-align: center;
+		}
+		.left3 .menu .menu-item:nth-child(8n+1){
+			width: 92px;
+		}
+		.left3 .menu .menu-item:nth-child(8n){
+			border-right: none; width: 92px;
+		}
+		.left3 .menu-btn-box .prev-btn, .menu-btn-box .next-btn{
+			width: 40px; height: 40px; background: white; border: 2px solid black; border-radius: 50%;
+			text-align: center; line-height: 40px; position: absolute; top: 3px; left: 0; 
+			margin-left: -20px; cursor: pointer;
+		}
+		.left3 .menu-btn-box .next-btn{
+			left: auto; right: 0; margin-right: -20px;
+		}
+		.left3 .selected{
+			background: cornflowerblue;
+		}
+		.left3 .contents-box{
+			width: 750px;
+		}
+	</style>
+</head>
+<body>
+	<div class="left3">
+		<div class="menu-box">
+			<div class="menu-btn-box">
+				<div class="prev-btn"><</div>
+				<div class="next-btn">></div>
+			</div>
+			<div class="menu-container-box">
+				<div class="menu-wrap-box">
+					<ul class="menu">
+						<li class="menu-item selected" data-target=".menu-box1">메뉴1</li>
+						<li class="menu-item" data-target=".menu-box2">메뉴2</li>
+						<li class="menu-item" data-target=".menu-box3">메뉴3</li>
+						<li class="menu-item" data-target=".menu-box4">메뉴4</li>
+						<li class="menu-item" data-target=".menu-box5">메뉴5</li>
+						<li class="menu-item" data-target=".menu-box6">메뉴6</li>
+						<li class="menu-item" data-target=".menu-box7">메뉴7</li>
+						<li class="menu-item" data-target=".menu-box8">메뉴8</li>
+					</ul>
+					<ul class="menu">
+						<li class="menu-item" data-target=".menu-box9">메뉴9</li>
+						<li class="menu-item" data-target=".menu-box10">메뉴10</li>
+						<li class="menu-item" data-target=".menu-box11">메뉴11</li>
+						<li class="menu-item" data-target=".menu-box12">메뉴12</li>
+						<li class="menu-item" data-target=".menu-box13">메뉴13</li>
+						<li class="menu-item" data-target=".menu-box14">메뉴14</li>
+						<li class="menu-item" data-target=".menu-box15">메뉴15</li>
+						<li class="menu-item" data-target=".menu-box16">메뉴16</li>
+					</ul>
+					<ul class="menu">
+						<li class="menu-item" data-target=".menu-box17">메뉴17</li>
+						<li class="menu-item" data-target=".menu-box18">메뉴18</li>
+						<li class="menu-item" data-target=".menu-box19">메뉴19</li>
+						<li class="menu-item" data-target=".menu-box20">메뉴20</li>
+						<li class="menu-item" data-target=".menu-box21">메뉴21</li>
+						<li class="menu-item" data-target=".menu-box22">메뉴22</li>
+						<li class="menu-item" data-target=".menu-box23">메뉴23</li>
+						<li class="menu-item" data-target=".menu-box24">메뉴24</li>
+					</ul>
+					<ul class="menu">
+						<li class="menu-item" data-target=".menu-box25">메뉴25</li>
+						<li class="menu-item" data-target=".menu-box26">메뉴26</li>
+						<li class="menu-item" data-target=".menu-box27">메뉴27</li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+		<div class="contents-box">
+			<div class="menu-box1">박스1</div>
+			<div class="menu-box2">박스2</div>
+			<div class="menu-box3">박스3</div>
+			<div class="menu-box4">박스4</div>
+			<div class="menu-box5">박스5</div>
+			<div class="menu-box6">박스6</div>
+			<div class="menu-box7">박스7</div>
+			<div class="menu-box8">박스8</div>
+			<div class="menu-box9">박스9</div>
+			<div class="menu-box10">박스10</div>
+			<div class="menu-box11">박스11</div>
+			<div class="menu-box12">박스12</div>
+			<div class="menu-box13">박스13</div>
+			<div class="menu-box14">박스14</div>
+			<div class="menu-box15">박스15</div>
+			<div class="menu-box16">박스16</div>
+			<div class="menu-box17">박스17</div>
+			<div class="menu-box18">박스18</div>
+			<div class="menu-box19">박스19</div>
+			<div class="menu-box20">박스20</div>
+			<div class="menu-box21">박스21</div>
+			<div class="menu-box22">박스22</div>
+			<div class="menu-box23">박스23</div>
+			<div class="menu-box24">박스24</div>
+			<div class="menu-box25">박스25</div>
+			<div class="menu-box26">박스26</div>
+			<div class="menu-box27">박스27</div>
+		</div>
+	</div>
+	<script>
+		$(function(){
+			$('.left3 .menu-btn-box .next-btn').click(function(){
+				var selected = $('.left3 .selected');
+				//메뉴 4, 메뉴8, 메뉴12
+				if(selected.next().length == 0){
+					//마지막 메뉴인 경우(메뉴 12)
+					if(selected.parent().next().length == 0){
+						return;
+					}
+					//애니메이션
+					var ml = $('.left3 .menu-wrap-box').css('margin-left');
+					ml = parseFloat(ml);
+					var width = $('.left3 .menu').first().width();
+					ml = ml - width;
+					$('.left3 .menu-wrap-box').animate({'margin-left':ml+'px'},500);
+					//이동 후 다음 큰 메뉴에서 첫번 째 메뉴에 seleted 클래스 추가
+					selected.parent().next().children('.menu-item').first().addClass('selected');
+					selected.removeClass('selected');
+				}else{
+					//큰 메뉴내에서 다음으로 이동
+					selected.removeClass('selected').next().addClass('selected');
+				}
+				$('.left3 .selected').click();
+			})
+			$('.left3 .menu-btn-box .prev-btn').click(function(){
+				var selected = $('.left3 .selected');
+				//메뉴 1, 메뉴5, 메뉴9
+				if(selected.prev().length == 0){
+					//첫번째 메뉴인 경우(메뉴 1)
+					if(selected.parent().prev().length == 0){
+						return;
+					}
+					//애니메이션
+					var ml = $('.left3 .menu-wrap-box').css('margin-left');
+					ml = parseFloat(ml);
+					var width = $('.left3 .menu').first().width();
+					ml = ml + width;
+					$('.left3 .menu-wrap-box').animate({'margin-left':ml+'px'},500);
+					//이동 후 다음 큰 메뉴에서 첫번 째 메뉴에 seleted 클래스 추가
+					selected.parent().prev().children('.menu-item').last().addClass('selected');
+					selected.removeClass('selected');
+				}else{
+					//큰 메뉴내에서 다음으로 이동
+					selected.removeClass('selected').prev().addClass('selected');
+				}
+				$('.left3 .selected').click();
+			})
+			$('.left3 .menu-item').click(function(){
+				$('.left3 .menu-item').removeClass('selected');
+				$(this).addClass('selected');
+				var target = $(this).attr('data-target');
+				$('.left3 .contents-box div').hide();
+				$(target).show();
+				//첫번째 메뉴를 선택하면 이전 버튼 안보이게
+				if(target =='.menu-box1'){
+					$('.menu-btn-box .prev-btn').hide()
+				}else{
+					$('.menu-btn-box .prev-btn').show()
+				}
+				//마지막 메뉴를 선택하면 다음 버튼 안보이게
+				if(target =='.menu-box27'){
+					$('.menu-btn-box .next-btn').hide()
+				}else{
+					$('.menu-btn-box .next-btn').show()
+				}
+			})
+			$('.left3 .menu-item').eq(0).click();
+		})
+	</script>
+</body>
+</html>
