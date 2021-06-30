@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>부모창</title>
+	<!-- 
+		자식창 열기 버튼을 클릭했을 때 자식창을 여는 코드를 작성하세요.
+		단 자식창은 child.html을 열어야 한다. 
+	-->
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		var child;
+		$(function(){
+			$('#child').click(function(){
+				child = window.open('child.html','자식','width=500, height=500, left=200, top=200');
+			})
+			$('#sendBtn').click(function(){
+				var value = $('#data').val();
+				$(child.document).find('body').text(value);
+			})
+		})
+	</script>
+</head>
+<body>
+	<button id="child">자식창 열기</button> <br>
+	<input type="text" id="data"> <button id="sendBtn">전송</button>
+</body>
+</html>

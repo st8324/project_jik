@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>자식창</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			$('#sendBtn').click(function(){
+				var value = $('#data').val();
+				$(opener.document).find('#data').val(value);
+			})
+		})
+	</script>
+</head>
+<body>
+	<input type="text" id="data"> <button id="sendBtn">전송</button>
+</body>
+</html>
