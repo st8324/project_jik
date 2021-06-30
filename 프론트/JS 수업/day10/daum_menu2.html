@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>다음 메뉴</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			//메뉴를 클릭
+			$('.menu2 li').click(function(e){
+				if(!$(this).hasClass('selected')){
+					e.preventDefault();
+				}
+				var index = $(this).index();
+				if(index == 0){
+					$('.menu2 .point-box').children().first().addClass('selected');
+				}else{
+					$('.menu2 .point-box').children().removeClass('selected');
+				}
+				$('.menu2 li').removeClass('selected');
+				$(this).addClass('selected');
+			})
+			//메뉴 뉴스 옆에 있는 ...을 클릭
+			$('.menu2 .point-box').click(function(e){
+				if($(this).parent().hasClass('selected')){
+					e.stopPropagation();
+				}
+				if($(this).find('.selected').next().length != 0){
+					$(this).find('.selected').removeClass('selected').next().addClass('selected');
+				}else{
+					$(this).find('.selected').removeClass('selected');
+					$(this).children().first().addClass('selected');
+					//$('.menu2 .point-box .point').eq(0).addClass('selected');
+				}
+			})
+		})
+	</script>
+	<style>
+		*{ 
+			padding: 0; margin: 0; list-style: none; text-decoration: none; color: #000;
+		}
+		.menu::after,
+		.menu li::after{
+			content: ''; display: block; clear: both;
+		}
+		.menu li{
+			height: 50px; line-height: 50px; font-weight: bold; float: left;
+			margin-right: 15px;
+		}
+		.menu li a{
+			height: 100%; float: left;
+		}
+		.selected a{
+			color : red;
+		}
+		.point{
+			float: left; width: 4px; height: 4px; border-radius: 50%; background: gray;
+			position: relative; top:calc(50% - 2px); margin-right: 5px;
+		}
+		.point-box{
+			margin-left: 5px;
+		}
+		.point-box .selected{
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<ul class="menu menu2">
+		<li class="selected">
+			<a href="https://news.daum.net/">뉴스</a>
+			<a href="#" class="point-box">
+				<span class="point selected"></span>
+				<span class="point"></span>
+				<span class="point"></span>
+			</a>
+		</li>
+		<li><a href="https://entertain.daum.net/">연예</a></li>
+		<li><a href="https://sports.daum.net/">스포츠</a></li>
+		<li><a href="https://movie.daum.net/main">영화</a></li>
+		<li><a href="https://auto.daum.net/">자동차</a></li>
+		<li><a href="https://realty.daum.net/">부동산</a></li>
+	</ul>
+</body>
+</html>

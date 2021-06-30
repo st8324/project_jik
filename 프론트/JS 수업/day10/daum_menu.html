@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>다음 메뉴</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			$('.menu1 li').click(function(e){
+				e.preventDefault();
+				if($(this).hasClass('selected')){
+					location.href = $(this).children('a').attr('href');
+				}else{
+					$('.menu1 li').removeClass('selected');
+					$(this).addClass('selected');
+				}
+			})
+			$('.menu2 li').click(function(e){
+				if(!$(this).hasClass('selected')){
+					e.preventDefault();
+				}
+				$('.menu2 li').removeClass('selected');
+				$(this).addClass('selected');
+			})
+		})
+	</script>
+	<style>
+		*{ 
+			padding: 0; margin: 0; list-style: none; text-decoration: none; color: #000;
+		}
+		.menu{
+			display: flex; border: 1px solid black;
+		}
+		.menu li{
+			width: 100%; box-sizing: border-box; border-right: 1px solid black;
+			height: 50px; line-height: 50px; text-align: center; font-weight: bold;
+		}
+		.menu li:last-child{
+			border-right: none;
+		}
+		.menu li a{
+			display: block; height: 100%;
+		}
+		.menu2{
+			margin-top: 20px;
+		}
+		.selected a{
+			color : blue;
+		}
+	</style>
+</head>
+<body>
+	<ul class="menu menu1">
+		<li class="selected"><a href="https://news.daum.net/">뉴스</a></li>
+		<li><a href="https://entertain.daum.net/">연예</a></li>
+		<li><a href="https://sports.daum.net/">스포츠</a></li>
+		<li><a href="https://movie.daum.net/main">영화</a></li>
+		<li><a href="https://auto.daum.net/">자동차</a></li>
+		<li><a href="https://realty.daum.net/">부동산</a></li>
+	</ul>
+	<ul class="menu menu2">
+		<li class="selected"><a href="https://news.daum.net/">뉴스</a></li>
+		<li><a href="https://entertain.daum.net/">연예</a></li>
+		<li><a href="https://sports.daum.net/">스포츠</a></li>
+		<li><a href="https://movie.daum.net/main">영화</a></li>
+		<li><a href="https://auto.daum.net/">자동차</a></li>
+		<li><a href="https://realty.daum.net/">부동산</a></li>
+	</ul>
+</body>
+</html>
