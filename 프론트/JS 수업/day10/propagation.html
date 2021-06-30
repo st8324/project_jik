@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Propagation</title>
+	<style>
+		div{
+			padding: 20px; border: 1px solid black;
+		}
+	</style>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			/*
+			- propagation : 요소에 이벤트가 실행되면 해당 요소에만 이벤트가 실행되는 것이 
+				아니라 조상 요소들에도 이벤트가 실행되는 것
+			- stopPropagation() : 요소에 이벤트가 실행됐을 때 조상 요소들에 이벤트가
+				실행되는 것을 막아주는 메소드
+				- 자식요소와 부모(조상) 요소에서 같은 요소를 가지고 작업을 하는 경우 
+					stopPropagation()을 사용해야 한다.
+			*/
+			$('.box1').click(function(){
+				console.log('box1클릭');
+			})
+			$('.box2').click(function(){
+				$('.box3').removeClass('selected');
+				console.log('box2클릭');
+			})
+			$('.box3').click(function(e){
+				e.stopPropagation();
+				console.log('box3클릭');
+				$('.box3').addClass('selected');
+			})
+		})
+	</script>
+	<style>
+		.selected{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1">
+		box1
+		<div class="box2">
+			box2
+			<div class="box3">
+				box3
+			</div>
+		</div>
+	</div>
+</body>
+</html>

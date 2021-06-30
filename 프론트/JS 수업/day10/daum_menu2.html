@@ -10,26 +10,38 @@
 		$(function(){
 			//메뉴를 클릭
 			$('.menu2 li').click(function(e){
+				//해당 메뉴가 처음 선택되었으면 링크 이벤트를 중지
 				if(!$(this).hasClass('selected')){
 					e.preventDefault();
 				}
+				//뉴스메뉴에서 ...부분에 색을 칠할지 말지 정함
 				var index = $(this).index();
+				//선택된 메뉴가 뉴스이면 첫번째 .에 색을 칠함
 				if(index == 0){
 					$('.menu2 .point-box').children().first().addClass('selected');
-				}else{
+				}
+				//선택된 메뉴가 뉴스가 아니면 모든 ...에 색을 제거
+				else{
 					$('.menu2 .point-box').children().removeClass('selected');
 				}
+				//모든 메뉴에 색을 제거
 				$('.menu2 li').removeClass('selected');
+				//선택된 메뉴에만 색을 칠함
 				$(this).addClass('selected');
 			})
 			//메뉴 뉴스 옆에 있는 ...을 클릭
 			$('.menu2 .point-box').click(function(e){
+				//뉴스 메뉴가 이미 선택되어 있으면 뉴스 메뉴가 클릭되지 않도록 
+				//이벤트 퍼짐 현상을 막음
 				if($(this).parent().hasClass('selected')){
 					e.stopPropagation();
 				}
+				//첫번째.이나 두번째.이면 다음 .으로 이동
 				if($(this).find('.selected').next().length != 0){
 					$(this).find('.selected').removeClass('selected').next().addClass('selected');
-				}else{
+				}
+				//세번째 .이면 첫번째 .으로 이동
+				else{
 					$(this).find('.selected').removeClass('selected');
 					$(this).children().first().addClass('selected');
 					//$('.menu2 .point-box .point').eq(0).addClass('selected');

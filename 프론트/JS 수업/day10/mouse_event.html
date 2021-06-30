@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>마우스 이벤트</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			/*
+				- mouseenter/leave : 요소에 마우스를 올릴때/내릴때 발생하는 이벤트
+					- 자손요소과 본인 요소들에 한번만 적용(요소를 나가기전까지)
+				- mouseover/out : 요소에 마우스를 올릴때/내릴때 발생하는 이벤트
+					- 본인요소와 자식 요소들에 각각에 적용
+			*/
+			$('.box1').mouseenter(function(){
+				var num = $(this).find('span').text()
+				num = parseInt(num)
+				$(this).find('span').text(++num);
+			})
+			$('.box2').mouseover(function(){
+				var num = $(this).find('span').text()
+				num = parseInt(num)
+				$(this).find('span').text(++num);
+			})
+		})
+	</script>
+	<style>
+		div{
+			padding: 30px; border: 1px solid black;
+		}
+		.inner-box{
+			width: 100px;
+			height: 100px;
+		}
+		.box{
+			float: left; margin-right: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box box1">
+		<div class="inner-box">
+			mouseenter : <span>0</span>
+		</div>
+	</div>
+	<div class="box box2">
+		<div class="inner-box">
+			mouseover : <span>0</span>
+		</div>
+	</div>
+</body>
+</html>
