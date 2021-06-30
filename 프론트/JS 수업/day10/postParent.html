@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>우편번호</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			$('#searchBtn').click(function(){
+				window.open('postChild.html','자식','width=500, height=500, left=200, top=200');
+			})
+		})
+	</script>
+</head>
+<body>
+	<input type="text" id="address">
+	<button id="searchBtn">검색</button> <br>
+	<input type="text" id="post">
+</body>
+</html>
