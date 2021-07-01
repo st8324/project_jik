@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>댓글 예제</title>
+	<style>
+		*{
+			padding: 0; margin: 0;
+		}
+		.container{
+			width: 800px; margin: 0 auto;
+		}
+		.board>*{
+			margin-top: 20px;
+		}
+		.board>.contents{
+			height: 350px; border: 1px solid black;
+		}
+		.reply{
+			margin-top: 10px;
+		}
+		.reply>.title{
+			font-weight: bold; margin-bottom: 10px;
+		}
+		.reply-box::after,
+		.reply-item::after{
+			display: block; clear: both; content: '';
+		}
+		.reply-box>*{
+			float: left; height: 80px; box-sizing: border-box;
+		}
+		.reply-box>.reply-btn{
+			width: 80px; float: right; border-radius: 4px; border: 1px solid black;
+			cursor: pointer;
+		}
+		.reply-box>.reply-id{
+			width: 80px;
+		}
+		.reply-box>.reply-input{
+			width: 620px; margin-left: 10px; border-radius: 4px;
+		}
+		.reply-list{
+			margin-bottom: 10px;
+		}
+		.reply-item>*{
+			float: left; min-height: 30px; box-sizing: border-box; margin-top: 10px;
+		}
+		.reply-item>.reply-id{
+			width: 80px;
+		}
+		.reply-item>.reply-output{
+			width: 620px; margin-left: 10px;
+		}
+		.reply-item>.reply-del-btn{
+			width: 80px; height: 30px; border: 1px solid black; border-radius: 4px;
+			float: right; cursor: pointer;
+		}
+	</style>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			
+			//댓글 등록 버튼 클릭 이벤트 확인
+			$('.reply-btn').click(function(){
+				//입력창에 있는 값을 가져옴
+				var reply = $('.reply-input').val();
+				var id = $('.reply-box .reply-id').text();
+				var str = 
+					'<div class="reply-item">'+
+						'<div class="reply-id">'+id+'</div>'+
+						'<div class="reply-output">'+reply+'</div>'+
+						'<button class="reply-del-btn">삭제</button>'+
+					'</div>';
+				$('.reply-list').append(str);
+			})
+		})
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="board">
+			<div class="title">제목입니다.</div>
+			<div class="writer">홍길동</div>
+			<div class="contents"></div>
+		</div>
+		<div class="reply">
+			<div class="title">댓글</div>
+			<div class="contents">
+				<div class="reply-list">
+					
+				</div>
+				<div class="reply-box">
+					<div class="reply-id">작성자</div>
+					<textarea class="reply-input"></textarea>
+					<button class="reply-btn">등록</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
