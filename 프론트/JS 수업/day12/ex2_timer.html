@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>타이머 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		var ms = 0, s = 0, m = 0, h = 0;
+		var id;
+		$(function(){
+			$('#start-btn').click(function(){
+				if($(this).hasClass('stop')){
+					//중지버튼을 클릭하면 타이머를 중지
+					clearInterval(id);
+					$(this).text('시작');
+				}else{
+					//시작 버튼이면 타이머 시작
+					id = setInterval(function(){
+						ms++;
+						if(ms == 100)	{	ms = 0; s++;			}
+						if(s == 60)		{	s = 0; m++;				}
+						if(m == 60)		{	m = 0; h++;				}
+						$('.view-box').text(getTime(h,m,s,ms));
+					},10);
+					$(this).text('중지');
+				}
+				$(this).toggleClass('stop');
+			})
+			$('#init-btn').click(function(){
+				h=0; m=0; s=0; ms=0;
+				$('.view-box').text(getTime(h,m,s,ms));
+				$('.stop').click();
+				$('.record-box').empty();
+			})
+			$('#record-btn').click(function(){
+				var str = '<div class="record">'+getTime(h,m,s,ms)+'</div>'
+				$('.record-box').prepend(str);
+			})
+		})
+		//시,분,초,밀리초가 주어지면 문자열로 만들어주는 함수
+		function getTime(h, m, s, ms){
+			return addZero(h) + ' : ' + addZero(m) + ' : ' + addZero(s) + '.' + addZero(ms);
+		}
+
+		//숫자가 10미만이면 앞에 0을 붙여서 문자열로 만들어주는 함수
+		function addZero(num){
+			if(num < 10){
+				return '0'+num;	
+			}
+			return ''+num;
+		}
+	</script>
+	<style>
+		.container{
+			width: 500px; margin: 30px auto 0;
+		}
+		.view-box{
+			height: 50px; line-height: 50px; text-align: center; font-weight: bold;
+			border: 1px solid #000; margin-bottom: 10px;
+		}
+		.btn-box::after{
+			content: ''; clear: both; display: block;
+		}
+		.btn-box>button{
+			height: 50px; box-sizing: border-box; width: 160px; border: 1px solid #000;
+			text-align: center; line-height: 48px; margin-right: 10px; float: left;
+			cursor: pointer;
+		}
+		.btn-box>button:last-child{
+			margin-right: 0;
+		}
+		.record-box{
+			margin-top: 10px; padding: 10px; border: 1px solid #000; text-align: center;
+			min-height: 21px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="view-box">00 : 00 : 00.00</div>
+		<div class="btn-box">
+			<button id="start-btn">시작</button>
+			<button id="init-btn">초기화</button>
+			<button id="record-btn">기록</button>
+		</div>
+		<div class="record-box">
+			<!-- <div class="record">00:00:00.00</div>
+			<div class="record">00:00:00.00</div> -->
+		</div>
+	</div>
+</body>
+</html>

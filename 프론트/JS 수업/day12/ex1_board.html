@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>게시글</title>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			$('#btn1').on('click',function(){
+				$('.container table').addClass('abstract');
+			})
+			$('#btn2').on('click',function(){
+				$('.container table').removeClass('abstract');
+			})
+		})
+	</script>
+	<style>
+		*{
+			padding: 0; margin: 0; text-decoration: none; color: #000;
+		}
+		.container{
+			width: 800px; margin: 20px auto 0; border-top: 1px solid #000;
+			border-bottom: 1px solid #000;
+		}
+		table{
+			width: 100%; border-collapse: collapse;
+		}
+		tr{
+			border-bottom: 1px solid #aaa;
+		}
+		tr:last-child{
+			border-bottom: none;
+		}
+		tr>td{
+			height: 35px; line-height: 35px;
+		}
+		tr>td>a{
+			display: block;
+		}
+		.title{
+			width: 600px;
+		}
+		.count{
+			width: 60px;
+		}
+		.category{
+			width: 100px;
+		}
+		.time{
+			width: 40px;
+		}
+		.metoo, .answer, .contents{
+			display: none;
+		}
+		.abstract tr>td{
+			display: block;
+		}
+		.abstract .count,
+		.abstract .category,
+		.abstract .time{
+			float: left; width: auto; margin-right: 10px;
+		}
+		.abstract .metoo, 
+		.abstract .answer{
+			float: right; margin-left: 10px; display: none;
+		}
+		.abstract tr:hover .metoo,
+		.abstract tr:hover .answer{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn1">미리보기</button>
+	<button id="btn2">요약보기</button>
+	<div class="container">
+		<table class="abstract">
+			<tr>
+				<td class="title"><a href="#">윈도우 블랙 스크린</a></td>
+				<td class="contents"><a href="#">내용</a></td>
+				<td class="count">답변 0</td>
+				<td class="category">맥OS</td>
+				<td class="time">방금</td>
+				<td class="answer"><a href="#">답변하기</a></td>
+				<td class="metoo"><a href="#">나도 궁금해요</a></td>
+			</tr>
+			<tr>
+				<td class="title"><a href="#">윈도우 블랙 스크린</a></td>
+				<td class="contents"><a href="#">내용</a></td>
+				<td class="count">답변 0</td>
+				<td class="category">맥OS</td>
+				<td class="time">방금</td>
+				<td class="answer"><a href="#">답변하기</a></td>
+				<td class="metoo"><a href="#">나도 궁금해요</a></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
