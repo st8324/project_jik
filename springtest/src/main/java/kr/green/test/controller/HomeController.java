@@ -1,4 +1,4 @@
-package kr.green.test;
+package kr.green.test.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
