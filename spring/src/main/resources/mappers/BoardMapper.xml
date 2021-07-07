@@ -4,10 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.green.spring.dao.BoardDAO">
 	<select id="getBoardList" resultType="kr.green.spring.vo.BoardVO">
-		select * from board order by num desc
+		select * from board where valid = 'I' order by num desc
 	</select>
 	<select id="getBoard" resultType="kr.green.spring.vo.BoardVO">
-		select * from board where num = #{num}
+		select * from board where num = #{num} and valid = 'I'
 	</select>
 	<insert id="insertBoard">
 		insert into board(title,writer,contents)
@@ -17,7 +17,8 @@
 		update board set
 			title = #{board.title},
 			contents = #{board.contents},
-			views = #{board.views}
+			views = #{board.views},
+			valid = #{board.valid}
 		where num = #{board.num}
 	</update>
 </mapper>
