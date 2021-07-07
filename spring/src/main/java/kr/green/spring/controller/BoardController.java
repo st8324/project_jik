@@ -31,8 +31,10 @@ public class BoardController {
 	}
 	@RequestMapping(value="/board/detail")
 	public ModelAndView boardDetail(ModelAndView mv, Integer num) {
-		System.out.println(num);
 		//서비스에게 번호를 주면서 게시글을 가져오라고 시킴
+		BoardVO board = boardService.getBoard(num);
+		//가져온 게시글을 화면에 전달, 화면으로 보낼 이름은 board로
+		mv.addObject("board", board);
 		mv.setViewName("board/detail");
 		return mv;
 	}
