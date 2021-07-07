@@ -13,4 +13,16 @@
 		insert into board(title,writer,contents)
 		values(#{board.title}, #{board.writer}, #{board.contents})
 	</insert>
+	<update id="updateBoard">
+		update board set
+			title = #{board.title},
+			contents = #{board.contents},
+			views = #{board.views}
+		where num = #{board.num}
+	</update>
 </mapper>
+
+
+
+
+
