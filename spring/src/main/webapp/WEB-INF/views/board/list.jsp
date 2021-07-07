@@ -29,7 +29,7 @@
     		<!-- vo를 이용하여 멤버변수명을 쓰면 해당 멤버 변수를 부르는 것이 아니라 해당 맴버 변수의 getter를 부르는 것이다 -->
 			<tr>
 				<td>${board.num}</td>
-				<td>${board.title}</td>
+				<td><a href="<%=request.getContextPath()%>/board/detail?num=${board.num}">${board.title}</a></td>
 				<td>${board.writer}</td>
 				<td>${board.registered}</td>
 				<td>${board.views}</td>
