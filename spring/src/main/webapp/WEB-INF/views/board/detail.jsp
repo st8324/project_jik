@@ -11,6 +11,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
+<c:if test="${board != null}">
 <div class="container">
 	<h2>게시판</h2>
 	<div class="form-group">
@@ -38,5 +39,12 @@
 	<a href="<%=request.getContextPath()%>/board/delete?num=${board.num}"><button class="btn btn-outline-success">삭제</button></a>
 	<a href="<%=request.getContextPath()%>/board/list"><button class="btn btn-outline-success">목록</button></a>
 </div>
+</c:if>
+<c:if test="${board ==null}">
+<div class="container">
+	<h1>삭제되거나 존재하지 않은 게시글입니다.</h1>
+	<a href="<%=request.getContextPath()%>/board/list"><button class="btn btn-outline-success">목록</button></a>
+</div>
+</c:if>
 </body>
 </html>
