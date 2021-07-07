@@ -4,9 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.green.spring.dao.BoardDAO">
 	<select id="getBoardList" resultType="kr.green.spring.vo.BoardVO">
-		select * from board
+		select * from board order by num desc
 	</select>
 	<select id="getBoard" resultType="kr.green.spring.vo.BoardVO">
 		select * from board where num = #{num}
 	</select>
+	<insert id="insertBoard">
+		insert into board(title,writer,contents)
+		values(#{board.title}, #{board.writer}, #{board.contents})
+	</insert>
 </mapper>

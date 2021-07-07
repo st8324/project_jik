@@ -10,4 +10,6 @@ public interface BoardService {
 
 	BoardVO getBoard(Integer num);
 
+	void insertBoard(BoardVO board);
+
 }

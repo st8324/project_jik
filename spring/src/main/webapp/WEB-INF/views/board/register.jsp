@@ -4,36 +4,28 @@
 <!doctype html>
 <html>
 <head>
-	<title>로그인</title>
+	<title>게시글 등록</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container">
-	<h2>게시판</h2>
+<form class="container" method="post" action="<%=request.getContextPath()%>/board/register">
+	<h2>게시글 등록</h2>
 	<div class="form-group">
 		<label>제목</label>
-		<input type="text" class="form-control" value="${board.title}" readonly>
+		<input type="text" class="form-control" name="title">
 	</div>
 	<div class="form-group">
 		<label>작성자</label>
-		<input type="text" class="form-control" value="${board.writer}" readonly>
-	</div>
-	<div class="form-group">
-		<label>작성일</label>
-		<input type="text" class="form-control" value="${board.registeredDate}" readonly>
-		<!-- ${board.getRegisteredDate()} -->
-	</div>
-	<div class="form-group">
-		<label>조회수</label>
-		<input type="text" class="form-control" value="${board.views}" readonly>
+		<input type="text" class="form-control" name="writer">
 	</div>
 	<div class="form-group">
 		<label>내용</label>
-		<textarea class="form-control" readonly>${board.contents}</textarea>
+		<textarea class="form-control" rows="10" name="contents"></textarea>
 	</div>
-</div>
+	<button type="submit" class="btn btn-outline-success">등록</button>
+</form>
 </body>
 </html>
