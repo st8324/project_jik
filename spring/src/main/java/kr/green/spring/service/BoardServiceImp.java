@@ -49,4 +49,12 @@ public class BoardServiceImp implements BoardService {
 		}
 		return 0;
 	}
+
+	@Override
+	public int updateBoard(BoardVO board) {
+		if(board == null) {
+			return 0;
+		}
+		return boardDao.updateBoard(board);
+	}
 }

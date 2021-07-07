@@ -11,7 +11,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-<form class="container" method="post" action="<%=request.getContextPath()%>/board/register">
+<form class="container" method="post" action="<%=request.getContextPath()%>/board/modify">
 	<h2>게시글 수정</h2>
 	<div class="form-group">
 		<label>제목</label>
@@ -25,6 +25,8 @@
 		<label>내용</label>
 		<textarea class="form-control" rows="10" name="contents">${board.contents}</textarea>
 	</div>
+	<input type="hidden" value="${board.num}" name="num">
+	<input type="hidden" value="${board.views}" name="views">
 	<button type="submit" class="btn btn-outline-success">등록</button>
 </form>
 </body>
