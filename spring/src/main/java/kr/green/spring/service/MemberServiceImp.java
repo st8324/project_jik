@@ -45,8 +45,11 @@ public class MemberServiceImp implements MemberService {
 		return memberDao.getMember(id);
 	}
 
+	
 	@Override
 	public int updateMember(MemberVO user) {
+		//user : 화면에서 입력한 회원 정보
+		//dbUser : DB에서 가져온 회원 정보
 		//다오에게 아이디를 주면서 기존 회원 정보를 가져오라고 시킴
 		if(user == null) {
 			return 0;

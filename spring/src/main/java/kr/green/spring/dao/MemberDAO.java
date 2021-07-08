@@ -9,5 +9,7 @@ public interface MemberDAO {
 	MemberVO getMember(@Param("id")String id);
 
 	void signup(@Param("user")MemberVO user);
+
+	int updateMember(@Param("user")MemberVO dbUser);
 	
 }

@@ -10,4 +10,12 @@
 		insert into member(id, pw, name, email, gender)
 			values(#{user.id},#{user.pw},#{user.name},#{user.email},#{user.gender})
 	</insert>
+	<update id="updateMember">
+		update member set
+			pw = #{user.pw},
+			email = #{user.email},
+			gender = #{user.gender},
+			authority = #{user.authority}
+		where id = #{user.id}
+	</update>
 </mapper>
