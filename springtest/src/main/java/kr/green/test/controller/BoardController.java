@@ -9,9 +9,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.test.service.BoardService;
 import kr.green.test.vo.BoardVO;
+import lombok.extern.log4j.Log4j;
 
 
-
+@Log4j
 @Controller
 @RequestMapping(value="/board/*")
 public class BoardController {
@@ -21,10 +22,16 @@ public class BoardController {
 	@RequestMapping(value="/list")
 	public ModelAndView list(ModelAndView mv) {
 		ArrayList<BoardVO> list = boardService.getBoardList();
-		System.out.println(list);
 		mv.addObject("list", list);
 		mv.setViewName("board/list");
 		return mv;
 	}
-	
+	@RequestMapping(value="/detail")
+	public ModelAndView detail(ModelAndView mv, Integer num) {
+		boardService.updateViews(num);
+		BoardVO board = boardService.getBoard(num);
+		mv.addObject("board", board);
+		mv.setViewName("board/detail");
+		return mv;
+	}
 }
