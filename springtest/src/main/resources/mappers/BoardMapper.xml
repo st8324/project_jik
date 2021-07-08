@@ -17,4 +17,8 @@
 			valid = #{board.valid}
 		where num = #{board.num}
 	</update>
+	<insert id="insertBoard">
+		insert into board(title, contents, writer)
+			values(#{board.title}, #{board.contents}, #{board.writer});
+	</insert>
 </mapper>

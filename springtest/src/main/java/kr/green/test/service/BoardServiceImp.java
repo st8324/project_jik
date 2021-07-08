@@ -37,4 +37,12 @@ public class BoardServiceImp implements BoardService {
 		board.setViews(board.getViews()+1);
 		return boardDao.updateBoard(board);
 	}
+
+	@Override
+	public void insertBoard(BoardVO board) {
+		if(board == null) {
+			return;
+		}
+		boardDao.insertBoard(board);
+	}
 }

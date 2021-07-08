@@ -12,4 +12,6 @@ public interface BoardService {
 
 	int updateViews(Integer num);
 
+	void insertBoard(BoardVO board);
+
 }
