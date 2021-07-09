@@ -2,11 +2,12 @@ package kr.green.spring.service;
 
 import java.util.ArrayList;
 
+import kr.green.spring.pagination.Criteria;
 import kr.green.spring.vo.BoardVO;
 
 public interface BoardService {
 
-	ArrayList<BoardVO> getBoardList();
+	ArrayList<BoardVO> getBoardList(Criteria cri);
 
 	BoardVO getBoard(Integer num);
 
@@ -17,5 +18,7 @@ public interface BoardService {
 	int updateBoard(BoardVO board);
 
 	int deleteBoard(Integer num);
+
+	int getTotalCount(Criteria cri);
 
 }

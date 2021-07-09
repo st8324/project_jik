@@ -4,7 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.green.spring.dao.BoardDAO">
 	<select id="getBoardList" resultType="kr.green.spring.vo.BoardVO">
-		select * from board where valid = 'I' order by num desc
+		select * from board 
+			where valid = 'I' 
+			order by num desc
+			limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 	<select id="getBoard" resultType="kr.green.spring.vo.BoardVO">
 		select * from board where num = #{num} and valid = 'I'
@@ -21,6 +24,9 @@
 			valid = #{board.valid}
 		where num = #{board.num}
 	</update>
+	<select id="getTotalCount" resultType="int">
+		select count(*) from board where valid = 'I'
+	</select>
 </mapper>
 
 
