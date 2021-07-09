@@ -37,5 +37,20 @@
 		</table>
 		<a href="<%=request.getContextPath()%>/board/register"><button class="btn btn-outline-danger">글쓰기</button></a>
 	</div>
+	<!-- 
+	<img src="<%=request.getContextPath()%>/resources/img/dog.jfif">
+	 -->
+	<script type="text/javascript">
+	$(function(){
+		var msg = '${msg}';
+		printMsg(msg);
+	})
+	function printMsg(msg){
+		if(msg == ''){
+			return ;
+		}
+		alert(msg);
+	}
+	</script>	
 </body>
 </html>

@@ -21,9 +21,10 @@ public class BoardController {
 	BoardService boardService;
 	
 	@RequestMapping(value="/list")
-	public ModelAndView list(ModelAndView mv) {
+	public ModelAndView list(ModelAndView mv,String msg) {
 		ArrayList<BoardVO> list = boardService.getBoardList();
 		mv.addObject("list", list);
+		mv.addObject("msg", msg);
 		mv.setViewName("board/list");
 		return mv;
 	}
@@ -44,6 +45,23 @@ public class BoardController {
 	public ModelAndView registerPost(ModelAndView mv, BoardVO board) {
 		log.info(board);
 		boardService.insertBoard(board);
+		mv.setViewName("redirect:/board/list");
+		return mv;
+	}
+	@RequestMapping(value="/modify", method=RequestMethod.GET)
+	public ModelAndView modifyGet(ModelAndView mv) {
+		mv.setViewName("board/modify");
+		return mv;
+	}
+	@RequestMapping(value="/delete", method=RequestMethod.POST)
+	public ModelAndView deletePost(ModelAndView mv, Integer num) {
+		log.info("/board/delete : "+num);
+		int res = boardService.deleteBoard(num);
+		if(res != 0) {
+			mv.addObject("msg",num+"번 게시글을 삭제 했습니다.");
+		}else {
+			mv.addObject("msg","게시글이 없거나 이미 삭제되었습니다.");
+		}
 		mv.setViewName("redirect:/board/list");
 		return mv;
 	}

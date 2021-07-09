@@ -14,4 +14,6 @@ public interface BoardService {
 
 	void insertBoard(BoardVO board);
 
+	int deleteBoard(Integer num);
+
 }
