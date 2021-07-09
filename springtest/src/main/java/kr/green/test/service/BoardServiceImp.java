@@ -55,4 +55,15 @@ public class BoardServiceImp implements BoardService {
 		board.setValid("D");
 		return boardDao.updateBoard(board);
 	}
+
+	@Override
+	public int updateBoard(BoardVO board) {
+		if(board == null) {
+			return 0;
+		}
+		BoardVO dbBoard = boardDao.getBoard(board.getNum());
+		dbBoard.setContents(board.getContents());
+		dbBoard.setTitle(board.getTitle());
+		return boardDao.updateBoard(dbBoard);
+	}
 }

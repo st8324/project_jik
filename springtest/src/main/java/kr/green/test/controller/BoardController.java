@@ -29,10 +29,11 @@ public class BoardController {
 		return mv;
 	}
 	@RequestMapping(value="/detail")
-	public ModelAndView detail(ModelAndView mv, Integer num) {
+	public ModelAndView detail(ModelAndView mv, Integer num, String msg) {
 		boardService.updateViews(num);
 		BoardVO board = boardService.getBoard(num);
 		mv.addObject("board", board);
+		mv.addObject("msg", msg);
 		mv.setViewName("board/detail");
 		return mv;
 	}
@@ -49,8 +50,21 @@ public class BoardController {
 		return mv;
 	}
 	@RequestMapping(value="/modify", method=RequestMethod.GET)
-	public ModelAndView modifyGet(ModelAndView mv) {
+	public ModelAndView modifyGet(ModelAndView mv, Integer num) {
+		log.info("/board/modify : "+num);
+		BoardVO board = boardService.getBoard(num);
+		mv.addObject("board", board);
 		mv.setViewName("board/modify");
+		return mv;
+	}
+	@RequestMapping(value="/modify", method=RequestMethod.POST)
+	public ModelAndView modifyPost(ModelAndView mv, BoardVO board) {
+		log.info("/board/modify:POST : " + board);
+		int res = boardService.updateBoard(board);
+		String msg = res != 0 ? board.getNum()+"번 게시글이 수정되었습니다." : "없는 게시글입니다.";
+		mv.addObject("msg", msg);
+		mv.addObject("num",board.getNum());
+		mv.setViewName("redirect:/board/detail");
 		return mv;
 	}
 	@RequestMapping(value="/delete", method=RequestMethod.POST)

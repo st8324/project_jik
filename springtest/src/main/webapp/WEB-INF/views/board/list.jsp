@@ -44,9 +44,10 @@
 	$(function(){
 		var msg = '${msg}';
 		printMsg(msg);
+		history.replaceState({},null,null);
 	})
 	function printMsg(msg){
-		if(msg == ''){
+		if(msg == '' || history.state){
 			return ;
 		}
 		alert(msg);
