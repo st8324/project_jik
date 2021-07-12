@@ -15,7 +15,7 @@
 		<h1>게시판</h1>
 		<div class="form-group">
 			<label>제목</label>
-			<input type="text" class="form-control" name="title" value="${board.title}" readonly>
+			<input type="text" class="form-control" name="title" value="<c:out value="${board.title}"/>" readonly>
 		</div>
 		<div class="form-group">
 			<label>작성자</label>
