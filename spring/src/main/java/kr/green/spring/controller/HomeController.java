@@ -28,7 +28,6 @@ public class HomeController {
 	}
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
 	public ModelAndView signinPost(ModelAndView mv,MemberVO user) {
-		System.out.println(user);
 		//서비스에게 아이디와 비밀번호를 전달하면, 해당 정보가 DB에 있으면
 		//회원 정보를 없으면 null을 반환
 		//작업이 다 끝난 후 URI가 /signin인 곳으로 넘어감
@@ -42,6 +41,7 @@ public class HomeController {
 		else {
 			mv.setViewName("redirect:/signin");
 		}
+		mv.addObject("user", dbUser);
 		return mv;
 	}
 	@RequestMapping(value="/signup", method = RequestMethod.GET)
@@ -51,7 +51,6 @@ public class HomeController {
 	}
 	@RequestMapping(value="/signup", method = RequestMethod.POST)
 	public ModelAndView signupPost(ModelAndView mv, MemberVO user) {
-		System.out.println(user);
 		//서비스에게 회원 정보를 주면서 회원 가입하라고 일을 시키고, 회원 가입이 성공하면 true를
 		//실패하면 false를 알려달라고 요청
 		boolean isSignup = memberService.signup(user);
@@ -64,11 +63,8 @@ public class HomeController {
 		return mv;
 	}
 	@RequestMapping(value="/member/mypage", method = RequestMethod.GET)
-	public ModelAndView memberMypageGet(ModelAndView mv, String id) {
-		//서비스에게 아이디를 주면서 회원 정보를 가져오라고 시킴
-		MemberVO user = memberService.getMember(id);
-		//가져온 회원 정보를 화면에 전달
-		mv.addObject("user", user);
+	public ModelAndView memberMypageGet(ModelAndView mv) {
+		
 		mv.setViewName("member/mypage");
 		return mv;
 	}

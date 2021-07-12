@@ -23,6 +23,14 @@
 	
 	<context:component-scan base-package="kr.green.spring.*" />
 	
+	<beans:bean id="loginInterceptor" 
+		class="kr.green.spring.interceptor.LoginInterceptor"></beans:bean>
 	
+	<interceptors>
+	    <interceptor>
+	        <mapping path="/signin"/>
+	        <beans:ref bean="loginInterceptor"/>
+	    </interceptor>
+	</interceptors>
 	
 </beans:beans>
