@@ -1,5 +1,7 @@
 package kr.green.spring.service;
 
+import javax.servlet.http.HttpServletRequest;
+
 import kr.green.spring.vo.MemberVO;
 
 public interface MemberService {
@@ -10,5 +12,7 @@ public interface MemberService {
 
 	public MemberVO getMember(String id);
 
-	public int updateMember(MemberVO user);
+	public MemberVO updateMember(MemberVO user);
+
+	public MemberVO getMember(HttpServletRequest request);
 }

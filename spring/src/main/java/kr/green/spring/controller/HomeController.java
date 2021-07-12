@@ -1,15 +1,15 @@
 package kr.green.spring.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.spring.service.MemberService;
 import kr.green.spring.vo.MemberVO;
-import lombok.Data;
 
 @Controller
 public class HomeController {
@@ -69,9 +69,16 @@ public class HomeController {
 		return mv;
 	}
 	@RequestMapping(value="/member/mypage", method = RequestMethod.POST)
-	public ModelAndView memberMypagePost(ModelAndView mv, MemberVO user) {
-		//서비스에게 회원 정보를 주면서 수정하라고 요청
-		memberService.updateMember(user);
+	public ModelAndView memberMypagePost(ModelAndView mv, MemberVO user, HttpServletRequest request) {
+		//request에 있는 세션 안에 있는 로그인한 회원 정보를 가져옴
+		MemberVO sessionUser = memberService.getMember(request);
+		//세션에 로그인한 회원 정보가 있고, 세션에 있는 아이디와 수정할 아이디가 같으면 회원 정보 수정함
+		if(sessionUser != null && sessionUser.getId().equals(user.getId())) {
+			MemberVO updatedUser = memberService.updateMember(user);
+			if(updatedUser != null) {
+				request.getSession().setAttribute("user", updatedUser);
+			}
+		}
 		mv.setViewName("redirect:/member/mypage");
 		return mv;
 	}

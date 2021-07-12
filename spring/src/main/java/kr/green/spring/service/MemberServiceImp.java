@@ -1,5 +1,7 @@
 package kr.green.spring.service;
  
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -56,17 +58,17 @@ public class MemberServiceImp implements MemberService {
 
 	
 	@Override
-	public int updateMember(MemberVO user) {
+	public MemberVO updateMember(MemberVO user) {
 		//user : 화면에서 입력한 회원 정보
 		//dbUser : DB에서 가져온 회원 정보
 		//다오에게 아이디를 주면서 기존 회원 정보를 가져오라고 시킴
 		if(user == null) {
-			return 0;
+			return null;
 		}
 		MemberVO dbUser = memberDao.getMember(user.getId());
 		//일치하는 회원 정보가 없으면 0을 반환
 		if(dbUser == null) {
-			return 0;
+			return null;
 		}
 		//기존 회원 정보 중 성별, 이메일을 수정할 회원 정보의 성별, 이메일로 변경
 		dbUser.setGender(user.getGender());
@@ -79,6 +81,16 @@ public class MemberServiceImp implements MemberService {
 		}
 		
 		//다오에게 수정할 회원 정보를 주면서 변경하라고 시킴
-		return memberDao.updateMember(dbUser);
+		if(memberDao.updateMember(dbUser) == 0)
+			return null;
+		return dbUser;
+	}
+
+	@Override
+	public MemberVO getMember(HttpServletRequest request) {
+		if(request == null) {
+			return null;
+		}
+		return (MemberVO)request.getSession().getAttribute("user");
 	}
 }
