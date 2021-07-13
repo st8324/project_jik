@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import kr.green.test.pagination.Criteria;
 import kr.green.test.vo.BoardVO;
+import kr.green.test.vo.MemberVO;
 
 public interface BoardService {
 
@@ -13,7 +14,7 @@ public interface BoardService {
 
 	int updateViews(Integer num);
 
-	void insertBoard(BoardVO board);
+	void insertBoard(BoardVO board, MemberVO user);
 
 	int deleteBoard(Integer num);
 

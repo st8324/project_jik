@@ -43,6 +43,7 @@ public class MemberController {
 		else
 			mv.setViewName("redirect:/signin");
 		mv.addObject("user",loginUser);
+		System.out.println(loginUser);
 		return mv;
 	}
 }

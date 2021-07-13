@@ -18,10 +18,6 @@
 			<input type="text" class="form-control" name="title">
 		</div>
 		<div class="form-group">
-			<label>작성자</label>
-			<input type="text" class="form-control" name="writer">
-		</div>
-		<div class="form-group">
 			<label>내용</label>
 			<textarea class="form-control" name="contents" rows="10">${board.contents }</textarea>
 		</div>
