@@ -33,6 +33,17 @@ public class MemberServiceImp implements MemberService {
 		//회원가입
 		memberDao.insertMember(user);
 	}
-    
-   
+
+	@Override
+	public MemberVO signin(MemberVO user) {
+		if(user == null || user.getId() == null || user.getId().trim().length() == 0
+			|| user.getPw() ==null || user.getPw().trim().length() == 0)
+			return null;
+		MemberVO dbUser = memberDao.getMember(user.getId());
+		if(dbUser == null)
+			return null;
+		if(passwordEncoder.matches(user.getPw(), dbUser.getPw()))
+			return dbUser;
+		return null;
+	}
 }
