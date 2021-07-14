@@ -41,7 +41,7 @@ public class BoardController {
 		//화면에 모든 게시글을 전송
 		mv.addObject("list",list);
 		mv.addObject("pm", pm);
-		mv.setViewName("board/list");
+		mv.setViewName("/template/board/list");
 		return mv;
 	}
 	@RequestMapping(value="/board/detail")
@@ -53,13 +53,13 @@ public class BoardController {
 		BoardVO board = boardService.getBoard(num);
 		//가져온 게시글을 화면에 전달, 화면으로 보낼 이름은 board로
 		mv.addObject("board", board);
-		mv.setViewName("board/detail");
+		mv.setViewName("/template/board/detail");
 		return mv;
 	}
 	@RequestMapping(value="/board/register", method=RequestMethod.GET)
 	public ModelAndView boardRegisterGet(ModelAndView mv) {
 		
-		mv.setViewName("board/register");
+		mv.setViewName("/template/board/register");
 		return mv;
 	}
 
@@ -77,7 +77,7 @@ public class BoardController {
 		BoardVO board = boardService.getBoard(num);
 		
 		mv.addObject("board", board);
-		mv.setViewName("board/modify");
+		mv.setViewName("/template/board/modify");
 		MemberVO user = memberService.getMember(request);
 		if(board == null || !board.getWriter().equals(user.getId())) {
 			mv.setViewName("redirect:/board/list");
