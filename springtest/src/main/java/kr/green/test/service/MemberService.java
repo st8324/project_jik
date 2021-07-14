@@ -10,4 +10,6 @@ public interface MemberService {
 	public MemberVO signin(MemberVO user);
 
 	public MemberVO getMember(HttpServletRequest r);
+
+	public MemberVO updateMember(MemberVO user, MemberVO sUser);
 }
