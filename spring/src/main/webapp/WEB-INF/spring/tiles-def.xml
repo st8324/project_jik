@@ -5,13 +5,15 @@
  
 <tiles-definitions>
     <!-- 템플릿1 -->    
-    <definition name=".template1" template="/WEB-INF/views/template/base.jsp">
+    <definition name="/template/*/*" template="/WEB-INF/views/template/base.jsp">
         <put-attribute name="nav" value="/WEB-INF/views/include/nav.jsp" />
         <put-attribute name="footer" value="/WEB-INF/views/include/footer.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
     </definition>
     
-    <definition name="/template/*/*" extends=".template1">
-      <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+    <!-- 템플릿2 -->    
+    <definition name="/template2/*/*" template="/WEB-INF/views/template/base2.jsp">
+        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
     </definition>
  
 </tiles-definitions>

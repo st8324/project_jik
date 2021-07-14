@@ -4,9 +4,17 @@
 <!doctype html>
 <html>
 <head>
-
+<style>
+.jumbotron{
+	margin-bottom : 0;
+}
+</style>
 </head>
 <body>
-	푸터
+<div class="footer" >
+  <div class="jumbotron">
+    <h1>푸터</h1>      
+  </div>
+</div>
 </body>
 </html>
