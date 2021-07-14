@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.spring.pagination.Criteria;
@@ -24,7 +25,7 @@ public class BoardController {
 	BoardService boardService;
 	@Autowired
 	MemberService memberService;
-
+	
 	@RequestMapping(value="/board/list")
 	public ModelAndView boardList(ModelAndView mv, Criteria cri) {
 		log.info(cri);
@@ -64,11 +65,12 @@ public class BoardController {
 	}
 
 	@RequestMapping(value="/board/register", method=RequestMethod.POST)
-	public ModelAndView boardRegisterPost(ModelAndView mv,BoardVO board,HttpServletRequest request) {
+	public ModelAndView boardRegisterPost(ModelAndView mv,BoardVO board,
+			HttpServletRequest request, MultipartFile file) {
 		MemberVO user = memberService.getMember(request);
 		board.setWriter(user.getId());
 		//서비스에게 게시글 정보(제목, 작성자, 내용)을 주면서 게시글을 등록하라고 시킴
-		boardService.insertBoard(board);
+		boardService.insertBoard(board, file);
 		mv.setViewName("redirect:/board/list");
 		return mv;
 	}

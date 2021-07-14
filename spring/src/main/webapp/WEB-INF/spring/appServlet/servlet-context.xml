@@ -60,5 +60,12 @@
 	        </beans:list>
 	    </beans:property>
 	</beans:bean>
-
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	    <!-- 업로드 최대 크기 10Mb -->
+	    <beans:property name="maxUploadSize" value="10485760"></beans:property>
+	</beans:bean>
+	<beans:bean id="uploadPath" class="java.lang.String">
+	    <beans:constructor-arg value="D:\\JAVA_JIK\\uploadfiles"></beans:constructor-arg>
+	</beans:bean>
+	
 </beans:beans>
