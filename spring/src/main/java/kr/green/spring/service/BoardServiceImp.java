@@ -47,10 +47,13 @@ public class BoardServiceImp implements BoardService {
 	}
 
 	@Override
-	public void insertBoard(BoardVO board, MultipartFile file) {
+	public void insertBoard(BoardVO board, MultipartFile[] file) {
 		// 다오에게 게시글 정보를 주면서 게시글 등록하라고 시킴
 		boardDao.insertBoard(board);
-		insertFileVO(file, board.getNum());
+		if(file == null)
+			return;
+		for(MultipartFile tmp:file)
+			insertFileVO(tmp, board.getNum());
 	}
 
 	@Override
@@ -74,6 +77,7 @@ public class BoardServiceImp implements BoardService {
 		if(board.getValid() == null) {
 			board.setValid("I");
 		}
+		/*
 		FileVO fileVo = boardDao.getFileVO(board.getNum());
 		//첨부파일이 추가되는 경우
 		if(fileVo == null && (file != null && file.getOriginalFilename().length() != 0)) {
@@ -90,6 +94,7 @@ public class BoardServiceImp implements BoardService {
 			deleteFileVO(fileVo);
 			insertFileVO(file, board.getNum());
 		}
+		*/
 		return boardDao.updateBoard(board);
 	}
 
@@ -112,10 +117,10 @@ public class BoardServiceImp implements BoardService {
 	}
 
 	@Override
-	public FileVO getFileVO(Integer num) {
+	public ArrayList<FileVO> getFileVOList(Integer num) {
 		if(num == null)
 			return null;
-		return boardDao.getFileVO(num);
+		return boardDao.getFileVOList(num);
 	}
 
 	@Override

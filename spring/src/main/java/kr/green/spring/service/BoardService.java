@@ -17,7 +17,7 @@ public interface BoardService {
 
 	BoardVO getBoard(Integer num);
 
-	void insertBoard(BoardVO board, MultipartFile file);
+	void insertBoard(BoardVO board, MultipartFile[] file);
 
 	int updateViews(Integer num);
 
@@ -27,7 +27,7 @@ public interface BoardService {
 
 	int getTotalCount(Criteria cri);
 
-	FileVO getFileVO(Integer num);
+	ArrayList<FileVO> getFileVOList(Integer num);
 
 	ResponseEntity<byte[]> downloadFile(String fileName) throws IOException;
 

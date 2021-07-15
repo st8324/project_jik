@@ -65,8 +65,8 @@ public class BoardController {
 		mv.addObject("board", board);
 		
 		//첨부파일 가져오기
-		FileVO file = boardService.getFileVO(num);
-		mv.addObject("file",file);
+		ArrayList<FileVO> fileList = boardService.getFileVOList(num);
+		mv.addObject("fileList",fileList);
 		mv.setViewName("/template/board/detail");
 		return mv;
 	}
@@ -79,7 +79,7 @@ public class BoardController {
 
 	@RequestMapping(value="/board/register", method=RequestMethod.POST)
 	public ModelAndView boardRegisterPost(ModelAndView mv,BoardVO board,
-			HttpServletRequest request, MultipartFile file) {
+			HttpServletRequest request, MultipartFile[] file) {
 		MemberVO user = memberService.getMember(request);
 		board.setWriter(user.getId());
 		//서비스에게 게시글 정보(제목, 작성자, 내용)을 주면서 게시글을 등록하라고 시킴
@@ -98,8 +98,8 @@ public class BoardController {
 			mv.setViewName("redirect:/board/list");
 		}
 		//첨부파일 가져오기
-		FileVO file = boardService.getFileVO(num);
-		mv.addObject("file",file);
+		ArrayList<FileVO> fileList = boardService.getFileVOList(num);
+		mv.addObject("fileList",fileList);
 		return mv;
 	}
 	@RequestMapping(value="/board/modify", method=RequestMethod.POST)
