@@ -1,5 +1,6 @@
 package kr.green.spring.service;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -75,12 +76,54 @@ public class BoardServiceImp implements BoardService {
 	}
 
 	@Override
-	public int updateBoard(BoardVO board) {
-		if(board == null) {
+	public int updateBoard(BoardVO board, MultipartFile file) {
+		if(board == null || board.getNum() <= 0) {
 			return 0;
 		}
 		if(board.getValid() == null) {
 			board.setValid("I");
+		}
+		FileVO fileVo = boardDao.getFileVO(board.getNum());
+		//첨부파일이 추가되는 경우
+		if(fileVo == null && (file != null && file.getOriginalFilename().length() != 0)) {
+			if(file != null && file.getOriginalFilename().length() != 0) {
+				try {
+					String filename = UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes());
+					fileVo = new FileVO(board.getNum(),filename,file.getOriginalFilename());
+					boardDao.insertFile(fileVo);
+				} catch (Exception e) {
+					e.printStackTrace();
+					System.out.println("첨부파일 업로드 중 예외 발생");
+				}
+			}
+		}
+		//첨부파일이 삭제되는 경우
+		else if(fileVo != null && (file == null || file.getOriginalFilename().length() == 0)) {
+			//업로드되었던 파일을 삭제
+			File ftmp = new File(uploadPath+fileVo.getName());
+			if(ftmp.exists()) {
+				ftmp.delete();
+			}
+			boardDao.deleteFileVO(fileVo.getNum());
+		}
+		//첨부파일이 수정되는 경우
+		else if(fileVo != null &&  (file != null && file.getOriginalFilename().length() != 0)) {
+			//업로드되었던 파일을 삭제
+			File ftmp = new File(uploadPath+fileVo.getName());
+			if(ftmp.exists()) {
+				ftmp.delete();
+			}
+			boardDao.deleteFileVO(fileVo.getNum());
+			if(file != null && file.getOriginalFilename().length() != 0) {
+				try {
+					String filename = UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes());
+					fileVo = new FileVO(board.getNum(),filename,file.getOriginalFilename());
+					boardDao.insertFile(fileVo);
+				} catch (Exception e) {
+					e.printStackTrace();
+					System.out.println("첨부파일 업로드 중 예외 발생");
+				}
+			}
 		}
 		return boardDao.updateBoard(board);
 	}

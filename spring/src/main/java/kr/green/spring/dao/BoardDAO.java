@@ -24,4 +24,6 @@ public interface BoardDAO {
 
 	FileVO getFileVO(@Param("num")Integer num);
 
+	void deleteFileVO(@Param("num")int num);
+
 }
