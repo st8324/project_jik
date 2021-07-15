@@ -22,4 +22,6 @@ public interface BoardDAO {
 
 	void insertFile(@Param("file")FileVO fileVo);
 
+	FileVO getFileVO(@Param("num")Integer num);
+
 }
