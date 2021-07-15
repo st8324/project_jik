@@ -50,16 +50,7 @@ public class BoardServiceImp implements BoardService {
 	public void insertBoard(BoardVO board, MultipartFile file) {
 		// 다오에게 게시글 정보를 주면서 게시글 등록하라고 시킴
 		boardDao.insertBoard(board);
-		if(file != null && file.getOriginalFilename().length() != 0) {
-			try {
-				String filename = UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes());
-				FileVO fileVo = new FileVO(board.getNum(),filename,file.getOriginalFilename());
-				boardDao.insertFile(fileVo);
-			} catch (Exception e) {
-				e.printStackTrace();
-				System.out.println("첨부파일 업로드 중 예외 발생");
-			}
-		}
+		insertFileVO(file, board.getNum());
 	}
 
 	@Override
@@ -86,44 +77,18 @@ public class BoardServiceImp implements BoardService {
 		FileVO fileVo = boardDao.getFileVO(board.getNum());
 		//첨부파일이 추가되는 경우
 		if(fileVo == null && (file != null && file.getOriginalFilename().length() != 0)) {
-			if(file != null && file.getOriginalFilename().length() != 0) {
-				try {
-					String filename = UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes());
-					fileVo = new FileVO(board.getNum(),filename,file.getOriginalFilename());
-					boardDao.insertFile(fileVo);
-				} catch (Exception e) {
-					e.printStackTrace();
-					System.out.println("첨부파일 업로드 중 예외 발생");
-				}
-			}
+			insertFileVO(file, board.getNum());
 		}
 		//첨부파일이 삭제되는 경우
-		else if(fileVo != null && (file == null || file.getOriginalFilename().length() == 0)) {
+		else if(fileVo != null && (file != null && file.getOriginalFilename().length() == 0)) {
 			//업로드되었던 파일을 삭제
-			File ftmp = new File(uploadPath+fileVo.getName());
-			if(ftmp.exists()) {
-				ftmp.delete();
-			}
-			boardDao.deleteFileVO(fileVo.getNum());
+			deleteFileVO(fileVo);
 		}
 		//첨부파일이 수정되는 경우
 		else if(fileVo != null &&  (file != null && file.getOriginalFilename().length() != 0)) {
 			//업로드되었던 파일을 삭제
-			File ftmp = new File(uploadPath+fileVo.getName());
-			if(ftmp.exists()) {
-				ftmp.delete();
-			}
-			boardDao.deleteFileVO(fileVo.getNum());
-			if(file != null && file.getOriginalFilename().length() != 0) {
-				try {
-					String filename = UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes());
-					fileVo = new FileVO(board.getNum(),filename,file.getOriginalFilename());
-					boardDao.insertFile(fileVo);
-				} catch (Exception e) {
-					e.printStackTrace();
-					System.out.println("첨부파일 업로드 중 예외 발생");
-				}
-			}
+			deleteFileVO(fileVo);
+			insertFileVO(file, board.getNum());
 		}
 		return boardDao.updateBoard(board);
 	}
@@ -173,5 +138,26 @@ public class BoardServiceImp implements BoardService {
 	        in.close();
 	    }
 		return entity;
+	}
+	//파일을 서버에 업로드 한 후 DB에 추가하는 메소드
+	private void insertFileVO(MultipartFile file, int num) {
+		if(file != null && file.getOriginalFilename().length() != 0) {
+			try {
+				String filename = UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes());
+				FileVO fileVo = new FileVO(num,filename,file.getOriginalFilename());
+				boardDao.insertFile(fileVo);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("첨부파일 업로드 중 예외 발생");
+			}
+		}
+	}
+	//서버에 업로드된 파일을 삭제 후, DB에 삭제처리하는 메소드
+	private void deleteFileVO(FileVO file) {
+		File ftmp = new File(uploadPath+file.getName());
+		if(ftmp.exists()) {
+			ftmp.delete();
+		}
+		boardDao.deleteFileVO(file.getNum());
 	}
 }

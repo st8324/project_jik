@@ -103,7 +103,8 @@ public class BoardController {
 		return mv;
 	}
 	@RequestMapping(value="/board/modify", method=RequestMethod.POST)
-	public ModelAndView boardModifyPost(ModelAndView mv, BoardVO board,HttpServletRequest request, MultipartFile file) {
+	public ModelAndView boardModifyPost(ModelAndView mv, BoardVO board,HttpServletRequest request, 
+			MultipartFile file) {
 		//detail로 이동
 		mv.addObject("num", board.getNum());
 		mv.setViewName("redirect:/board/detail");
