@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kr.green.test.pagination.Criteria;
 import kr.green.test.vo.BoardVO;
+import kr.green.test.vo.FileVO;
 import kr.green.test.vo.MemberVO;
 
 public interface BoardService {
@@ -23,5 +24,7 @@ public interface BoardService {
 	int updateBoard(BoardVO board, MemberVO user);
 
 	int getTotalCount(Criteria cri);
+
+	ArrayList<FileVO> getFileList(Integer num);
 
 }

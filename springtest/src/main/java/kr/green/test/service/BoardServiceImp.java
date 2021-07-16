@@ -109,4 +109,11 @@ public class BoardServiceImp implements BoardService {
 	public int getTotalCount(Criteria cri) {
 		return boardDao.getTotalCount(cri);
 	}
+
+	@Override
+	public ArrayList<FileVO> getFileList(Integer num) {
+		if(num == null)
+			return null;
+		return boardDao.getFileList(num);
+	}
 }
