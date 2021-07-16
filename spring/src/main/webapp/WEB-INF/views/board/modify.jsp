@@ -23,7 +23,10 @@
 	<div class="form-group files">
 		<label>첨부파일</label>
 		<c:forEach items="${fileList}" var="file">
-			<div class="form-control">${file.ori_name}<button type="button" class="del-btn">X</button></div>
+			<div class="form-control attach">
+				<span>${file.ori_name}</span><button type="button" class="del-btn">X</button>
+				<input type="hidden" name="fileNum" value="${file.num}">
+			</div>
 		</c:forEach>
 		<c:if test="${fileList == null || fileList.size() < 3}">
 			<input type="file" class="form-control" name="file" data=""/>
@@ -38,13 +41,13 @@ $(function(){
 	$('.del-btn').click(function(){
 		var str = '<input type="file" class="form-control" name="file" data="">';
 		$(this).parent().remove();
-		if($('input[name=file]').length == 3)
+		if($('.attach').length == 2)
 			$('.files').append(str)
 	})
 	$(document).on('change','input[name=file]',function(){
 		var val = $(this).val();
 		var str = '<input type="file" class="form-control" name="file" data=""/>';
-		var length = $('input[name=file]').length;
+		var length = $('input[name=file]').length + $('.attach').length;
 		var data = $(this).attr('data');
 		//
 		if(val == ''){
