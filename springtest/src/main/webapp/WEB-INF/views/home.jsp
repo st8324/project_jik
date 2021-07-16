@@ -6,6 +6,6 @@
 	<title>Home</title>
 </head>
 <body>
-${user}
+
 </body>
 </html>
