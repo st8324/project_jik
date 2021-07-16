@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.test.pagination.*;
@@ -53,9 +54,10 @@ public class BoardController {
 		return mv;
 	}
 	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public ModelAndView registerPost(ModelAndView mv, BoardVO board, HttpServletRequest r) {
+	public ModelAndView registerPost(ModelAndView mv, BoardVO board, 
+			HttpServletRequest r, MultipartFile[] files) {
 		MemberVO user = memberService.getMember(r);
-		boardService.insertBoard(board, user);
+		boardService.insertBoard(board, user, files);
 		mv.setViewName("redirect:/board/list");
 		return mv;
 	}
