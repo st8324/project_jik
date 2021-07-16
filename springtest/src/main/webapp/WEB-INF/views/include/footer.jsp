@@ -6,6 +6,10 @@
 <meta charset="UTF-8">
 </head>
 <body>
-푸터
+<div class="jumbotron jumbotron-fluid mb-0" style="height:224px; overflow: hidden; box-sizing: border-box">
+  <div class="container" >
+    <h1>CJ GREEN</h1>      
+  </div>
+</div>
 </body>
 </html>

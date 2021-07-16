@@ -11,7 +11,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<style>
-	.body{ min-height: calc(100vh)}
+	.body{ min-height: calc(100vh - 290px)}
 	</style>
 </head>
 <body>
