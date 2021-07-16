@@ -35,7 +35,7 @@ public class BoardController {
 		mv.addObject("pm", pm);
 		mv.addObject("list", list);
 		mv.addObject("msg", msg);
-		mv.setViewName("board/list");
+		mv.setViewName("/template/board/list");
 		return mv;
 	}
 	@RequestMapping(value="/detail")
@@ -44,12 +44,12 @@ public class BoardController {
 		BoardVO board = boardService.getBoard(num);
 		mv.addObject("board", board);
 		mv.addObject("msg", msg);
-		mv.setViewName("board/detail");
+		mv.setViewName("/template/board/detail");
 		return mv;
 	}
 	@RequestMapping(value="/register", method=RequestMethod.GET)
 	public ModelAndView registerGet(ModelAndView mv) {
-		mv.setViewName("board/register");
+		mv.setViewName("/template/board/register");
 		return mv;
 	}
 	@RequestMapping(value="/register", method=RequestMethod.POST)
@@ -64,7 +64,7 @@ public class BoardController {
 		log.info("/board/modify : "+num);
 		BoardVO board = boardService.getBoard(num);
 		mv.addObject("board", board);
-		mv.setViewName("board/modify");
+		mv.setViewName("/template/board/modify");
 		return mv;
 	}
 	@RequestMapping(value="/modify", method=RequestMethod.POST)

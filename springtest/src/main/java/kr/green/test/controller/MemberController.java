@@ -20,7 +20,7 @@ public class MemberController {
 	
 	@GetMapping(value="/signup")
 	public ModelAndView signupGet(ModelAndView mv) {
-		mv.setViewName("member/signup");
+		mv.setViewName("/template/member/signup");
 		return mv;
 	}
 	/* 매개변수 user를 하면 객체가 생성된 후, 화면에서 전달한 name과 일치하는 변수명을 가진  
@@ -35,7 +35,7 @@ public class MemberController {
 	}
 	@GetMapping(value="/signin")
 	public ModelAndView signinGet(ModelAndView mv) {
-		mv.setViewName("member/signin");
+		mv.setViewName("/template/member/signin");
 		return mv;
 	}
 	@PostMapping(value="/signin")
@@ -51,7 +51,7 @@ public class MemberController {
 	}
 	@GetMapping(value="/member/mypage")
 	public ModelAndView memberMypageGet(ModelAndView mv) {
-		mv.setViewName("member/mypage");
+		mv.setViewName("/template/member/mypage");
 		return mv;
 	}
 	@PostMapping(value="/member/mypage")
