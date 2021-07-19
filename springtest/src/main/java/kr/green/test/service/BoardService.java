@@ -1,7 +1,9 @@
 package kr.green.test.service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.green.test.pagination.Criteria;
@@ -26,5 +28,7 @@ public interface BoardService {
 	int getTotalCount(Criteria cri);
 
 	ArrayList<FileVO> getFileList(Integer num);
+
+	ResponseEntity<byte[]> downloadFile(String fileName) throws IOException;
 
 }

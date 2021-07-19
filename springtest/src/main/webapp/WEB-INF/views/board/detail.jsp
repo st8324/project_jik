@@ -36,7 +36,7 @@
 		<div class="form-group">
 			<label>첨부파일</label>
 			<c:forEach items="${fileList }" var="file">
-				<a class="form-control" href="#">${file.ori_name }</a>
+				<a class="form-control" href="<%=request.getContextPath()%>/board/download?fileName=${file.name}">${file.ori_name }</a>
 			</c:forEach>
 		</div>
 		<div class="input-group">
