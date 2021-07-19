@@ -79,17 +79,20 @@ public class BoardController {
 	}
 	@RequestMapping(value="/modify", method=RequestMethod.GET)
 	public ModelAndView modifyGet(ModelAndView mv, Integer num) {
-		log.info("/board/modify : "+num);
 		BoardVO board = boardService.getBoard(num);
 		mv.addObject("board", board);
+		//첨부파일 가져옴
+		ArrayList<FileVO> fileList = boardService.getFileList(num);
+		//화면에 첨부파일 전송
+		mv.addObject("fileList", fileList);
 		mv.setViewName("/template/board/modify");
 		return mv;
 	}
 	@RequestMapping(value="/modify", method=RequestMethod.POST)
-	public ModelAndView modifyPost(ModelAndView mv, BoardVO board, HttpServletRequest r) {
-		log.info("/board/modify:POST : " + board);
+	public ModelAndView modifyPost(ModelAndView mv, BoardVO board, HttpServletRequest r,
+			MultipartFile[] files, Integer[] filenums) {
 		MemberVO user = memberService.getMember(r);
-		int res = boardService.updateBoard(board, user);
+		int res = boardService.updateBoard(board, user, files, filenums);
 		String msg="";
 		mv.setViewName("redirect:/board/detail");
 		if(res == 1)
