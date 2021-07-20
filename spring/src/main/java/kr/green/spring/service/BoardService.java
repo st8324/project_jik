@@ -31,4 +31,6 @@ public interface BoardService {
 
 	ResponseEntity<byte[]> downloadFile(String fileName) throws IOException;
 
+	int updateRecommend(MemberVO user, int board, int state);
+
 }

@@ -61,6 +61,16 @@
 	<update id="deleteFileVO">
 		update file set state = 'D' where num = #{num}
 	</update>
+	<select id="getRecommend" resultType="kr.green.spring.vo.RecommendVO">
+		select * from recommend where id = #{id} and board = #{board}
+	</select>
+	<insert id="insertRecommend">
+		insert into recommend(id, board, state) values(#{id}, #{board}, #{state})
+	</insert>
+	<update id="updateRecommend">
+		update recommend set state = #{rvo.state} 
+			where id = #{rvo.id} and board = #{rvo.board}
+	</update>
 </mapper>
 
 
