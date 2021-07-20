@@ -17,6 +17,8 @@ public class BoardVO {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date registered;
 	private int views;
+	private int up;
+	private int down;
 	public String getRegisteredDate() {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		return format.format(registered);
