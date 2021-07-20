@@ -42,6 +42,21 @@
 			</c:forEach>
 		</div>
 	</c:if>
+	<div class="reply form-group">
+		<label>댓글</label>
+		<div class="contents">
+			<div class="reply-list">
+				<div class="form-group">
+					<label>작성자</label>
+					<div class="form-control">내용</div>
+				</div>
+			</div>
+			<div class="reply-box form-group">
+				<textarea class="reply-input form-control mb-2" ></textarea>
+				<button type="button" class="reply-btn btn btn-outline-success">등록</button>
+			</div>
+		</div>
+	</div>
 	<c:if test="${user != null && user.id == board.writer}">
 		<a href="<%=request.getContextPath()%>/board/modify?num=${board.num}"><button class="btn btn-outline-success">수정</button></a>
 		<a href="<%=request.getContextPath()%>/board/delete?num=${board.num}"><button class="btn btn-outline-success">삭제</button></a>
