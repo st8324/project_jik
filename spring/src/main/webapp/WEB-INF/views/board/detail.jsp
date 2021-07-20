@@ -27,8 +27,8 @@
 		<input type="text" class="form-control" value="${board.views}" readonly>
 	</div>
 	<div class="form-group">
-		<button type="button" class="re-btn up btn btn-outline-success">추천</button>
-		<button type="button" class="re-btn down btn btn-outline-danger">비추</button>
+		<button type="button" class="re-btn up btn btn<c:if test="${rvo.state != 1 }">-outline</c:if>-success">추천</button>
+		<button type="button" class="re-btn down btn btn<c:if test="${rvo.state != -1 }">-outline</c:if>-success">비추</button>
 	</div>
 	<div class="form-group">
 		<label>내용</label>
@@ -61,6 +61,7 @@ $(function(){
 		//추천 버튼이면 state를 1로, 비추 버튼이면 state를 -1로
 		var state = $(this).hasClass('up') ? 1 : -1;
 		var num = '<c:out value="${board.num}"/>'
+		var obj = $(this);
 		$.ajax({
 			type: 'get',
 			url : '<%=request.getContextPath()%>/board/recommend/' + state + '/' + num,
@@ -86,6 +87,15 @@ $(function(){
 					alert(str);
 				}
 					
+				if(res.result == 1){
+					$('.re-btn').removeClass('btn-success').addClass('btn-outline-success');
+					obj.removeClass('btn-outline-success').addClass('btn-success');
+				}else if(res.result == 0){
+					obj.removeClass('btn-success').addClass('btn-outline-success');
+				}
+				
+				
+				
 			},
 			error : function(xhr, status, e){
 				

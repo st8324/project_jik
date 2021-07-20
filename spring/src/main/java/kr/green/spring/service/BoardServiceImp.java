@@ -228,6 +228,13 @@ public class BoardServiceImp implements BoardService {
 			}
 		}
 	}
+
+	@Override
+	public RecommendVO getRecommend(MemberVO user, Integer num) {
+		if(user == null || num == null)
+			return null;
+		return boardDao.getRecommend(user.getId(), num);
+	}
 }
 
 

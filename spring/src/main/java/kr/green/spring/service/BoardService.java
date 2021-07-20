@@ -10,6 +10,7 @@ import kr.green.spring.pagination.Criteria;
 import kr.green.spring.vo.BoardVO;
 import kr.green.spring.vo.FileVO;
 import kr.green.spring.vo.MemberVO;
+import kr.green.spring.vo.RecommendVO;
 
 public interface BoardService {
 
@@ -32,5 +33,7 @@ public interface BoardService {
 	ResponseEntity<byte[]> downloadFile(String fileName) throws IOException;
 
 	int updateRecommend(MemberVO user, int board, int state);
+
+	RecommendVO getRecommend(MemberVO user, Integer num);
 
 }
