@@ -153,6 +153,13 @@ $(function(){
 		})
 	})
 	readReply('${board.num}',1);
+	$(document).on('click','.pagination .page-item',function(){
+		var page = $(this).attr('data');
+		readReply('${board.num}',page);	
+	})
+	//$(document).on('click','.del-btn',function(){
+			
+	//})
 })
 function readReply(rp_bd_num, page){
 	$.ajax({
@@ -168,6 +175,8 @@ function readReply(rp_bd_num, page){
 						'<label>'+list[i].rp_me_id+'</label>'+
 						'<div class="form-control">'+list[i].rp_content+'</div>'+
 					'</div>';
+				//if('${user.id}' == list[i].rp_me_id)
+				//	str += '<button class="btn btn-outline-danger del-btn" data="'+list[i].rp_num+'">삭제</button>';
 			}
 			$('.reply-list').html(str);
 			var pm = result['pm'];
@@ -177,7 +186,10 @@ function readReply(rp_bd_num, page){
 			}
 			
 			for(i=pm['startPage']; i<=pm['endPage']; i++){
-				pmStr += '<li class="page-item" data="'+i+'"><a class="page-link" href="javascript:void(0);">'+i+'</a></li>';
+				var active = '';
+				if(i == pm['criteria']['page'])
+					active = 'active';
+				pmStr += '<li class="page-item '+active+'" data="'+i+'"><a class="page-link" href="javascript:void(0);">'+i+'</a></li>';
 			}
 			//
 			
