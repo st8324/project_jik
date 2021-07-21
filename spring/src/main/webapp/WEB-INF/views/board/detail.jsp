@@ -4,6 +4,7 @@
 <!doctype html>
 <html>
 <head>
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/reply.js"></script>
 </head>
 <body>
 <c:if test="${board != null}">
@@ -46,10 +47,7 @@
 		<label>댓글</label>
 		<div class="contents">
 			<div class="reply-list">
-				<div class="form-group">
-					<label>작성자</label>
-					<div class="form-control">내용</div>
-				</div>
+				
 			</div>
 			<div class="reply-box form-group">
 				<textarea class="reply-input form-control mb-2" ></textarea>
@@ -119,6 +117,65 @@ $(function(){
 		
 	})
 })
+
+$(function(){
+	$('.reply-btn').click(function(){
+		var rp_bd_num = '${board.num}';
+		var rp_me_id = '${user.id}';
+		var rp_content = $('.reply-input').val();
+		
+		if(rp_me_id == ''){
+			alert('댓글을 달려면 로그인하세요.');
+			return ;
+		}
+		
+		var data = {
+				'rp_bd_num' : rp_bd_num, 
+				'rp_me_id'  : rp_me_id, 
+				'rp_content': rp_content};
+		$.ajax({
+			type:'post',
+			url : '<%=request.getContextPath()%>/reply/ins',
+			data: JSON.stringify(data),
+			contentType : "application/json; charset=utf-8",
+			success : function(result, status, xhr){
+				if(result == 'ok'){
+					alert('댓글 등록이 완료 되었습니다.');
+					readReply();
+				}
+			},
+			error : function(xhr, status, e){
+				
+			}
+			
+		})
+	})
+	readReply();
+})
+function readReply(){
+	$.ajax({
+		type:'get',
+		url : '<%=request.getContextPath()%>/reply/list/'+'${board.num}',
+		dataType : "json",
+		success : function(result, status, xhr){
+			var list = result['list'];
+			var str = '';
+			for(i = 0; i<list.length; i++){
+				str += 
+					'<div class="form-group">'+
+						'<label>'+list[i].rp_me_id+'</label>'+
+						'<div class="form-control">'+list[i].rp_content+'</div>'+
+					'</div>';
+			}
+			$('.reply-list').html(str);
+						
+		},
+		error : function(xhr, status, e){
+			
+		}
+		
+	})
+}
 </script>
 </body>
 </html>
