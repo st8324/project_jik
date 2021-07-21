@@ -144,6 +144,7 @@ $(function(){
 				if(result == 'ok'){
 					alert('댓글 등록이 완료 되었습니다.');
 					readReply('${board.num}',1);
+					$('.reply-input').val('');
 				}
 			},
 			error : function(xhr, status, e){
