@@ -60,4 +60,15 @@
 	<update id="deleteFile">
 		update file set state = 'D' where num = #{num}
 	</update>
+	<select id="getRecommend" resultType="kr.green.test.vo.RecommendVO">
+		select * from recommend where board = #{board} and id = #{id}
+	</select>
+	<insert id="insertRecommend">
+		insert into recommend(board, id, state) 
+			values(#{board},#{id},#{state})
+	</insert>
+	<update id="updateRecommend">
+		update recommend set state = #{rvo.state} 
+			where board = #{rvo.board} and id = #{rvo.id}
+	</update>
 </mapper>

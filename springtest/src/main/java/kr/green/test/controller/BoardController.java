@@ -1,18 +1,14 @@
 package kr.green.test.controller;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,6 +22,7 @@ import kr.green.test.service.MemberService;
 import kr.green.test.vo.BoardVO;
 import kr.green.test.vo.FileVO;
 import kr.green.test.vo.MemberVO;
+import kr.green.test.vo.RecommendVO;
 import lombok.extern.log4j.Log4j;
 
 
@@ -52,7 +49,7 @@ public class BoardController {
 		return mv;
 	}
 	@RequestMapping(value="/detail")
-	public ModelAndView detail(ModelAndView mv, Integer num, String msg) {
+	public ModelAndView detail(ModelAndView mv, Integer num, String msg, HttpServletRequest r) {
 		boardService.updateViews(num);
 		BoardVO board = boardService.getBoard(num);
 		mv.addObject("board", board);
@@ -60,7 +57,11 @@ public class BoardController {
 		
 		ArrayList<FileVO> fileList = boardService.getFileList(num);
 		mv.addObject("fileList",fileList);
-		log.info(fileList);
+		
+		MemberVO user = memberService.getMember(r);
+		RecommendVO rvo = boardService.getRcommend(num, user);
+		mv.addObject("recommend", rvo);
+		
 		mv.setViewName("/template/board/detail");
 		return mv;
 	}
@@ -126,5 +127,14 @@ public class BoardController {
 	@RequestMapping("/download")
 	public ResponseEntity<byte[]> downloadFile(String fileName)throws Exception{
 		return boardService.downloadFile(fileName);
+	}
+	@ResponseBody
+	@GetMapping("/recommend/{board}/{state}")
+	public String boardRecommend(
+			@PathVariable("board") int board,
+			@PathVariable("state") int state,
+			HttpServletRequest r){
+		MemberVO user = memberService.getMember(r);
+		return boardService.recommend(board,state,user);
 	}
 }
