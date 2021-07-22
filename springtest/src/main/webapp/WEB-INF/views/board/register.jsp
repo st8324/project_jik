@@ -5,10 +5,8 @@
 <html>
 <head>
 	<title>게시판</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 </head>
 <body>
 	<form class="container" method="post" enctype="multipart/form-data" action="<%=request.getContextPath()%>/board/register">
@@ -19,7 +17,7 @@
 		</div>
 		<div class="form-group">
 			<label>내용</label>
-			<textarea class="form-control" name="contents" rows="10">${board.contents }</textarea>
+			<textarea id="summernote" class="form-control" name="contents" rows="10">${board.contents }</textarea>
 		</div>
 		<div class="form-group">
 			<label>첨부파일</label>
@@ -30,5 +28,14 @@
 		<button class="btn btn-outline-success">등록</button>
 		<a href="<%=request.getContextPath()%>/board/list"><button type="button" class="btn btn-outline-danger">목록</button></a>
 	</form>
+	<script>
+	$(function(){
+      $('#summernote').summernote({
+        placeholder: '내용을 입력하세요.',
+        tabsize: 2,
+        height: 400
+      });
+	})
+    </script>
 </body>
 </html>

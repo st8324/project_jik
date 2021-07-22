@@ -31,7 +31,7 @@
 		</div>
 		<div class="form-group">
 			<label>내용</label>
-			<textarea class="form-control" name="contents" rows="10" readonly>${board.contents }</textarea>
+			<div class="form-control" style="min-height:400px;">${board.contents }</div>
 		</div>
 		<div class="form-group">
 			<label>첨부파일</label>
