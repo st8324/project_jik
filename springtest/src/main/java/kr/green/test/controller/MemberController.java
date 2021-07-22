@@ -5,7 +5,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.test.service.MemberService;
@@ -73,5 +75,10 @@ public class MemberController {
 		r.getSession().removeAttribute("user");
 		mv.setViewName("redirect:/");
 		return mv;
+	}
+	@ResponseBody
+	@GetMapping(value="/member/idCheck/{id}")
+	public String memberIdCheckGet(@PathVariable("id") String id) {
+		return memberService.idCheck(id) ? "POSSIBLE" : "IMPOSSIBLE";
 	}
 }
