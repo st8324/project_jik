@@ -172,6 +172,35 @@ $(function(){
 			}
 		})
 	})
+	$(document).on('click','.mod-btn',function(){
+		var content = $(this).parent().prev().children().last().text();
+		var rp_num = $(this).attr('data');
+		var str = 
+		'<div class="reply-box form-group">'+
+			'<textarea class="reply-mod-input form-control mb-2" >'+content+'</textarea>'+
+			'<button type="button" class="reply-mod-btn btn btn-outline-success" data="'+rp_num+'">등록</button>'+
+		'</div>';
+		$(this).parent().hide();	
+		$(this).parent().prev().children().last().hide();
+		$(this).parent().prev().append(str);
+	});
+	$(document).on('click','.reply-mod-btn',function(){
+		var rp_content = $(this).prev().val();
+		var rp_num = $(this).attr('data');
+		$.ajax({
+			type:'post',
+			url : '<%=request.getContextPath()%>/reply/mod',
+			data: JSON.stringify({'rp_num' : rp_num,'rp_content':rp_content}),
+			contentType : "application/json; charset=utf-8",
+			success : function(result, status, xhr){
+				//page번호에 맞게 새로고침
+				var page = $('.pagination .active').find('a').text();
+				readReply('${board.num}',page);
+			},
+			error : function(xhr, status, e){
+			}
+		})
+	});
 })
 function readReply(rp_bd_num, page){
 	$.ajax({
@@ -187,8 +216,12 @@ function readReply(rp_bd_num, page){
 						'<label>'+list[i].rp_me_id+'</label>'+
 						'<div class="form-control">'+list[i].rp_content+'</div>'+
 					'</div>';
-				if('${user.id}' == list[i].rp_me_id)
+				if('${user.id}' == list[i].rp_me_id){
+					str += '<div>';
 					str += '<button class="btn btn-outline-danger del-btn" data="'+list[i].rp_num+'">삭제</button>';
+					str += '<button class="btn btn-outline-danger mod-btn" data="'+list[i].rp_num+'">수정</button>';
+					str += '</div>'
+				}
 			}
 			$('.reply-list').html(str);
 			var pm = result['pm'];
