@@ -5,10 +5,7 @@
 <html>
 <head>
 	<title>게시판</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/reply.js"></script>
 	<style>
 	.recommend-btn{
 		font-size: 30px;
@@ -70,6 +67,18 @@
 				<a class="form-control" href="<%=request.getContextPath()%>/board/download?fileName=${file.name}">${file.ori_name }</a>
 			</c:forEach>
 		</div>
+		<div class="reply form-group">
+			<label>댓글</label>
+			<div class="contents">
+				<div class="reply-list"></div>
+				<ul class="pagination justify-content-center"></ul>
+				<div class="reply-box form-group">
+					<textarea class="reply-input form-control mb-2" ></textarea>
+					<button type="button" class="reply-btn btn btn-outline-success">등록</button>
+				</div>
+			</div>
+		</div>
+		
 		<div class="input-group">
 			<a href="<%=request.getContextPath()%>/board/list" class="mr-2"><button class="btn btn-outline-danger">목록</button></a>
 			<c:if test="${board != null && user.id eq board.writer }">
@@ -123,6 +132,24 @@
 					console.log('에러 발생');
 				}
 			})
+		})
+	})
+	$(function(){
+		$('.reply-btn').click(function(){
+			var rp_bd_num = '${board.num}';
+			var rp_content = $('.reply-input').val();
+			var rp_me_id = '${user.id}';
+			if(rp_me_id == ''){
+				alert('로그인 하세요.');
+				return;
+			}
+			var data = {
+					'rp_bd_num' : rp_bd_num,
+					'rp_content': rp_content,
+					'rp_me_id'  : rp_me_id
+			};
+			var contextPath = '<%=request.getContextPath()%>';
+			replyService.insert(contextPath, data);
 		})
 	})
 	</script>	

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.green.test.dao.ReplyDAO">
+  <insert id="insertReply">
+  	insert into reply(rp_me_id, rp_bd_num, rp_content)
+  		values(#{rvo.rp_me_id}, #{rvo.rp_bd_num}, #{rvo.rp_content})
+  </insert>
+</mapper>
