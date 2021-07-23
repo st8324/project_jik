@@ -18,6 +18,10 @@ public class Criteria {
 		this.perPageNum = 10;
 		this.search = "";
 	}
+	public Criteria(int page, int perPageNum) {
+		setPage(page);
+		setPerPageNum(perPageNum);
+	}
 	public void setPage(int page) {
 		if(page <= 0)	this.page = 1;
 		else			this.page = page;

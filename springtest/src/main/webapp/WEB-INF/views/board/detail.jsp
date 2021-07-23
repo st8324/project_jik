@@ -142,7 +142,7 @@
 	})
 	$(function(){
 		
-		replyService.list(contextPath, rp_bd_num);
+		replyService.list(contextPath, rp_bd_num, 1);
 		
 		$('.reply-btn').click(function(){
 			var rp_bd_num = '${board.num}';
@@ -159,6 +159,10 @@
 			};
 			
 			replyService.insert(contextPath, data);
+		})
+		$(document).on('click','.pagination .page-item', function(){
+			var page = $(this).attr('data');
+			replyService.list(contextPath,rp_bd_num,page);
 		})
 	})
 	

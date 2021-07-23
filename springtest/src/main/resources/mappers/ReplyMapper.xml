@@ -11,6 +11,10 @@
   	select * from reply 
   		where rp_bd_num = #{rp_bd_num} and rp_valid = 'I'
   		order by rp_num desc
+  		limit #{cri.pageStart}, #{cri.perPageNum}
   </select>
-  
+  <select id="getTotalCount" resultType="int">
+  	select count(*) from reply 
+  		where rp_bd_num = #{rp_bd_num} and rp_valid = 'I'
+  </select>
 </mapper>

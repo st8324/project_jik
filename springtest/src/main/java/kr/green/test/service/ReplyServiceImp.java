@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Service;
 
 import kr.green.test.dao.ReplyDAO;
+import kr.green.test.pagination.Criteria;
 import kr.green.test.vo.ReplyVO;
 import lombok.AllArgsConstructor;
 
@@ -22,7 +23,12 @@ public class ReplyServiceImp implements ReplyService {
 	}
 
 	@Override
-	public ArrayList<ReplyVO> getReplyList(int rp_bd_num) {
-		return replyDao.getReplyList(rp_bd_num);
+	public ArrayList<ReplyVO> getReplyList(int rp_bd_num, Criteria cri) {
+		return replyDao.getReplyList(rp_bd_num, cri);
+	}
+
+	@Override
+	public int getTotalCount(int rp_bd_num) {
+		return replyDao.getTotalCount(rp_bd_num);
 	}
 }

@@ -11,17 +11,17 @@ var replyService = (function(){
 			contentType : "application/json; charset=utf-8",
 			success : function(result){
 				if(result == 'OK'){
-					list(contextPath, data['rp_bd_num']);
+					list(contextPath, data['rp_bd_num'], 1);
 					$('.reply-input').val('');
 					alert('댓글이 등록되었습니다.');
 				}
 			}
 		})
 	}
-	function list(contextPath, rp_bd_num){
+	function list(contextPath, rp_bd_num, page){
 		$.ajax({
 			type : 'get',
-			url : contextPath + '/reply/list/' + rp_bd_num,
+			url : contextPath + '/reply/list/' + rp_bd_num + '/' + page,
 			dataType : 'json',
 			success : function(result){
 				var str = '<hr style="background:red;"/>';
@@ -34,6 +34,22 @@ var replyService = (function(){
 				}
 				str += '<hr style="background:red;"/>';
 				$('.reply-list').html(str);
+
+				var pmStr = '';
+				var pm = result['pm'];
+				if(pm.prev)
+					pmStr += '<li class="page-item" data="'+(pm.startPage-1)+'"><a class="page-link" href="javascript:void(0);">이전</a></li>';
+				
+				for(i = pm.startPage; i<=pm.endPage; i++){
+					if(pm.criteria.page == i)
+						pmStr += '<li class="page-item active" data="'+ i +'"><a class="page-link" href="javascript:void(0);">'+i+'</a></li>';
+					else
+						pmStr += '<li class="page-item" data="'+ i +'"><a class="page-link" href="javascript:void(0);">'+i+'</a></li>';	
+				}
+				if(pm.next)					
+					pmStr += '<li class="page-item"  data="'+(pm.endPage+1)+'"><a class="page-link" href="javascript:void(0);">다음</a></li>';				
+				
+				$('.pagination').html(pmStr);
 			}
 		})
 	}
