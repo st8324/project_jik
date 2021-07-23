@@ -96,6 +96,8 @@
 	var rp_bd_num = '${board.num}';
 	//프로젝트명
 	var contextPath = '<%=request.getContextPath()%>';
+	//아이디
+	var id = '${user.id}';
 	
 	$(function(){
 		var msg = '${msg}';
@@ -142,7 +144,7 @@
 	})
 	$(function(){
 		
-		replyService.list(contextPath, rp_bd_num, 1);
+		replyService.list(contextPath, rp_bd_num, 1, id);
 		
 		$('.reply-btn').click(function(){
 			var rp_bd_num = '${board.num}';
@@ -162,8 +164,19 @@
 		})
 		$(document).on('click','.pagination .page-item', function(){
 			var page = $(this).attr('data');
-			replyService.list(contextPath,rp_bd_num,page);
+			replyService.list(contextPath,rp_bd_num,page, id);
 		})
+		$(document).on('click','.mod-btn', function(){
+			var contentObj = $(this).parent().prev().children().last();
+			var str = 
+				'<div class="reply-mod-box form-group">'+
+					'<textarea class="reply-input form-control mb-2" >'+contentObj.text()+'</textarea>'+
+					'<button type="button" class="reply-mod-btn btn btn-outline-success">등록</button>'+
+				'</div>';
+			contentObj.after(str).remove();
+			
+			$(this).parent().remove();
+		});
 	})
 	
 	
