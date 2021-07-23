@@ -7,4 +7,10 @@
   	insert into reply(rp_me_id, rp_bd_num, rp_content)
   		values(#{rvo.rp_me_id}, #{rvo.rp_bd_num}, #{rvo.rp_content})
   </insert>
+  <select id="getReplyList" resultType="kr.green.test.vo.ReplyVO">
+  	select * from reply 
+  		where rp_bd_num = #{rp_bd_num} and rp_valid = 'I'
+  		order by rp_num desc
+  </select>
+  
 </mapper>

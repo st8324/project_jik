@@ -11,16 +11,36 @@ var replyService = (function(){
 			contentType : "application/json; charset=utf-8",
 			success : function(result){
 				if(result == 'OK'){
+					list(contextPath, data['rp_bd_num']);
 					$('.reply-input').val('');
 					alert('댓글이 등록되었습니다.');
 				}
 			}
 		})
 	}
-	
-	return {
+	function list(contextPath, rp_bd_num){
+		$.ajax({
+			type : 'get',
+			url : contextPath + '/reply/list/' + rp_bd_num,
+			dataType : 'json',
+			success : function(result){
+				var str = '<hr style="background:red;"/>';
+				for(reply of result['replyList']){
+					str += 
+						'<div>'+
+							'<label>'+reply['rp_me_id']+'</label>'+
+							'<div class="form-control">'+reply['rp_content']+'</div>'+
+						'</div>';
+				}
+				str += '<hr style="background:red;"/>';
+				$('.reply-list').html(str);
+			}
+		})
+	}
+	return { 
 		name : '서비스',
-		insert : insert
+		insert : insert,
+		list : list
 	}
 })();
 

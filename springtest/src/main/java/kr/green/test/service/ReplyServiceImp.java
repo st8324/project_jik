@@ -1,5 +1,7 @@
 package kr.green.test.service;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Service;
 
 import kr.green.test.dao.ReplyDAO;
@@ -17,5 +19,10 @@ public class ReplyServiceImp implements ReplyService {
 			return 0;
 		replyDao.insertReply(rvo);
 		return 1;
+	}
+
+	@Override
+	public ArrayList<ReplyVO> getReplyList(int rp_bd_num) {
+		return replyDao.getReplyList(rp_bd_num);
 	}
 }

@@ -70,7 +70,7 @@
 		<div class="reply form-group">
 			<label>댓글</label>
 			<div class="contents">
-				<div class="reply-list"></div>
+				<div class="reply-list form-group"></div>
 				<ul class="pagination justify-content-center"></ul>
 				<div class="reply-box form-group">
 					<textarea class="reply-input form-control mb-2" ></textarea>
@@ -91,6 +91,12 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+	//전역변수
+	//게시글 번호
+	var rp_bd_num = '${board.num}';
+	//프로젝트명
+	var contextPath = '<%=request.getContextPath()%>';
+	
 	$(function(){
 		var msg = '${msg}';
 		printMsg(msg);
@@ -135,6 +141,9 @@
 		})
 	})
 	$(function(){
+		
+		replyService.list(contextPath, rp_bd_num);
+		
 		$('.reply-btn').click(function(){
 			var rp_bd_num = '${board.num}';
 			var rp_content = $('.reply-input').val();
@@ -148,10 +157,12 @@
 					'rp_content': rp_content,
 					'rp_me_id'  : rp_me_id
 			};
-			var contextPath = '<%=request.getContextPath()%>';
+			
 			replyService.insert(contextPath, data);
 		})
 	})
+	
+	
 	</script>	
 </body>
 </html>
