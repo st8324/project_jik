@@ -11,7 +11,7 @@ var replyService = (function(){
 			contentType : "application/json; charset=utf-8",
 			success : function(result){
 				if(result == 'OK'){
-					list(contextPath, data['rp_bd_num'], 1, data['re_me_id']);
+					list(contextPath, data['rp_bd_num'], 1, data['rp_me_id']);
 					$('.reply-input').val('');
 					alert('댓글이 등록되었습니다.');
 				}
