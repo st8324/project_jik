@@ -173,7 +173,7 @@ public class HomeController {
 	        messageHelper.setFrom("stajun@gmail.com");  // 보내는사람 생략하거나 하면 정상작동을 안함
 	        messageHelper.setTo(email);     // 받는사람 이메일
 	        messageHelper.setSubject("가입된 아이디입니다."); // 메일제목은 생략이 가능하다
-	        messageHelper.setText("","가입된 아이디는 <b>" + idList.toString() + "</b>입니다.");  // 메일 내용
+	        messageHelper.setText("","가입된 아이디는 <b>" + idList.toString().replaceAll("[\\[\\]]","") + "</b>입니다.");  // 메일 내용
 
 	        mailSender.send(message);
 	        return "SUCCESS";
