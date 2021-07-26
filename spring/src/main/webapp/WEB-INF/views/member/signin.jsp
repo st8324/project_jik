@@ -18,6 +18,8 @@
 		<input type="password" class="form-control" name="pw">
 	</div>
 	<button id="loginBtn" type="button" class="btn btn-outline-success col-12">로그인</button>
+	<a href="<%=request.getContextPath()%>/find/pw">비밀번호찾기</a>
+	<a href="<%=request.getContextPath()%>/find/id">아이디찾기</a>
 </form>
 <script type="text/javascript">
 $(function(){
