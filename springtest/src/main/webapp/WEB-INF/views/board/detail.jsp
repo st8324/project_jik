@@ -168,15 +168,36 @@
 		})
 		$(document).on('click','.mod-btn', function(){
 			var contentObj = $(this).parent().prev().children().last();
+			var rp_num = $(this).attr('data');
 			var str = 
 				'<div class="reply-mod-box form-group">'+
 					'<textarea class="reply-input form-control mb-2" >'+contentObj.text()+'</textarea>'+
-					'<button type="button" class="reply-mod-btn btn btn-outline-success">등록</button>'+
+					'<button type="button" class="reply-mod-btn btn btn-outline-success" data="'+rp_num+'">등록</button>'+
 				'</div>';
 			contentObj.after(str).remove();
 			
 			$(this).parent().remove();
 		});
+		$(document).on('click','.reply-mod-btn',function(){
+			var rp_content = $(this).siblings('.reply-input').val();
+			var rp_me_id = '${user.id}';
+			var rp_num = $(this).attr('data');
+			var data = {
+					rp_content : rp_content,
+					rp_me_id : rp_me_id,
+					rp_num : rp_num
+				};
+			$.ajax({
+				type : 'post',
+				url  : contextPath + '/reply/mod',
+				data : JSON.stringify(data),
+				contentType : "application/json; charset=utf-8",
+				success : function(res){
+					console.log('성공')
+				}
+			});
+			
+		})
 	})
 	
 	

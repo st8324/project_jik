@@ -34,7 +34,7 @@ var replyService = (function(){
 					if(reply['rp_me_id'] == id){
 						str +=
 							'<div>' + 
-								'<button type="button" class="btn btn-outline-danger mod-btn">수정</button>' +
+								'<button type="button" class="btn btn-outline-danger mod-btn" data="'+ reply['rp_num'] +'">수정</button>' +
 							'</div>'; 
 					}
 				}

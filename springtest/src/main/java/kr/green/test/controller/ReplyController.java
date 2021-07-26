@@ -42,4 +42,9 @@ public class ReplyController {
 		map.put("pm", pm);
 		return map;
 	}
+	@PostMapping("/reply/mod")
+	public String replyModPost(@RequestBody ReplyVO reply) {
+		System.out.println(reply);
+		return "";
+	}
 }
