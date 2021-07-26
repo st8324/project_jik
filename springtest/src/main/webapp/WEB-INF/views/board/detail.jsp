@@ -191,9 +191,20 @@
 			replyService.modify(contextPath, data, page);
 			
 		})
+		$(document).on('click','.del-btn',function(){
+			var rp_me_id = id;
+			var rp_num = $(this).attr('data');
+			var data = { 
+					rp_me_id : rp_me_id,
+					rp_num : rp_num,
+					rp_bd_num : rp_bd_num
+				}
+			var page = $('.pagination .active a').text();
+			replyService.deleteReply(contextPath, data, page);
+		})
 	})
 	
-	
+
 	</script>	
 </body>
 </html>
