@@ -17,4 +17,15 @@
   	select count(*) from reply 
   		where rp_bd_num = #{rp_bd_num} and rp_valid = 'I'
   </select>
+  <select id="getReply" resultType="kr.green.test.vo.ReplyVO">
+  	select * from reply 
+  		where rp_num = #{rp_num} and rp_valid = 'I'
+  </select>
+  <update id="updateReply">
+  	update reply set
+  		rp_content = #{reply.rp_content},
+  		rp_upDate = #{reply.rp_upDate},
+  		rp_valid = #{reply.rp_valid}
+  		where rp_num = #{reply.rp_num}
+  </update>
 </mapper>

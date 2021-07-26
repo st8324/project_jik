@@ -180,22 +180,15 @@
 		});
 		$(document).on('click','.reply-mod-btn',function(){
 			var rp_content = $(this).siblings('.reply-input').val();
-			var rp_me_id = '${user.id}';
 			var rp_num = $(this).attr('data');
 			var data = {
 					rp_content : rp_content,
-					rp_me_id : rp_me_id,
-					rp_num : rp_num
+					rp_me_id : id,
+					rp_num : rp_num,
+					rp_bd_num : rp_bd_num
 				};
-			$.ajax({
-				type : 'post',
-				url  : contextPath + '/reply/mod',
-				data : JSON.stringify(data),
-				contentType : "application/json; charset=utf-8",
-				success : function(res){
-					console.log('성공')
-				}
-			});
+			var page = $('.pagination .active a').text();
+			replyService.modify(contextPath, data, page);
 			
 		})
 	})

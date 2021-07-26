@@ -59,10 +59,27 @@ var replyService = (function(){
 			}
 		})
 	}
+	function modify(contextPath, data, page){
+		$.ajax({
+			type : 'post',
+			url  : contextPath + '/reply/mod',
+			data : JSON.stringify(data),
+			contentType : "application/json; charset=utf-8",
+			success : function(res){
+				if(res == 'SUCCESS'){
+					alert('댓글이 수정되었습니다.');
+					list(contextPath, data['rp_bd_num'], page, data['rp_me_id']);
+				}else{
+					alert('댓글을 수정할 수 없습니다.');
+				}
+			}
+		});
+	}
 	return { 
 		name : '서비스',
 		insert : insert,
-		list : list
+		list : list,
+		modify : modify
 	}
 })();
 

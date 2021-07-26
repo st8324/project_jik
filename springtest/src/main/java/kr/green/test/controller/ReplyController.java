@@ -44,7 +44,6 @@ public class ReplyController {
 	}
 	@PostMapping("/reply/mod")
 	public String replyModPost(@RequestBody ReplyVO reply) {
-		System.out.println(reply);
-		return "";
+		return replyService.updateReply(reply);
 	}
 }
