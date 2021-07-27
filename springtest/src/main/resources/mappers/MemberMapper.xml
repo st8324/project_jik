@@ -18,4 +18,15 @@
   		name = #{user.name}
 	where id = #{user.id}
   </update>
+  <update id="keepLogin">
+  	update member 
+  		set
+  			session_id = #{session_id},
+  			session_limit = #{session_limit}
+  		where
+  			id = #{id}
+  </update>
+  <select id="getMemberByCookie" resultType="kr.green.test.vo.MemberVO">
+  	select * from member where session_id=#{session_id} and session_limit > now()
+  </select>
 </mapper>

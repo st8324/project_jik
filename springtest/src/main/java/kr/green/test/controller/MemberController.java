@@ -1,6 +1,10 @@
 package kr.green.test.controller;
 
+import java.util.Date;
+
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.WebUtils;
 
 import kr.green.test.service.MemberService;
 import kr.green.test.vo.MemberVO;
@@ -42,13 +47,13 @@ public class MemberController {
 	}
 	@PostMapping(value="/signin")
 	public ModelAndView signinPost(ModelAndView mv, MemberVO user) {
+		
 		MemberVO loginUser = memberService.signin(user);
 		if(loginUser != null)
 			mv.setViewName("redirect:/");
 		else
 			mv.setViewName("redirect:/signin");
 		mv.addObject("user",loginUser);
-		System.out.println(loginUser);
 		return mv;
 	}
 	@GetMapping(value="/member/mypage")
@@ -71,8 +76,18 @@ public class MemberController {
 		return mv;
 	}
 	@GetMapping(value="/member/signout")
-	public ModelAndView memberSignoutGet(ModelAndView mv, HttpServletRequest r) {
-		r.getSession().removeAttribute("user");
+	public ModelAndView memberSignoutGet(ModelAndView mv, 
+			HttpServletRequest rq,
+			HttpServletResponse rp) {
+		MemberVO user = memberService.getMember(rq);
+		rq.getSession().removeAttribute("user");
+		rq.getSession().invalidate();
+		Cookie loginCookie = WebUtils.getCookie(rq, "loginCookie");
+		loginCookie.setPath("/");
+		loginCookie.setMaxAge(0);
+		rp.addCookie(loginCookie);
+		memberService.keepLogin(user.getId(), "none", new Date());
+		
 		mv.setViewName("redirect:/");
 		return mv;
 	}

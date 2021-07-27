@@ -1,5 +1,7 @@
 package kr.green.test.service;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,8 +46,10 @@ public class MemberServiceImp implements MemberService {
 		MemberVO dbUser = memberDao.getMember(user.getId());
 		if(dbUser == null)
 			return null;
-		if(passwordEncoder.matches(user.getPw(), dbUser.getPw()))
+		if(passwordEncoder.matches(user.getPw(), dbUser.getPw())) {
+			dbUser.setUseCookie(user.getUseCookie());
 			return dbUser;
+		}
 		return null;
 	}
 
@@ -77,5 +81,19 @@ public class MemberServiceImp implements MemberService {
 		if(id == null || id.length() == 0 )
 			return false;
 		return memberDao.getMember(id) == null ? true : false;
+	}
+
+	@Override
+	public void keepLogin(String id, String session_id, Date session_limit) {
+		if(id == null || session_id == null || session_limit == null) {
+			return;
+		}
+		memberDao.keepLogin(id, session_id, session_limit);
+	}
+
+	@Override
+	public MemberVO getMemberByCookie(String value) {
+		
+		return memberDao.getMemberByCookie(value);
 	}
 }

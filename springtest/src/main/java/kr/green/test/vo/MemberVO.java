@@ -10,4 +10,5 @@ public class MemberVO {
 	private String email;
 	private String name;
 	private String authority;
+	private Boolean useCookie;
 }
