@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
@@ -83,11 +84,13 @@ public class MemberController {
 		rq.getSession().removeAttribute("user");
 		rq.getSession().invalidate();
 		Cookie loginCookie = WebUtils.getCookie(rq, "loginCookie");
-		loginCookie.setPath("/");
-		loginCookie.setMaxAge(0);
-		rp.addCookie(loginCookie);
-		memberService.keepLogin(user.getId(), "none", new Date());
-		
+		if(loginCookie != null) {
+			loginCookie.setPath("/");
+			loginCookie.setMaxAge(0);
+			rp.addCookie(loginCookie);
+			
+			memberService.keepLogin(user.getId(), "none", new Date());
+		}
 		mv.setViewName("redirect:/");
 		return mv;
 	}
@@ -95,5 +98,15 @@ public class MemberController {
 	@GetMapping(value="/member/idCheck/{id}")
 	public String memberIdCheckGet(@PathVariable("id") String id) {
 		return memberService.idCheck(id) ? "POSSIBLE" : "IMPOSSIBLE";
+	}
+	@GetMapping(value="/find/pw")
+	public ModelAndView findPw(ModelAndView mv) {
+		mv.setViewName("/template/member/findpw");
+		return mv;
+	}
+	@ResponseBody
+	@GetMapping("/find/pw/{id}")
+	public String findPwIdGet(@PathVariable("id") String id) {
+		return memberService.findPw(id);
 	}
 }

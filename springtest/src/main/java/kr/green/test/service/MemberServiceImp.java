@@ -2,9 +2,12 @@ package kr.green.test.service;
 
 import java.util.Date;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +21,8 @@ public class MemberServiceImp implements MemberService {
     MemberDAO memberDao;
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
-
+	@Autowired
+	private JavaMailSender mailSender;
 	@Override
 	public void signup(MemberVO user) {
 		if(user == null) 
@@ -95,5 +99,53 @@ public class MemberServiceImp implements MemberService {
 	public MemberVO getMemberByCookie(String value) {
 		
 		return memberDao.getMemberByCookie(value);
+	}
+
+	@Override
+	public String findPw(String id) {
+		if(id == null)
+			return "FAIL";
+		
+		MemberVO user = memberDao.getMember(id);
+		
+		if(user == null)
+			return "FAIL";
+		//비밀번호 8자리 랜덤 생성
+		String newPw = newRandomPw(8);
+		//새 비밀번호로 변경
+		user.setPw(newPw);
+		updateMember(user, user);
+		//새 비밀번호를 메일로 전송
+		try {
+	        MimeMessage message = mailSender.createMimeMessage();
+	        MimeMessageHelper messageHelper 
+	            = new MimeMessageHelper(message, true, "UTF-8");
+
+	        messageHelper.setFrom("stajun@gmail.com");
+	        messageHelper.setTo(user.getEmail());     
+	        messageHelper.setSubject("새 비밀번호입니다."); 
+	        messageHelper.setText("","발급된 새 비밀번호는 <h3>" + newPw + "</h3>입니다.");  // 메일 내용
+
+	        mailSender.send(message);
+	        return "SUCCESS";
+	    } catch(Exception e){
+	        System.out.println(e);
+	    }
+		
+		return "FAIL";
+	}
+	private String newRandomPw(int size) {
+		int min = 0, max = 61;
+		String str = "";
+		for(int i = 0; i<size; i++) {
+			int r = (int)(Math.random()*(max - min + 1) + min);
+			if( r < 10)
+				str += r;
+			else if(r < 36)
+				str += (char) ('a' + (r - 10));
+			else if(r < 62)
+				str += (char) ('A' + (r - 36));
+		}
+		return str;
 	}
 }
