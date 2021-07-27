@@ -1,6 +1,7 @@
 package kr.green.spring.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,4 +20,8 @@ public interface MemberService {
 	public MemberVO getMember(HttpServletRequest request);
 
 	public ArrayList<MemberVO> getMemberByEmail(String email);
+
+	public void keeplogin(String id, String session_id, Date session_limit);
+
+	public MemberVO checkLoginBefore(String session_id);
 }

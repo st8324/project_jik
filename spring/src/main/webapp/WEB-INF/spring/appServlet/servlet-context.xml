@@ -29,6 +29,8 @@
 		class="kr.green.spring.interceptor.MemberInterceptor"></beans:bean>
 	<beans:bean id="nonMemberInterceptor" 
 		class="kr.green.spring.interceptor.NonMemberInterceptor"></beans:bean>
+	<beans:bean id="autoLoginInterceptor" 
+		class="kr.green.spring.interceptor.AutoLoginInterceptor"></beans:bean>
 	<interceptors>
 	    <interceptor>
 	        <mapping path="/signin"/>
@@ -45,6 +47,10 @@
 	        <mapping path="/signin"/>
 	        <mapping path="/signup"/>
 	        <beans:ref bean="nonMemberInterceptor"/>
+	    </interceptor>
+	    <interceptor>
+	        <mapping path="/**/"/>
+	        <beans:ref bean="autoLoginInterceptor"/>
 	    </interceptor>
 	</interceptors>
 	
