@@ -1,0 +1,20 @@
+1. 로그인 화면에 자동 로그인 체크박스 추가
+2. 체크박스 정보가 컨트롤러로 가는지 확인
+3. 체크박스 정보가 LoginInterceptor까지 가는지 확인
+4. LoginInterceptor에서 회원 정보가 있고, 자동 로그인이 체크 되어 있으면 자동 로그인
+   기능 추가
+   - loginCookie이름을 가지는 쿠키를 생성
+   - loginCookie 유지시간을 7일(60 * 60 * 24 * 7)로 설정
+   - loginCookie를 response에 추가
+   - DB에 로그인한 유저 정보에 세션 아이디와 만료 시간을 업데이트 함
+5. 자동 로그인을 위한 AutoLoginInterceptor 클래스 추가
+   - preHandle 메소드(컨트롤러에 들어가기전에 체크하는 메소드)에 loginCookie 
+     정보를 가져와서 있으면 해당 쿠키의 정보와 일치하는 회원 정보를 DB에서 가져옴
+     (session_id가 일치하고 만료시간이 현재시간보다 큰 회원 정보)
+   - 일치하는 회원 정보가 있으면 세션에 저장
+6. 모든 URL에 AutoLoginInterceptor를 확인할 수 있도록 servlet-context.xml에 설정
+7. 로그아웃시 loginCookie 정보가 있으면 쿠키 유지 시간을 0로 하고, DB에 
+   session_id와 만료 시간을 수정
+
+
+
