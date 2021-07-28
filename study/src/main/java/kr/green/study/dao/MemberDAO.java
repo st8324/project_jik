@@ -6,4 +6,6 @@ public interface MemberDAO {
 
 	void insertMember(MemberVO user);
 
+	MemberVO selectUser(String id);
+
 }

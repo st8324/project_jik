@@ -27,4 +27,20 @@ public class MemberController {
 		mv.setViewName("redirect:/");
 		return mv;
 	}
+	@GetMapping("/member/signin")
+	public ModelAndView memberSigninGet(ModelAndView mv) {
+		mv.addObject("title","로그인");
+		mv.setViewName("/template/member/signin");
+		return mv;
+	}
+	@PostMapping("/member/signin")
+	public ModelAndView memberSigninPost(ModelAndView mv, MemberVO user) {
+		MemberVO loginUser = memberService.signin(user);
+		if(loginUser != null)
+			mv.setViewName("redirect:/");
+		else
+			mv.setViewName("redirect:/member/signin");
+		mv.addObject("user", loginUser);
+		return mv;
+	}
 }
