@@ -6,6 +6,25 @@
 <head>
 </head>
 <body>
-	<div>네비게이션</div>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	<!-- Brand/logo -->
+	<a class="navbar-brand" href="#">
+		<img src="bird.jpg" alt="logo" style="width:40px;">
+	</a>
+	
+	<!-- Links -->
+	<ul class="navbar-nav">
+		<li class="nav-item">
+			<a class="nav-link" href="<%=request.getContextPath()%>/member/signup">회원가입</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="<%=request.getContextPath()%>/member/signup">로그인</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Link 3</a>
+		</li>
+	</ul>
+</nav>
+
 </body>
 </html>
