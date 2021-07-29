@@ -72,7 +72,7 @@
 	        <beans:ref bean="memberInterceptor"/>
 	    </interceptor>
 	    <interceptor>
-	        <mapping path="/amind/*"/>
+	        <mapping path="/admin/**/"/>
 	        <beans:ref bean="adminInterceptor"/>
 	    </interceptor>
 	</interceptors>
