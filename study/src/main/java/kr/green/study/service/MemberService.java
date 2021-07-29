@@ -25,4 +25,6 @@ public interface MemberService {
 	MemberVO getMemberByRequest(HttpServletRequest request);
 
 	ArrayList<MemberVO> getMemberList(MemberVO user);
+
+	boolean updateAuthority(MemberVO user, MemberVO loginUser);
 }

@@ -31,4 +31,13 @@
 			</if>
 			order by id asc
 	</select>
+	<update id="updateUser">
+		update member set
+			pw = #{pw},
+			email = #{email},
+			gender = #{gender},
+			name = #{name},
+			authority = #{authority}
+		where id = #{id}
+	</update>
 </mapper>

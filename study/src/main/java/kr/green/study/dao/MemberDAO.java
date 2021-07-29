@@ -19,4 +19,6 @@ public interface MemberDAO {
 
 	ArrayList<MemberVO> selectUserList(@Param("authority")String authority);
 
+	void updateUser(MemberVO dbUser);
+
 }
