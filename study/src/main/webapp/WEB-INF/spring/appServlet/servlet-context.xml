@@ -38,13 +38,21 @@
 	</beans:bean>
 
 	<!-- 인터셉터 설정 -->
+	<!-- 로그인 처리 인터셉터 : 로그인 유지 -->
 	<beans:bean id="loginInterceptor" 
 		class="kr.green.study.interceptor.LoginInterceptor"></beans:bean>
-	
+	<!-- 자동 로그인 처리 인터셉터 : 자동 로그인 유지 -->
+	<beans:bean id="autoLoginInterceptor" 
+		class="kr.green.study.interceptor.AutoLoginInterceptor"></beans:bean>
+		
 	<interceptors>
 	    <interceptor>
 	        <mapping path="/member/signin"/>
 	        <beans:ref bean="loginInterceptor"/>
+	    </interceptor>
+	    <interceptor>
+	        <mapping path="/**/"/>
+	        <beans:ref bean="autoLoginInterceptor"/>
 	    </interceptor>
 	</interceptors>
 </beans:beans>
