@@ -5,6 +5,7 @@ import java.util.Date;
 
 import org.apache.ibatis.annotations.Param;
 
+import kr.green.study.pagination.Criteria;
 import kr.green.study.vo.MemberVO;
 
 public interface MemberDAO {
@@ -17,8 +18,10 @@ public interface MemberDAO {
 
 	MemberVO selectUserBySeesion(String session_id);
 
-	ArrayList<MemberVO> selectUserList(@Param("authority")String authority);
+	ArrayList<MemberVO> selectUserList(@Param("authority")String authority , @Param("cri")Criteria cri);
 
 	void updateUser(MemberVO dbUser);
+
+	int getTotalCount(@Param("authority")String authority);
 
 }
