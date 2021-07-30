@@ -14,10 +14,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+	.body{
+		min-height: calc(100vh - 200px - 56px);
+	}
+</style>
 </head>
 <body>
     <tiles:insertAttribute name="nav"/>
-    <tiles:insertAttribute name="body" />
+    <div class="body">
+    	<tiles:insertAttribute name="body" />
+    </div>
     <tiles:insertAttribute name="footer" />
 </body>
 </html>

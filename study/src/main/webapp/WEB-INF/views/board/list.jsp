@@ -6,8 +6,7 @@
 <head>
 </head>
 <body>
-<div class="jumbotron" style="height:200px; box-sizing:border-box; margin-bottom:0">
-	<h1>푸터</h1>
+<div class="container">
 </div>
 </body>
 </html>
