@@ -43,4 +43,12 @@
 		insert into file(board, name, ori_name)
 			values(#{board}, #{name}, #{ori_name})
 	</insert>
+	<update id="updateViews">
+		update board set
+			views = views+1
+			where num = #{num}
+	</update>
+	<select id="selectFileList" resultType="kr.green.study.vo.FileVO">
+		select * from file where state = 'I' and board = #{num}
+	</select>
 </mapper>

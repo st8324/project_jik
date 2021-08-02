@@ -23,4 +23,8 @@ public interface BoardDAO {
 
 	void insertFile(FileVO file);
 
+	void updateViews(Integer num);
+
+	ArrayList<FileVO> selectFileList(Integer num);
+
 }

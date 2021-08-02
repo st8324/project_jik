@@ -39,6 +39,13 @@
 			<label>내용</label>
 			<div class="form-control" style="min-height:400px;">${board.contents }</div>
 		</div>
+		<div class="form-group">
+			<label>첨부파일</label>
+			<c:forEach items="${fList}" var="file">
+				<a class="form-control" href="<%=request.getContextPath()%>/board/download?fileName=${file.name}">${file.ori_name}</a>
+			</c:forEach>
+		</div>
+		<hr>
 		<div class="reply form-group">
 			<label>댓글</label>
 			<div class="contents">
