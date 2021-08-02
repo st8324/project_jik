@@ -18,9 +18,9 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${list}" var="board">
+			<c:forEach items="${list}" var="board" varStatus="status">
 				<tr>
-					<td>${board.num}</td>
+					<td>${pm.totalCount - status.index - pm.criteria.pageStart}</td>
 					<td>
 						<a href="<%=request.getContextPath()%>/board${type}/detail?num=${board.num}">
 							<c:if test="${board.groupOrd != 0}">┕답변 :  </c:if>
