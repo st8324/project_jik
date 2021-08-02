@@ -5,21 +5,38 @@
 <mapper namespace="kr.green.study.dao.BoardDAO">
 	<select id="selectBoardList" resultType="kr.green.study.vo.BoardVO">
 		select * from board 
+			where valid = 'I'
 			order by oriNo desc, groupOrd asc
 	</select>
 	<select id="selectBoard" resultType="kr.green.study.vo.BoardVO">
 		select * from board
-			where num = #{num}
+			where num = #{num} and valid = 'I'
 	</select>
 	<insert id="insertBoard">
 		insert into 
 			board(title, contents, writer, oriNo, groupOrd)
 			select #{board.title}, #{board.contents}, #{board.writer}, 
 			<if test="board.oriNo != 0">
-				#{board.oriNo}, max(oriNo)+1 from board where oriNo = #{board.oriNo}
+				#{board.oriNo}, ifnull(max(groupOrd)+1,1) from board where oriNo = #{board.oriNo}
 			</if>
 			<if test="board.oriNo == 0">
-				max(num)+1, 0 from board
+				ifnull(max(num)+1,1), 0 from board
 			</if>
 	</insert>
+	<update id="updateBoard">
+		update board set
+			title = #{title},
+			contents = #{contents}
+			where num = #{num}
+	</update>
+	<update id="deleteBoard">
+		update board set
+			valid = 'D'
+			where num = #{num}
+	</update>
+	<update id="deleteReplyBoard">
+		update board set
+			valid = 'D'
+			where oriNo = #{num}
+	</update>
 </mapper>
