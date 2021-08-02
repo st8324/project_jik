@@ -1,5 +1,6 @@
 package kr.green.study.service;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -92,6 +93,16 @@ public class BoardServiceImp implements BoardService {
 				return;
 		boardDao.deleteBoard(num);
 		boardDao.deleteReplyBoard(num);
+		
+		ArrayList<FileVO> fList = boardDao.selectFileList(num);
+		if(fList == null || fList.size() == 0)
+			return;
+		for(FileVO tmp: fList) {
+			File file = new File(uploadPath+tmp.getName());
+			if(file.exists())
+				file.delete();
+			boardDao.deleteFile(tmp.getNum());
+		}
 	}
 
 	@Override

@@ -51,4 +51,9 @@
 	<select id="selectFileList" resultType="kr.green.study.vo.FileVO">
 		select * from file where state = 'I' and board = #{num}
 	</select>
+	<update id="deleteFile">
+		update file set
+			state = 'D'
+			where num = #{num}
+	</update>
 </mapper>
