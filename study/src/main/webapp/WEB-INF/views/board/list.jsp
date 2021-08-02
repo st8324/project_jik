@@ -22,7 +22,7 @@
 				<tr>
 					<td>${board.num}</td>
 					<td>
-						<a href="<%=request.getContextPath()%>/board/detail?num=${board.num}">
+						<a href="<%=request.getContextPath()%>/board${type}/detail?num=${board.num}">
 							<c:if test="${board.groupOrd != 0}">┕답변 :  </c:if>
 							${board.title }
 						</a>
@@ -34,7 +34,25 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<a href="<%=request.getContextPath()%>/board/register">
+	<ul class="pagination justify-content-center">
+		<c:if test="${pm.prev}">
+	    	<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/board${type}/list?page=${pm.startPage-1}">이전</a></li>
+	    </c:if>
+	    <c:forEach begin="${pm.startPage }" end="${pm.endPage }" var="index">
+	    	<c:choose>
+	    		<c:when test="${pm.criteria.page == index }">
+					<li class="page-item active"><a class="page-link" href="<%=request.getContextPath()%>/board${type}/list?page=${index}">${index}</a></li>	    		
+	    		</c:when>
+	    		<c:otherwise>
+	    			<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/board${type}/list?page=${index}">${index}</a></li>	
+	    		</c:otherwise>
+	    	</c:choose>
+	    </c:forEach>
+	    <c:if test="${pm.next}">
+	    	<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/board${type}/list?page=${pm.endPage+1}">다음</a></li>
+	    </c:if>
+	</ul>
+	<a href="<%=request.getContextPath()%>/board${type}/register">
 		<button class="btn btn-outline-success">글쓰기</button>
 	</a>
 </div>

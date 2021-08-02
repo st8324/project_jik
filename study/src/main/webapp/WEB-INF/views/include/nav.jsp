@@ -15,8 +15,11 @@
 	<!-- Links -->
 	<ul class="navbar-nav">
 		<li class="nav-item">
-				<a class="nav-link" href="<%=request.getContextPath()%>/board/list">일반게시판</a>
-			</li>
+			<a class="nav-link" href="<%=request.getContextPath()%>/board/list">일반게시판</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="<%=request.getContextPath()%>/board/notice/list">공지사항</a>
+		</li>
 		<c:if test="${user == null }">
 			<li class="nav-item">
 				<a class="nav-link" href="<%=request.getContextPath()%>/member/signup">회원가입</a>
