@@ -12,7 +12,7 @@
 		select * from board
 			where num = #{num} and valid = 'I'
 	</select>
-	<insert id="insertBoard">
+	<insert id="insertBoard" useGeneratedKeys="true" keyProperty="board.num" parameterType="kr.green.study.vo.BoardVO">
 		insert into 
 			board(title, contents, writer, oriNo, groupOrd)
 			select #{board.title}, #{board.contents}, #{board.writer}, 
@@ -39,4 +39,8 @@
 			valid = 'D'
 			where oriNo = #{num}
 	</update>
+	<insert id="insertFile">
+		insert into file(board, name, ori_name)
+			values(#{board}, #{name}, #{ori_name})
+	</insert>
 </mapper>

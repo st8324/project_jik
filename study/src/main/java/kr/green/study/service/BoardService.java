@@ -13,7 +13,7 @@ public interface BoardService {
 
 	BoardVO getBoard(Integer num);
 
-	void insertBoard(BoardVO board, MultipartFile[] fileList, MemberVO user);
+	void insertBoard(BoardVO board, MultipartFile[] fileList, MemberVO user) throws Exception;
 
 	void insertReplyBoard(BoardVO board, MemberVO user);
 

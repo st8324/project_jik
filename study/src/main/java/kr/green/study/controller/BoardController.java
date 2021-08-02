@@ -46,7 +46,7 @@ public class BoardController {
 	}
 	@PostMapping("/register")
 	public ModelAndView registerPost(ModelAndView mv,BoardVO board, 
-			MultipartFile [] fileList, HttpServletRequest request ) {
+			MultipartFile [] fileList, HttpServletRequest request ) throws Exception {
 		MemberVO user = memberService.getMemberByRequest(request);
 		boardService.insertBoard(board, fileList, user);
 		mv.setViewName("redirect:/board/list");
