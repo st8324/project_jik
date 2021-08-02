@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 </head>
 <body>
 	<form class="container" method="post" enctype="multipart/form-data" action="<%=request.getContextPath()%>/board/register">
@@ -29,6 +31,11 @@
 		$('form').submit(function(){
 			return true;
 		})
+		$('#summernote').summernote({
+			placeholder: 'Hello Bootstrap 4',
+			tabsize: 2,
+			height: 400
+		});
 	})
 	</script>
 </body>
