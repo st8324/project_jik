@@ -52,9 +52,14 @@
 	    	<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/board${type}/list?page=${pm.endPage+1}">다음</a></li>
 	    </c:if>
 	</ul>
-	<a href="<%=request.getContextPath()%>/board${type}/register">
-		<button class="btn btn-outline-success">글쓰기</button>
-	</a>
+	<c:if test="${user != null}">
+	<!-- 공지이고, 관리자이거나 공지가 아니고 일반 사용자이면 -->
+		<c:if test="${(type eq '/notice' && (user.authority eq 'ADMIN' || user.authority eq 'SUPER ADMIN')) || (type ne '/notice')}">
+			<a href="<%=request.getContextPath()%>/board${type}/register">
+				<button class="btn btn-outline-success">글쓰기</button>
+			</a>
+		</c:if>
+	</c:if>
 </div>
 </body>
 </html>
