@@ -56,4 +56,10 @@
 			state = 'D'
 			where num = #{num}
 	</update>
+	<select id="selectFileNumList" resultType="int">
+		select num from file where state = 'I' and board = #{num}
+	</select>
+	<select id="selectFile" resultType="kr.green.study.vo.FileVO">
+		select * from file where num = #{tmp} and state = 'I'
+	</select>
 </mapper>
