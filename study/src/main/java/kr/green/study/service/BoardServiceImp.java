@@ -50,13 +50,7 @@ public class BoardServiceImp implements BoardService {
 			return;
 		int size = fileList.length < 3 ? fileList.length : 3;
 		for(int i = 0; i<size; i++) {
-			MultipartFile tmp = fileList[i];
-			if(tmp == null || tmp.getOriginalFilename().length() == 0) {
-				continue;
-			}
-			String name = UploadFileUtils.uploadFile(uploadPath, tmp.getOriginalFilename(), tmp.getBytes());
-			FileVO file = new FileVO(board.getNum(), name, tmp.getOriginalFilename());
-			boardDao.insertFile(file);
+			insertFile(fileList[i], board.getNum());
 		}
 	}
 
@@ -73,7 +67,7 @@ public class BoardServiceImp implements BoardService {
 	}
 
 	@Override
-	public void updateBoard(BoardVO board, MemberVO user) {
+	public void updateBoard(BoardVO board, MemberVO user, MultipartFile[] fileList, Integer[] fileNumList) {
 		if(user == null || board == null)
 			return;
 		BoardVO dbBoard = boardDao.selectBoard(board.getNum());
@@ -82,6 +76,16 @@ public class BoardServiceImp implements BoardService {
 		dbBoard.setTitle(board.getTitle());
 		dbBoard.setContents(board.getContents());
 		boardDao.updateBoard(dbBoard);
+		
+		ArrayList<FileVO> fList = boardDao.selectFileList(board.getNum());
+		//fList에서 첨부파일 번호들만 ArrayList로 변환
+		
+		//배열 fileNumList를 ArraylList로 변환
+		
+		//fList에 있는 첨부파일 번호들 중에서 fileNumList에 없는 첨부파일을 삭제
+		
+		//fileList에 있는 첨부파일 추가
+		
 	}
 
 	@Override
@@ -98,10 +102,7 @@ public class BoardServiceImp implements BoardService {
 		if(fList == null || fList.size() == 0)
 			return;
 		for(FileVO tmp: fList) {
-			File file = new File(uploadPath+tmp.getName());
-			if(file.exists())
-				file.delete();
-			boardDao.deleteFile(tmp.getNum());
+			deleteFile(tmp);
 		}
 	}
 
@@ -137,5 +138,19 @@ public class BoardServiceImp implements BoardService {
 	        in.close();
 	    }
 	    return entity;
+	}
+	private void insertFile(MultipartFile tmp, int num) throws Exception {
+		if(tmp == null || tmp.getOriginalFilename().length() == 0) {
+			return;
+		}
+		String name = UploadFileUtils.uploadFile(uploadPath, tmp.getOriginalFilename(), tmp.getBytes());
+		FileVO file = new FileVO(num, name, tmp.getOriginalFilename());
+		boardDao.insertFile(file);
+	}
+	private void deleteFile(FileVO tmp) {
+		File file = new File(uploadPath+tmp.getName());
+		if(file.exists())
+			file.delete();
+		boardDao.deleteFile(tmp.getNum());
 	}
 }
