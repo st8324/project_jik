@@ -35,4 +35,9 @@ public interface BoardService {
 
 	void insertBoard(BoardVO board, MultipartFile[] fileList, MemberVO user, MultipartFile mainImage) throws Exception;
 
+	void getThumbnail(ArrayList<BoardVO> list);
+
+	void updateBoard(BoardVO board, MemberVO user, MultipartFile[] fileList, Integer[] fileNumList,
+			MultipartFile mainImage, Integer thumbnailNo) throws Exception;
+
 }

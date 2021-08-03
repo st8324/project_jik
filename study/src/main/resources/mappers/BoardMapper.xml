@@ -51,6 +51,7 @@
 	</update>
 	<select id="selectFileList" resultType="kr.green.study.vo.FileVO">
 		select * from file where state = 'I' and board = #{num}
+			order by thumbnail desc
 	</select>
 	<update id="deleteFile">
 		update file set
@@ -59,6 +60,7 @@
 	</update>
 	<select id="selectFileNumList" resultType="int">
 		select num from file where state = 'I' and board = #{num}
+			order by thumbnail desc
 	</select>
 	<select id="selectFile" resultType="kr.green.study.vo.FileVO">
 		select * from file where num = #{tmp} and state = 'I'
@@ -66,5 +68,9 @@
 	<select id="getTotalCount" resultType="int">
 		select count(*) from board 
 			where valid = 'I' and type = #{type}
+	</select>
+	<select id="selectThumnail" resultType="kr.green.study.vo.FileVO">
+		select * from file 
+			where board = #{num} and state = 'I' and thumbnail = 'Y'
 	</select>
 </mapper>

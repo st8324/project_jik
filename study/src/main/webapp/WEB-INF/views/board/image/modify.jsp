@@ -22,16 +22,26 @@
 			<label>내용</label>
 			<textarea id="summernote" class="form-control" name="contents" rows="10">${board.contents }</textarea>
 		</div>
+		<div class="form-group thumbnail-box">
+			<label>대표 이미지</label>
+			<div class="form-control">
+				<span>${fList.get(0).ori_name }</span>
+				<i class="fas fa-times"></i>
+				<input type="hidden" name="thumbnailNo" value="${fList.get(0).num}">
+			</div>
+		</div>
 		<div class="form-group file-box">
 			<label>첨부파일</label>
 			<c:forEach items="${fList}" var="file">
-				<div class="form-control">
-					<span>${file.ori_name }</span>
-					<i class="fas fa-times"></i>
-					<input type="hidden"name="fileNumList" value="${file.num}">
-				</div>
+				<c:if test="${file.thumbnail == 'N'}">
+					<div class="form-control">
+						<span>${file.ori_name }</span>
+						<i class="fas fa-times"></i>
+						<input type="hidden"name="fileNumList" value="${file.num}">
+					</div>
+				</c:if>
 			</c:forEach>
-			<c:forEach begin="1" end="${3 - fList.size()}">
+			<c:forEach begin="1" end="${3 - fList.size() + 1}">
 				<input type="file" class="form-control" name="fileList">
 			</c:forEach>
 		</div>
@@ -44,6 +54,20 @@
 			$('.file-box .fa-times').click(function(){
 				$(this).parent().remove();
 				$('.file-box').append('<input type="file" class="form-control" name="fileList">');
+			})
+			$('.thumbnail-box .fa-times').click(function(){
+				$(this).parent().remove();
+				$('.thumbnail-box').append('<input type="file" class="form-control" name="mainImage">');
+			})
+			$('form').submit(function(){
+				//제목 입력했는지 체크, 내용이 입력됐는지 체크해야 하는데 생략
+				//대표 이미지가 선택 됐는지 체크
+				if(	typeof $('[name=thumbnailNo]').val() == 'undefined' 
+						&& $('[name=mainImage]').val() == ''){
+					alert('대표 이미지를 선택하세요.')
+					return false;
+				}
+				return true;
 			})
 			$('#summernote').summernote({
 				placeholder: 'Hello Bootstrap 4',

@@ -4,36 +4,36 @@
 <!doctype html>
 <html>
 <head>
+<style>
+.item-list{
+	list-style: none;	margin: 20px 0;	padding: 0;
+}
+.item-list::after{
+	clear: both; content: ''; display: block;
+}
+.item-list .item{
+	width:calc(100% / 3); float: left; text-align: center;
+	box-sizing: border-box; padding : 0 10px;
+}
+.item-list .item span{
+	display: block; width: 100%; margin-top: 5px; line-height: 20px; 
+	height: 20px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+</style>
 </head>
 <body>
 <div class="container">
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>작성일</th>
-				<th>조회수</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${list}" var="board" varStatus="status">
-				<tr>
-					<td>${pm.totalCount - status.index - pm.criteria.pageStart}</td>
-					<td>
-						<a href="<%=request.getContextPath()%>/board${type}/detail?num=${board.num}">
-							<c:if test="${board.groupOrd != 0}">┕답변 :  </c:if>
-							${board.title }
-						</a>
-					</td>
-					<td>${board.writer }</td>
-					<td>${board.dateTime}</td>
-					<td>${board.views}</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+	<ul class="item-list">
+		<c:forEach items="${list }" var="board">
+			<li class="item">
+				<a href="<%=request.getContextPath()%>/board/image/detail?num=${board.num}">
+					<img alt="" src="<%=request.getContextPath()%>/resources/img${board.thumbnail.name}" width="100%" height="300">
+					<span class="title">${board.title}</span>
+				</a>
+			</li>
+		</c:forEach>
+	</ul>
 	<ul class="pagination justify-content-center">
 		<c:if test="${pm.prev}">
 	    	<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/board${type}/list?page=${pm.startPage-1}">이전</a></li>

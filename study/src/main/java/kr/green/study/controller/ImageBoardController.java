@@ -36,6 +36,7 @@ public class ImageBoardController {
 		ArrayList<BoardVO> list = boardService.getBoardList(cri);
 		int totalCount = boardService.getTotalCount(cri);
 		PageMaker pm = new PageMaker(totalCount, 10, cri);
+		boardService.getThumbnail(list);
 		mv.addObject("pm", pm);
 		mv.addObject("list",list);
 		mv.addObject("type","/image");
@@ -48,7 +49,7 @@ public class ImageBoardController {
 		BoardVO board = boardService.getBoard(num);
 		
 		ArrayList<FileVO> fList = boardService.getFileList(num);
-		
+		mv.addObject("type","/image");
 		mv.addObject("board", board);
 		mv.addObject("fList", fList);
 		mv.setViewName("/template/board/image/detail");
@@ -92,10 +93,12 @@ public class ImageBoardController {
 		return mv;
 	}
 	@PostMapping("/modify")
-	public ModelAndView modifyPost(ModelAndView mv,BoardVO board, HttpServletRequest request,
-			MultipartFile[] fileList, Integer [] fileNumList) throws Exception {
+	public ModelAndView modifyPost(ModelAndView mv,BoardVO board, 
+			HttpServletRequest request,
+			MultipartFile[] fileList, Integer [] fileNumList,
+			MultipartFile mainImage, Integer thumbnailNo) throws Exception {
 		MemberVO user = memberService.getMemberByRequest(request);
-		boardService.updateBoard(board,user,fileList, fileNumList);
+		boardService.updateBoard(board,user,fileList, fileNumList, mainImage, thumbnailNo);
 		mv.addObject("num", board.getNum());
 		mv.setViewName("redirect:/board/image/detail");
 		return mv;

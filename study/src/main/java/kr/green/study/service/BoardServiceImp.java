@@ -27,6 +27,7 @@ public class BoardServiceImp implements BoardService {
 	@Autowired
 	private BoardDAO boardDao;
 	private String uploadPath = "D:\\JAVA_JIK\\uploadfiles";
+	private String uploadThumbnailPath = "D:\\JAVA_JIK\\project_jik\\study\\src\\main\\webapp\\resources\\img";
 	@Override
 	public ArrayList<BoardVO> getBoardList(Criteria cri) {
 		return boardDao.selectBoardList(cri);
@@ -90,6 +91,8 @@ public class BoardServiceImp implements BoardService {
 					dbSize--;
 				}
 			}
+			if(dbBoard.getType().equals("IMAGE"))
+				dbFileNumList.remove(0);
 			//dbFileNumList에 있는 첨부파일 번호들 중에서 inputFileNumList에 없는 첨부파일을 삭제
 			for(Integer tmp : dbFileNumList) {
 				if(!inputFileNumList.contains(tmp)) {
@@ -176,7 +179,13 @@ public class BoardServiceImp implements BoardService {
 		if(tmp == null || tmp.getOriginalFilename().length() == 0) {
 			return false;
 		}
-		String name = UploadFileUtils.uploadFile(uploadPath, tmp.getOriginalFilename(), tmp.getBytes());
+		String path;
+		if(thumbnail.equals("Y")) {
+			path = uploadThumbnailPath;
+		}else {
+			path = uploadPath;
+		}
+		String name = UploadFileUtils.uploadFile(path, tmp.getOriginalFilename(), tmp.getBytes());
 		FileVO file = new FileVO(num, name, tmp.getOriginalFilename());
 		file.setThumbnail(thumbnail);
 		boardDao.insertFile(file);
@@ -190,5 +199,25 @@ public class BoardServiceImp implements BoardService {
 		if(file.exists())
 			file.delete();
 		boardDao.deleteFile(tmp.getNum());
+	}
+
+	@Override
+	public void getThumbnail(ArrayList<BoardVO> list) {
+		if(list == null || list.size() == 0)
+			return;
+		for(BoardVO tmp : list) {
+			tmp.setThumbnail(boardDao.selectThumnail(tmp.getNum()));
+		}
+	}
+
+	@Override
+	public void updateBoard(BoardVO board, MemberVO user, MultipartFile[] fileList, Integer[] fileNumList,
+			MultipartFile mainImage, Integer thumbnailNo) throws Exception {
+		updateBoard(board, user, fileList, fileNumList);
+		if(thumbnailNo != null)
+			return;
+		ArrayList<Integer> dbFileNumList = boardDao.selectFileNumList(board.getNum());
+		deleteFile(boardDao.selectFile(dbFileNumList.get(0)));
+		insertFile(mainImage, board.getNum(),"Y");
 	}
 }

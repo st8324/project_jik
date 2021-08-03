@@ -40,9 +40,15 @@
 			<div class="form-control" style="min-height:400px;">${board.contents }</div>
 		</div>
 		<div class="form-group">
+			<label>메인 이미지</label>
+			<img width="auto" height="300" src="<%=request.getContextPath()%>/resources/img${fList.get(0).name}">
+		</div>
+		<div class="form-group">
 			<label>첨부파일</label>
 			<c:forEach items="${fList}" var="file">
+				<c:if test="${file.thumbnail != 'Y'}">
 				<a class="form-control" href="<%=request.getContextPath()%>/board/download?fileName=${file.name}">${file.ori_name}</a>
+				</c:if>
 			</c:forEach>
 		</div>
 		<hr>
