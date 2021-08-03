@@ -19,7 +19,22 @@
 	display: block; width: 100%; margin-top: 5px; line-height: 20px; 
 	height: 20px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
-
+.container{
+	position: relative;
+}
+.pw-box{
+	position: absolute; left: 0; top: 0; bottom:0; right : 0; z-index: 10;
+	display: none;
+}
+.pw-box .pw-input-box{
+	width: 500px; height: 300px; border: 1px solid black; background: white;
+	top:100px; left: calc(50% - 250px); z-index: 3;
+	position: absolute;
+}
+.pw-box .pw-bg-box{
+	position: absolute; left: 0; top: 0; bottom:0; right : 0;
+	background: black; opacity: 0.3; 
+}
 </style>
 </head>
 <body>
@@ -61,6 +76,23 @@
 		</a>
 	</c:if>
 </c:if>
+<form class="pw-box">
+	<div class="pw-input-box form-group pl-2 pr-2">
+		<label>비밀번호를 입력하세요.</label>
+		<input type="password" name="pw" class="form-control">
+		<button class="btn btn-outline-success col-12">확인</button>
+	</div>
+	<div class="pw-bg-box"></div>
+</form>
 </div>
+
+<script type="text/javascript">
+$(function(){
+	$('.item-list .item a').click(function(e){
+		e.preventDefault();
+		
+	})
+})
+</script>
 </body>
 </html>

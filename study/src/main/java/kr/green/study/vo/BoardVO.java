@@ -18,6 +18,7 @@ public class BoardVO {
 	private int groupOrd;
 	private int oriNo;
 	private FileVO thumbnail; 
+	private String pw;
 	//등록한 날짜를 년월일까지만 문자열로 보여주는 getter
 	public String getDate() {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
