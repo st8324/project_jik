@@ -3,8 +3,21 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.green.study.dao.ReplyDAO">
+	<select id="selectReplyList" resultType="kr.green.study.vo.ReplyVO">
+		select * from reply
+			where rp_bd_num = #{rp_bd_num} and rp_valid = 'I'
+			order by rp_num desc 
+			limit #{cri.pageStart}, #{cri.perPageNum} 
+	</select>
+
+	<select id="selectTotalCount" resultType="int">
+		select count(*) from reply
+			where rp_bd_num = #{rp_bd_num} and rp_valid = 'I'
+	</select>
+
 	<insert id="insertReply">
 		insert into reply(rp_bd_num, rp_me_id, rp_content)
 			values(#{rp_bd_num}, #{rp_me_id}, #{rp_content})
 	</insert>
+	
 </mapper>

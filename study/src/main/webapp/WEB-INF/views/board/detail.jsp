@@ -4,16 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>게시판</title>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/reply.js"></script>
-	<style>
-	.recommend-btn{
-		font-size: 30px;
-	}
-	.fa-thumbs-down{
-		transform : rotateY(180deg);
-	}
-	</style>
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/reply.js"></script>
+<style>
+.recommend-btn{
+	font-size: 30px;
+}
+.fa-thumbs-down{
+	transform : rotateY(180deg);
+}
+</style>
 </head>
 <body>
 	<div class="container">
@@ -87,6 +86,8 @@ $(function(){
 		}
 		replyService.add(contextPath, data, addOk);
 	})
+	
+	replyService.list(contextPath, {page : 1, rp_bd_num: rp_bd_num}, listOk);
 })
 function addOk(res){
 	if(res == 'OK')
@@ -94,25 +95,15 @@ function addOk(res){
 	else
 		alert('댓글 등록에 실패했습니다.');
 }
-
-var replyService = (function(){
-	function add(contextPath, data, callback){
-		$.ajax({
-			type:'post',
-			url : contextPath + '/reply/add',
-			data: JSON.stringify(data),
-			contentType : "application/json; charset=utf-8",
-			success: function(res){
-				if(callback)
-					callback(res);
-			}
-		})
+function listOk(res){
+	var list = res.list;
+	var str = '';
+	for(i = 0; i<list.length; i++){
+		str += list[i].rp_me_id + ' : ' + list[i].rp_content + '<br>';
 	}
-	return {
-		name : '댓글 서비스',
-		add  : add
-	};
-})();
+	$('.reply-list').html(str);
+}
+
 </script>
 </body>
 </html>
