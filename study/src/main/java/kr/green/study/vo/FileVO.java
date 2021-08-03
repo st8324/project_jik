@@ -9,6 +9,7 @@ public class FileVO {
 	private String name;
 	private String ori_name;
 	private String state;
+	private String thumbnail;
 	public FileVO() {}
 	public FileVO(int board, String name, String ori_name) {
 		this.board = board;

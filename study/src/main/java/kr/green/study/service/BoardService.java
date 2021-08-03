@@ -33,4 +33,6 @@ public interface BoardService {
 
 	int getTotalCount(Criteria cri);
 
+	void insertBoard(BoardVO board, MultipartFile[] fileList, MemberVO user, MultipartFile mainImage) throws Exception;
+
 }

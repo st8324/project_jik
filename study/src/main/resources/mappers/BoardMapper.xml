@@ -41,8 +41,8 @@
 			where oriNo = #{num}
 	</update>
 	<insert id="insertFile">
-		insert into file(board, name, ori_name)
-			values(#{board}, #{name}, #{ori_name})
+		insert into file(board, name, ori_name, thumbnail)
+			values(#{board}, #{name}, #{ori_name}, #{thumbnail})
 	</insert>
 	<update id="updateViews">
 		update board set
