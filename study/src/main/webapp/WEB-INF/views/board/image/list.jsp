@@ -41,7 +41,7 @@
 <div class="container">
 	<ul class="item-list">
 		<c:forEach items="${list }" var="board">
-			<li class="item">
+			<li class="item" data="${board.num}">
 				<a href="<%=request.getContextPath()%>/board/image/detail?num=${board.num}">
 					<img alt="" src="<%=request.getContextPath()%>/resources/img${board.thumbnail.name}" width="100%" height="300">
 					<span class="title">${board.title}</span>
@@ -76,11 +76,12 @@
 		</a>
 	</c:if>
 </c:if>
-<form class="pw-box">
+<form id="pwBox" class="pw-box" method="post" action="<%=request.getContextPath()%>/board/image/detail">
 	<div class="pw-input-box form-group pl-2 pr-2">
 		<label>비밀번호를 입력하세요.</label>
 		<input type="password" name="pw" class="form-control">
-		<button class="btn btn-outline-success col-12">확인</button>
+		<input type="hidden" name="num">
+		<button type="button" class="btn btn-outline-success col-12">확인</button>
 	</div>
 	<div class="pw-bg-box"></div>
 </form>
@@ -90,7 +91,26 @@
 $(function(){
 	$('.item-list .item a').click(function(e){
 		e.preventDefault();
-		
+		$('.pw-box').show();
+		var num = $(this).parent().attr('data');
+		$('.pw-box [name=num]').val(num);
+	})
+	$('.pw-box button').click(function(){
+		var num = $('.pw-box [name=num]').val();
+		var pw = $('.pw-box [name=pw]').val();
+		var data = {num : num, pw : pw};
+		$.ajax({
+			type:'post',
+			url : '<%=request.getContextPath()%>/board/image/check',
+			data: JSON.stringify(data),
+			contentType : "application/json; charset:utf-8",
+			success : function(res){
+				if(res == 'true')
+					$('#pwBox').submit();
+				else
+					alert('잘못된 비밀번호입니다.');
+			}
+		})
 	})
 })
 </script>

@@ -235,4 +235,15 @@ public class BoardServiceImp implements BoardService {
 		deleteFile(boardDao.selectFile(dbFileNumList.get(0)));
 		insertFile(mainImage, board.getNum(),"Y");
 	}
+
+	@Override
+	public boolean checkBoardPw(BoardVO tmpBoard) {
+		if(tmpBoard == null || tmpBoard.getPw() == null)
+			return false;
+		BoardVO board = boardDao.selectBoard(tmpBoard.getNum());
+		
+		if(board != null && passwordEncoder.matches(tmpBoard.getPw(), board.getPw()))
+			return true;
+		return false;
+	}
 }

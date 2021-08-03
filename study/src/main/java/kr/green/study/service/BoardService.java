@@ -40,4 +40,6 @@ public interface BoardService {
 	void updateBoard(BoardVO board, MemberVO user, MultipartFile[] fileList, Integer[] fileNumList,
 			MultipartFile mainImage, Integer thumbnailNo) throws Exception;
 
+	boolean checkBoardPw(BoardVO tmpBoard);
+
 }
