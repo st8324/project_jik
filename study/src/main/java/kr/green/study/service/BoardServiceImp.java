@@ -195,7 +195,13 @@ public class BoardServiceImp implements BoardService {
 		return insertFile(tmp, num, "N");
 	}
 	private void deleteFile(FileVO tmp) {
-		File file = new File(uploadPath+tmp.getName());
+		String path;
+		if(tmp.getThumbnail().equals("Y")) {
+			path = uploadThumbnailPath;
+		}else {
+			path = uploadPath;
+		}
+		File file = new File(path+tmp.getName());
 		if(file.exists())
 			file.delete();
 		boardDao.deleteFile(tmp.getNum());
