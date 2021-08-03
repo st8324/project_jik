@@ -71,5 +71,48 @@
 			</a>
 		</c:if>
 	</div>
+<script type="text/javascript">
+var rp_bd_num = '${board.num}';
+var rp_me_id = '${user.id}';
+var contextPath = '<%=request.getContextPath()%>';
+$(function(){
+	$('.reply-btn').click(function(){
+		if(rp_me_id == ''){
+			alert('로그인을 하세요.');
+			return;
+		}
+		var rp_content = $('.reply-input').val();
+		var data = {
+				rp_bd_num:rp_bd_num, rp_content:rp_content
+		}
+		replyService.add(contextPath, data, addOk);
+	})
+})
+function addOk(res){
+	if(res == 'OK')
+		alert('댓글이 등록되었습니다.');
+	else
+		alert('댓글 등록에 실패했습니다.');
+}
+
+var replyService = (function(){
+	function add(contextPath, data, callback){
+		$.ajax({
+			type:'post',
+			url : contextPath + '/reply/add',
+			data: JSON.stringify(data),
+			contentType : "application/json; charset=utf-8",
+			success: function(res){
+				if(callback)
+					callback(res);
+			}
+		})
+	}
+	return {
+		name : '댓글 서비스',
+		add  : add
+	};
+})();
+</script>
 </body>
 </html>
