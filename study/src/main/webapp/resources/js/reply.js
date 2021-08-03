@@ -2,15 +2,17 @@
  * 
  */
 var replyService = (function(){
-	function add(contextPath, data, callback){
+	function add(contextPath, data, callback, callback2){
 		$.ajax({
 			type:'post',
 			url : contextPath + '/reply/add',
 			data: JSON.stringify(data),
 			contentType : "application/json; charset=utf-8",
 			success: function(res){
-				if(callback)
+				if(callback){
 					callback(res);
+					list(contextPath,{page:1, rp_bd_num : data.rp_bd_num},callback2);
+				}
 			}
 		})
 	}

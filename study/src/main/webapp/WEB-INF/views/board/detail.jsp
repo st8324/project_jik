@@ -84,7 +84,7 @@ $(function(){
 		var data = {
 				rp_bd_num:rp_bd_num, rp_content:rp_content
 		}
-		replyService.add(contextPath, data, addOk);
+		replyService.add(contextPath, data, addOk, listOk);
 	})
 	
 	replyService.list(contextPath, {page : 1, rp_bd_num: rp_bd_num}, listOk);
