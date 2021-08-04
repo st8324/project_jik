@@ -51,4 +51,15 @@ public class ReplyServiceImp implements ReplyService {
 		replyDao.updateReply(reply);
 		return "OK";
 	}
+
+	@Override
+	public String deleteReply(int rp_num, MemberVO user) {
+		if(user == null || rp_num <= 0)
+			return "FAIL";
+		ReplyVO dbReply = replyDao.selectReply(rp_num);
+		if(dbReply == null || !dbReply.getRp_me_id().equals(user.getId()))
+			return "FAIL";
+		replyDao.deleteReply(rp_num);
+		return "OK";
+	}
 }

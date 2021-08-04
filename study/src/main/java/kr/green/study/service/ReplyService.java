@@ -16,4 +16,6 @@ public interface ReplyService {
 
 	String modifyReply(ReplyVO reply, MemberVO user);
 
+	String deleteReply(int rp_num, MemberVO user);
+
 }

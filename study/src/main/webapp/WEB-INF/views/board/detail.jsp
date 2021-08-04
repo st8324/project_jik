@@ -136,7 +136,13 @@ $(function(){
 		replyService.mod(contextPath, data, responseOk ,listOk );
 		
 	});
-	
+	//삭제 버튼을 클릭
+	$(document).on('click','.reply-del-btn', function(){
+		var rp_num = $(this).siblings('.rp_num').val();
+		var data = {rp_num : rp_num, rp_bd_num : rp_bd_num};
+		replyService.del(contextPath, data, responseOk, listOk);
+		
+	});
 	//시작시 댓글 1페지 내용 가져옴
 	replyService.list(contextPath, {page : 1, rp_bd_num: rp_bd_num}, listOk);
 })
