@@ -85,7 +85,8 @@ $(function(){
 		var data = {
 				rp_bd_num:rp_bd_num, rp_content:rp_content
 		}
-		replyService.add(contextPath, data, addOk, listOk);
+		replyService.add(contextPath, data, responseOk, listOk);
+		$('.reply-input').val('');
 	})
 	//페이지네이션에서 페이지 클릭
 	$(document).on('click','.reply .pagination li', function(){
@@ -126,32 +127,27 @@ $(function(){
 		var rp_content = $(this).parent().siblings('.reply-content').val();
 		//수정된 댓글이 있는 페이지
 		var page = $('.reply .pagination .active a').html();
-		var data = {rp_num:rp_num, rp_content : rp_content}
-		$.ajax({
-			type : 'post',
-			url  : contextPath + '/reply/mod',
-			data : JSON.stringify(data),
-			contentType : "application/json; charset=utf-8",
-			success : function(res){
-				if(res == 'OK'){
-					alert('댓글을 수정했습니다.')
-				}else{
-					alert('댓글 수정에 실패했습니다.')
-				}
-				replyService.list(contextPath, {page : page, rp_bd_num: rp_bd_num}, listOk);
-			}
-		})
+		var data = {
+				rp_num     : rp_num, 
+				rp_content : rp_content,
+				rp_bd_num  : rp_bd_num,
+				page       : page
+		}
+		replyService.mod(contextPath, data, responseOk ,listOk );
+		
 	});
 	
 	//시작시 댓글 1페지 내용 가져옴
 	replyService.list(contextPath, {page : 1, rp_bd_num: rp_bd_num}, listOk);
 })
-function addOk(res){
+
+function responseOk(res, str){
 	if(res == 'OK')
-		alert('댓글이 등록되었습니다.');
+		alert('댓글이 '+str+'되었습니다.');
 	else
-		alert('댓글 등록에 실패했습니다.');
+		alert('댓글 '+str+'에 실패했습니다.');
 }
+
 function listOk(res){
 	var list = res.list;
 	var str = '';
