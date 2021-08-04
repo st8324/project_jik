@@ -45,4 +45,9 @@ public class ReplyController {
 		map.put("pm", new PageMaker(totalCount, 5, cri));
 		return map;
 	}
+	@PostMapping("/mod")
+	public String modPost(@RequestBody ReplyVO reply, HttpServletRequest request) {
+		MemberVO user = memberService.getMemberByRequest(request);
+		return replyService.modifyReply(reply, user);
+	}
 }

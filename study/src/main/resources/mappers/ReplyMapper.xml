@@ -14,10 +14,20 @@
 		select count(*) from reply
 			where rp_bd_num = #{rp_bd_num} and rp_valid = 'I'
 	</select>
+	
+	<select id="selectReply" resultType="kr.green.study.vo.ReplyVO">
+		select * from reply
+			where rp_num = #{rp_num} and rp_valid='I'
+	</select>
 
 	<insert id="insertReply">
 		insert into reply(rp_bd_num, rp_me_id, rp_content)
 			values(#{rp_bd_num}, #{rp_me_id}, #{rp_content})
 	</insert>
 	
+	<update id="updateReply">
+		update reply set
+			rp_content = #{rp_content}
+			where rp_num = #{rp_num} and rp_valid='I'
+	</update>
 </mapper>
