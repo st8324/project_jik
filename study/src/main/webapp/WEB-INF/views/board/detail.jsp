@@ -86,7 +86,10 @@ $(function(){
 		}
 		replyService.add(contextPath, data, addOk, listOk);
 	})
-	
+	$(document).on('click','.reply .pagination li', function(){
+		var page = $(this).attr('data-page');
+		replyService.list(contextPath, {page : page, rp_bd_num: rp_bd_num}, listOk);
+	})
 	replyService.list(contextPath, {page : 1, rp_bd_num: rp_bd_num}, listOk);
 })
 function addOk(res){
