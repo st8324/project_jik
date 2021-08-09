@@ -70,25 +70,6 @@ $(function(){
             id: {
                 required : true,
                 regex: /^[0-9a-z_-]{5,20}$/
-            },
-            pw: {
-                required : true,
-                regex: /^[0-9a-zA-Z@#$]{8,16}$/
-            },
-            pw2: {
-                required : true,
-                equalTo : pw
-            },
-            name: {
-                required : true,
-                minlength : 2
-            },
-            email: {
-                required : true,
-                email : true
-            },
-            gender: {
-                required : true
             }
         },
         //규칙체크 실패시 출력될 메시지
@@ -96,28 +77,15 @@ $(function(){
             id: {
                 required : "필수정보입니다.",
                 regex : "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다."
-            },
-            pw: {
-                required : "필수정보입니다.",
-                regex : "8~16자 영문 대 소문자, 숫자, 특수문자(@#$)를 사용하세요."
-            },
-            pw2: {
-                required : "필수정보입니다.",
-                equalTo : "비밀번호가 일치하지 않습니다."
-            },
-            name: {
-                required : "필수정보입니다.",
-                minlength : "최소 {0}글자이상이어야 합니다"
-            },
-            email: {
-                required : "필수정보입니다.",
-                email : "메일규칙에 어긋납니다"
-            },
-            gender: {
-            	required : "필수정보입니다."
             }
+        },
+        submitHandler: function(form) {
+            //주소를 하나로 합치는 코드
+            //생년월일을 하나로 합치는 코드
+            $(form).submit();
         }
     });
+	
 })
 $.validator.addMethod(
     "regex",

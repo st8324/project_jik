@@ -43,7 +43,7 @@
 		<c:forEach items="${list }" var="board">
 			<li class="item" data="${board.num}">
 				<a href="<%=request.getContextPath()%>/board/image/detail?num=${board.num}">
-					<img alt="" src="<%=request.getContextPath()%>/resources/img${board.thumbnail.name}" width="100%" height="300">
+					<img alt="" src="<%=request.getContextPath()%>/img${board.thumbnail.name}" width="100%" height="300">
 					<span class="title">${board.title}</span>
 				</a>
 			</li>

@@ -31,7 +31,7 @@ public class BoardServiceImp implements BoardService {
 	BCryptPasswordEncoder passwordEncoder;
 	
 	private String uploadPath = "D:\\JAVA_JIK\\uploadfiles";
-	private String uploadThumbnailPath = "D:\\JAVA_JIK\\project_jik\\study\\src\\main\\webapp\\resources\\img";
+	private String uploadThumbnailPath = "D:\\JAVA_JIK\\img";
 	@Override
 	public ArrayList<BoardVO> getBoardList(Criteria cri) {
 		return boardDao.selectBoardList(cri);
