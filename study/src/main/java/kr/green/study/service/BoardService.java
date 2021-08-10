@@ -42,4 +42,6 @@ public interface BoardService {
 
 	boolean checkBoardPw(BoardVO tmpBoard);
 
+	String uploadImg(MultipartFile file) throws Exception;
+
 }

@@ -203,6 +203,7 @@ public class BoardServiceImp implements BoardService {
 	private boolean insertFile(MultipartFile tmp, int num) throws Exception {
 		return insertFile(tmp, num, "N");
 	}
+	
 	private void deleteFile(FileVO tmp) {
 		String path;
 		if(tmp.getThumbnail().equals("Y")) {
@@ -246,4 +247,15 @@ public class BoardServiceImp implements BoardService {
 			return true;
 		return false;
 	}
+
+	@Override
+	public String uploadImg(MultipartFile file) throws Exception {
+		int extensionIndex = file.getOriginalFilename().lastIndexOf('.');
+		String extension = file.getOriginalFilename().substring(extensionIndex);
+		String name = "img" + extension;
+		System.out.println(name);
+		return UploadFileUtils.uploadFile(uploadThumbnailPath, name , file.getBytes());
+	}
+
+	
 }

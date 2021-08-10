@@ -110,4 +110,10 @@ public class BoardController {
 	public ResponseEntity<byte[]> downloadFile(String fileName)throws Exception{
 	    return boardService.downloadFile(fileName);
 	}
+	@ResponseBody
+	@PostMapping("/img/upload")
+	public String imgUploadPost(MultipartFile file) throws Exception {
+		String imgUrl = boardService.uploadImg(file);
+		return imgUrl;
+	}
 }
