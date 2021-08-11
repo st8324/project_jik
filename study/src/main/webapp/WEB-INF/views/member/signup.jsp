@@ -48,11 +48,27 @@
 </form>
 <script type="text/javascript">
 $(function(){
+	
     $("form").validate({
         rules: {
             id: {
                 required : true,
-                regex : /^[a-z0-9_-]{5,20}$/
+                regex : /^[a-z0-9_-]{5,20}$/,
+                remote: {
+                	url : contextPath + '/id/check',
+                	type: 'post',
+                	data: {
+                		id : function(){
+                			return $('[name=id]').val();
+                		}
+                	},
+                	success : function(res){
+                		if(res)
+                	    	console.log('사용 가능한 아이디입니다.')
+                	    else
+                	    	console.log('이미 가입된 아이디입니다.')
+                	}
+                }
             },
             pw: {
                 required : true,
@@ -77,7 +93,8 @@ $(function(){
         messages : {
             id: {
                 required : "필수 정보입니다.",
-                regex : "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다."
+                regex : "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.",
+                remote: "이미 존재하는 계정입니다. 다른 이메일주소를 사용해 주세요."
             },
             pw: {
                 required : "필수 정보입니다.",
@@ -101,11 +118,11 @@ $(function(){
     });
     $('.id-dup-btn').click(function(){
     	var id = $('[name=id]').val();
-    	var res = memberService.idCheck(contextPath, id);
-    	if(res)
-    		alert('사용 가능한 아이디입니다.')
-    	else
-    		alert('이미 가입된 아이디입니다.')
+    	//var res = memberService.idCheck(contextPath, id);
+    	//if(res)
+    	//	alert('사용 가능한 아이디입니다.')
+    	//else
+    	//	alert('이미 가입된 아이디입니다.')
     })
    	
 })

@@ -51,8 +51,8 @@ public class MemberController {
 	}
 	@ResponseBody
 	@PostMapping("/id/check")
-	public String idCheck(String id) {
-		return memberService.getMember(id) != null ? "FAIL" : "OK";
+	public boolean idCheck(String id) {
+		return memberService.getMember(id) != null ? false : true;
 	}
 	@GetMapping("/member/signout")
 	public ModelAndView memberSignoutGet(ModelAndView mv,
