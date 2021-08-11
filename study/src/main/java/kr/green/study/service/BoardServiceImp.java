@@ -253,7 +253,6 @@ public class BoardServiceImp implements BoardService {
 		int extensionIndex = file.getOriginalFilename().lastIndexOf('.');
 		String extension = file.getOriginalFilename().substring(extensionIndex);
 		String name = "img" + extension;
-		System.out.println(name);
 		return UploadFileUtils.uploadFile(uploadThumbnailPath, name , file.getBytes());
 	}
 
