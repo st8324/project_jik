@@ -3,6 +3,8 @@ package kr.green.study.service;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -43,5 +45,7 @@ public interface BoardService {
 	boolean checkBoardPw(BoardVO tmpBoard);
 
 	String uploadImg(MultipartFile file) throws Exception;
+
+	String deleteImage(String src, HttpServletRequest request);
 
 }

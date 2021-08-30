@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -254,6 +256,21 @@ public class BoardServiceImp implements BoardService {
 		String extension = file.getOriginalFilename().substring(extensionIndex);
 		String name = "img" + extension;
 		return UploadFileUtils.uploadFile(uploadThumbnailPath, name , file.getBytes());
+	}
+
+	@Override
+	public String deleteImage(String src,HttpServletRequest request) {
+		System.out.println(src);
+		
+		String urlPath = request.getContextPath()+"/img";
+		src = src.substring(src.indexOf(urlPath) +  urlPath.length());
+		System.out.println(uploadThumbnailPath+src);
+		File file = new File(uploadThumbnailPath+src);
+		if(file.exists()) {
+			file.delete();
+			return "1";
+		}
+		return "0";
 	}
 
 	

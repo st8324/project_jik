@@ -116,4 +116,10 @@ public class BoardController {
 		String imgUrl = boardService.uploadImg(file);
 		return imgUrl;
 	}
+	@ResponseBody
+	@PostMapping("/img/delete")
+	public String imgdeletePost(String src,HttpServletRequest request) throws Exception {
+		
+		return boardService.deleteImage(src, request);
+	}
 }

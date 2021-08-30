@@ -70,11 +70,54 @@
 				return true;
 			})
 			$('#summernote').summernote({
-				placeholder: 'Hello Bootstrap 4',
-				tabsize: 2,
-				height: 400
+				height: 600,
+				fontNames : [ '맑은고딕', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', ],
+				fontNamesIgnoreCheck : [ '맑은고딕' ],
+				focus: true,
+				callbacks: {
+					onImageUpload: function(files, editor, welEditable) {
+			            for (var i = files.length - 1; i >= 0; i--) {
+			            	sendFile(files[i], this);
+			            }
+			        },
+					onMediaDelete : function(target) {
+		                // alert(target[0].src) 
+		                console.log(target)
+		                deleteFile(target[0].src);
+		            }
+			        
+				}
 			});
 		})
+		function deleteFile(src) {
+
+		    $.ajax({
+		        data: {src : src},
+		        type: "POST",
+		        url: '<%=request.getContextPath()%>/board/img/delete',
+		        cache: false,
+		        success: function(resp) {
+		            console.log(resp);
+		        }
+		    });
+		}
+		function sendFile(file, el) {
+			var form_data = new FormData();
+	      	form_data.append('file', file);
+	      	$.ajax({
+	        	data: form_data,
+	        	type: "POST",
+	        	url: '<%=request.getContextPath()%>/board/img/upload',
+	        	cache: false,
+	        	contentType: false,
+	        	enctype: 'multipart/form-data',
+	        	processData: false,
+	        	success: function(img_name) {
+	        		console.log(img_name)
+	          		$(el).summernote('editor.insertImage', '<%=request.getContextPath()%>/img'+ img_name);
+	        	}
+	      	});
+	    }
 	</script>
 </body>
 </html>
